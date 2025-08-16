@@ -30,20 +30,21 @@ export function OnboardingModal() {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="max-w-md">
         <DialogHeader>
-          <div className="flex items-center gap-2 mb-2">
-            <Info className="h-5 w-5 text-blue-600" />
-            <DialogTitle>A quick note about how to use RadIntel</DialogTitle>
-          </div>
-          <DialogDescription className="text-base leading-relaxed">
-            RadIntel delivers regulatory, reimbursement and device-safety information for operational decision-making. 
-            It is for informational purposes only and is not medical, legal, or financial advice. 
-            You may use it to inform operational actions; consult appropriate professionals for clinical or legal decisions.
+          <DialogTitle>A quick note about using RadIntel</DialogTitle>
+          <DialogDescription className="text-base leading-relaxed mt-3">
+            RadIntel provides regulatory, reimbursement, and device-safety intelligence 
+            to support operational decision-making. It is for informational purposes only 
+            and is not medical, legal, or financial advice — consult qualified professionals 
+            for clinical or legal decisions.
           </DialogDescription>
         </DialogHeader>
-        <DialogFooter>
+        <DialogFooter className="flex flex-col gap-2">
           <Button onClick={handleDismiss} className="w-full">
             Got it — continue
           </Button>
+          <a href="/legal/disclaimer" className="text-xs text-center text-muted-foreground hover:underline">
+            Read full disclaimer →
+          </a>
         </DialogFooter>
       </DialogContent>
     </Dialog>

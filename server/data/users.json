@@ -20,5 +20,12 @@
     "password": "$2b$10$pOMaXfaTXuh59XhIXRDhjeQzSajmN3JQItziHnV8x/SW2imTG7duC",
     "createdAt": "2025-08-16T22:19:22.445Z",
     "onboardingCompleted": false
+  },
+  {
+    "id": "31b36ba5-04fb-40da-9372-de2bad09df19",
+    "email": "mituluttamani@gmail.com",
+    "password": "$2b$10$4uUHpPbDxzDA4IL47ICP9OQnCRLpNDa9ZyUbhbkJ6elj7QFwtS5uy",
+    "createdAt": "2025-08-16T22:21:07.955Z",
+    "onboardingCompleted": false
   }
 ]

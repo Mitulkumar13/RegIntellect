@@ -67,7 +67,7 @@ export default function Dashboard() {
       
       {/* Dashboard Header with Disclaimer */}
       <div className="mb-4">
-        <h1 className="text-3xl font-bold mb-2">RadIntel CA Dashboard</h1>
+        <h1 className="text-3xl font-bold mb-2">Dashboard</h1>
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <Info className="h-4 w-4" />
           <span>For information only. Not medical advice.</span>

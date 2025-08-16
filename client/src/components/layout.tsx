@@ -22,7 +22,7 @@ interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps) {
-  const [location] = useLocation();
+  const [location, navigate] = useLocation();
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   const { data: events = [] } = useQuery({
@@ -175,10 +175,15 @@ export default function Layout({ children }: LayoutProps) {
                 {isRefreshing ? "Refreshing..." : "Refresh Data"}
               </Button>
               <div className="relative">
-                <Button variant="ghost" size="icon">
+                <Button 
+                  variant="ghost" 
+                  size="icon"
+                  onClick={() => navigate('/alerts')}
+                  className="relative"
+                >
                   <BellRing className="h-5 w-5" />
                   {urgentCount > 0 && (
-                    <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full" />
+                    <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse" />
                   )}
                 </Button>
               </div>
