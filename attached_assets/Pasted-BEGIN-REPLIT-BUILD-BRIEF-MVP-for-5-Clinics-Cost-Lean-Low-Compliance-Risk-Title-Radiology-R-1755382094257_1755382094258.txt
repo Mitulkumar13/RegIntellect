@@ -1,0 +1,381 @@
+BEGIN — REPLIT BUILD BRIEF (MVP for 5 Clinics, Cost‑Lean, Low‑Compliance Risk)
+
+Title
+Radiology Regulatory & Operational Intelligence — California + Federal (MVP)
+
+Positioning
+Regulatory & operational intelligence for radiology. For informational purposes only — not medical, legal, or financial advice.
+
+Goals
+
+Deterministic, source‑cited alerts across:
+
+CMS PFS/CPT deltas (local $ impact calculator)
+
+FDA device recalls (primary) + MAUDE (support only)
+
+FDA drug recalls & shortages (contrast agents, anesthetics)
+
+Federal Register + CMS rules (deadlines & effective dates)
+
+California RHB + CDPH (state notices)
+
+Vendor security advisories (software/firmware/cyber updates) as “Important”
+
+Payer bulletins (public policy updates only; no customer/member data)
+
+Private app with login; no PHI; JSON storage now, DB later.
+
+Minimize API/AI usage (daily caps, batching, caching).
+
+Chosen options
+
+Auth: Email + password + secure cookie sessions.
+
+Storage: JSON files in /data for MVP; design to swap to DB later.
+
+Email: Use Brevo free tier (fast to set up, reliable, free daily quota).
+
+SMS: OFF (MVP). UI will allow per‑category opt‑in later.
+
+CA registries: Include both RHB and CDPH on Day 1.
+
+Payer bulletins: ON (public pages only, no customer/member data).
+
+Vendor security advisories: ON (public only), show as “Important” in dashboard; no default email/SMS.
+
+Polling:
+
+FDA device & drug: every 120min.
+
+Federal Register + CMS rules: daily 07:00 local.
+
+MAUDE: daily 07:30 local.
+
+Perplexity AI summaries:
+
+Max real‑time summaries/day: 6.
+
+Batch Digest and Newsletter: YES (single daily call each).
+
+CPT routing thresholds (percentage):
+
+Urgent if |Δ%| ≥10%.
+
+Informational if 5–9.9%.
+
+Else Digest.
+
+Drug shortage reputable lists:
+
+FDA Drug Shortages (official) and ASHP.
+
+Confidence: FDA=High; ASHP‑only=Medium; both=Highest.
+
+Device preemptive spike (z‑score):
+
+Spike if 30‑day z ≥2.0 vs trailing 6‑month baseline.
+
+If spike + recall present, escalate one category.
+
+Clinic volumes: Client‑only (localStorage). No server storage by default.
+
+Device library: Seeded minimal list of common MRI/CT/Mammo models across GE/Siemens/Philips/Canon/Fujifilm/Hologic + “Other” free‑text.
+
+“Not medical advice” placements:
+
+Login footer, dashboard header subtext, email footer
+
+One‑time onboarding modal (subtle)
+
+Contextual inline disclaimers on sensitive items
+
+Full disclaimer page at /legal/disclaimer
+
+Environment variables (Secrets)
+
+SESSION_SECRET
+
+GEMINI_API_KEY (fallback normalization only)
+
+PERPLEXITY_API_KEY (summaries; enforce caps)
+
+BREVO_API_KEY (email)
+
+Optional later: STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET
+
+Optional later: TWILIO_SID, TWILIO_TOKEN, TWILIO_FROM (SMS when enabled)
+
+Tech stack
+
+Node.js + Express
+
+EJS views (dashboard)
+
+JSON storage under /data
+
+External cron/ping to run robots
+
+Routes to implement
+
+Public marketing
+
+GET / → landing page; include positioning; link to signup/login.
+
+GET /pricing → simple free/starter/pro placeholders (no payments for MVP).
+
+GET /about, /contact, /privacy, /terms, /legal/disclaimer.
+
+Login page footer includes: “Regulatory & operational intelligence for radiology. For informational purposes only — not medical, legal, or financial advice.”
+
+Auth (private)
+
+POST /auth/signup → create user (email, bcrypt‑hashed password), set session cookie.
+
+POST /auth/login → set httpOnly, Secure, SameSite=Lax cookie session.
+
+POST /auth/logout → clear session cookie.
+
+GET /me → user profile & org membership.
+
+requireAuth middleware for all app routes below.
+
+App (private)
+
+GET /dashboard
+
+Unified list with rank: Urgent > Informational > Digest > Important (Vendor Advisories)
+
+Filters: CA‑only, Federal, Modality (MRI/CT/Mammo/US/X‑ray/IR/NM/PET), Clinic‑relevant only.
+
+Dashboard header subtext: “For information only. Not medical advice.” with info icon → shows full text.
+
+Display vendor advisories as “Important” (no default email/SMS).
+
+GET /tools
+
+CPT volume calculator (localStorage only).
+
+GET /settings
+
+Modalities/devices (seeded + Other).
+
+CPT selection per modality (curated list + Add CPT).
+
+Preferences: CA‑only toggle, categories for email, opt‑in per category (later).
+
+GET /status
+
+last success/failure timestamps per robot, error counts, AI cap status.
+
+One‑time onboarding modal shown on first dashboard view (cookie/account flag).
+
+Copy: “RadIntel delivers regulatory, reimbursement and device‑safety information for operational decision‑making. It is for informational purposes only and is not medical, legal, or financial advice.”
+
+Robots (private; ?dryRun=true supported)
+
+A) GET /api/recalls/device
+
+Frequency: every 120min via external cron.
+
+Source: openFDA device enforcement.
+
+Normalize deterministically; if schema breaks, fallback to Gemini normalization (return nulls when unknown).
+
+Confidence: base 60 (High).
+
+MAUDE support: if matching model/manufacturer seen recently, add +10 (support only).
+
+Spike: if z‑score ≥2.0 (30‑day vs 6‑month baseline) and a recall exists, escalate one category.
+
+Personalization: If clinic has exact device model, bump category up one level.
+
+Deduplicate by signature: manufacturer+model+classification+reason‑keyword within 14 days.
+
+Summaries: Only if category is Urgent/Informational and daily cap (6) not exceeded.
+
+B) GET /api/recalls/drug
+
+Frequency: every 120min.
+
+Sources: FDA drug recalls (official), FDA drug shortages (official), ASHP shortages.
+
+Filter to radiology‑critical drugs: contrast agents, anesthetics used in imaging.
+
+Confidence: FDA recall or FDA shortage = High; ASHP‑only = Medium; both = Highest.
+
+Personalization: If clinic marked dependency on a named drug, bump one level.
+
+Summaries: Urgent/Informational only; batch Digest.
+
+C) GET /api/cpt/pfs
+
+Frequency: daily (07:00).
+
+Compute percentage deltas vs last snapshot (store previous rates JSON).
+
+Routing:
+
+Urgent if |Δ%| ≥10%
+
+Informational if 5–9.9%
+
+Else Digest
+
+$ impact is computed client‑side (localStorage volumes).
+
+Summaries: Urgent/Informational; batch Digest.
+
+D) GET /api/maude
+
+Frequency: daily (07:30).
+
+Targeted keywords: seed models/manufacturers + clinic entries.
+
+Store counts; never alert alone; exposed as supporting signal.
+
+E) GET /api/deadlines
+
+Frequency: daily (07:00).
+
+Sources: Federal Register (filtered radiology/CMS/FDA), CMS rule pages (PFS final rules, imaging guidance), MQSA, CA RHB + CDPH.
+
+Extract: {due_date, action_required, link, source, last_checked_at}.
+
+Default category: Digest; clinics may opt‑in to get T‑7/T‑1 reminders as Informational.
+
+F) GET /api/news/regulators
+
+Frequency: FDA (120min), CMS/State (daily).
+
+Normalize: {title, date, link, tags, source}; always include source link.
+
+Summaries: batched for Digest/Newsletter unless flagged Urgent by rule.
+
+Payer bulletins (public‑only)
+
+Frequency: daily.
+
+Sources: public payer policy pages (no member portals).
+
+Extract imaging‑relevant changes (prior auth, coverage).
+
+Category: Informational or Digest unless client opts otherwise.
+
+Vendor security advisories (public‑only)
+
+Frequency: daily.
+
+Sources: GE, Siemens, Philips, Canon, Fujifilm, Hologic advisory/news pages.
+
+Category: Important (dashboard priority area). No default email/SMS; clinics can opt in later by category.
+
+Delivery (email only for MVP)
+
+POST /api/send-email (Brevo)
+
+Real‑time for Urgent/Informational (subject includes category + source).
+
+Daily Digest (batched summary).
+
+Weekly Newsletter (top 5 changes, 30‑day deadlines, CPT deltas, device watchlist).
+
+Email footer includes informational disclaimer.
+
+SMS OFF (MVP).
+
+Feedback
+
+POST /api/feedback → {event_id, helpful:boolean}
+
+Aggregate counts per signature; used for weekly threshold tuning (manual).
+
+Deterministic scoring & routing (hard rules)
+
+Confidence by source
+
+FDA device recall: 60 (High)
+
+FDA drug recall/shortage: 60 (High)
+
+ASHP‑only shortage: 50 (Medium), upgrade to High if FDA corroborates within 72h
+
+CMS PFS change: 70 (High)
+
+MAUDE: +10 support only (never auto‑alert on MAUDE alone)
+
+Spike detection (z‑score)
+
+Compute 30‑day mean vs trailing 6‑month daily baseline.
+
+If z ≥2.0 → spike=true; if spike + recall → escalate category one level.
+
+CPT routing (percentage rule)
+
+Urgent: |Δ%| ≥10%
+
+Informational: 5–9.9%
+
+Digest: else
+
+Personalization: If CPT is top‑3 by clinic volume and Δ% ≥5% → bump one level (volume only in localStorage).
+
+Personalization (devices/drugs)
+
+Exact model match → bump one level.
+
+Marked drug dependency → bump one level.
+
+AI usage & credit guard
+
+Real‑time summaries only for Urgent/Informational up to 6/day.
+
+Digest and Newsletter each as one batched summarization per day.
+
+Cache summaries for 14 days per signature to avoid repeats.
+
+If cap reached, Informational uses templates; Urgent still summarized.
+
+Data (JSON under /data)
+
+events.json (append; cap last 5,000)
+
+deadlines.json
+
+settings.json (modalities, devices, CPT selections; no volumes)
+
+maude_counts.json
+
+cpt_rates_previous.json (snapshot)
+
+Observability & safety
+
+/status: last success/failure timestamps per robot, error counts, AI cap status.
+
+?dryRun=true on all robot routes to test without writes/delivery.
+
+Console logs with safe info (no secrets).
+
+UI disclaimers (copy)
+
+Login footer: “Regulatory & operational intelligence for radiology. For informational purposes only — not medical, legal, or financial advice.”
+
+Dashboard subtext: “For information only. Not medical advice.” (info icon to full text)
+
+Email footer: “This content is informational and does not constitute medical, legal, or financial advice.”
+
+Onboarding modal (one‑time):
+
+Header: “A quick note about how to use RadIntel”
+
+Body: “RadIntel delivers regulatory, reimbursement and device‑safety information for operational decision‑making. It is for informational purposes only and is not medical, legal, or financial advice. You may use it to inform operational actions; consult appropriate professionals for clinical or legal decisions.”
+
+CTA: “Got it — continue”
+
+Contextual inline (tiny): “Informational only — consult clinical staff before taking clinical action.”
+
+Full page: /legal/disclaimer linked site‑wide.
+
+END — REPLIT BUILD BRIEF
+
+Next steps

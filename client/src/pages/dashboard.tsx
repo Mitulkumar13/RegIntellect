@@ -6,9 +6,13 @@ import FilterControls from "@/components/filter-controls";
 import AlertCard from "@/components/alert-card";
 import ImpactCalculator from "@/components/impact-calculator";
 import SystemStatus from "@/components/system-status";
+import { OnboardingModal } from "@/components/onboarding-modal";
+import { Info } from "lucide-react";
 import type { FilterState, Event } from "@/types";
 
 export default function Dashboard() {
+  // Show onboarding modal on first visit
+  const [showOnboarding] = useState(true);
   const [filters, setFilters] = useState<FilterState>({
     category: 'all',
     source: 'all',

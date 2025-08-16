@@ -1,0 +1,9 @@
+[
+  {
+    "id": "c0e8d78c-af29-4186-a231-1ef96da790e7",
+    "email": "test@example.com",
+    "password": "$2b$10$SafNFH1HM9Sony8H0BTOPuqagXyvbdxbjoQyu3Xww1GviNceiDO6a",
+    "createdAt": "2025-08-16T22:14:15.921Z",
+    "onboardingCompleted": false
+  }
+]

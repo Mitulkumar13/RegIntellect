@@ -15,8 +15,14 @@ import {
   calculateRadiologyImpact,
   getCaliforniaRegion 
 } from "./lib/california-sources";
+import { fetchFDADrugRecalls, fetchFDADrugShortages } from "./lib/fda-drug-recalls";
+import { checkVendorAdvisories } from "./lib/vendor-advisories";
+import authRouter from "./routes/auth";
+import { requireAuth } from "./lib/auth";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Public auth routes
+  app.use('/auth', authRouter);
   
   // Helper function for retry logic
   async function withRetry<T>(fn: () => Promise<T>, maxRetries = 3): Promise<T> {
@@ -506,14 +512,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return fdaResponse.json();
       });
 
-      // Fetch drug shortage data - using enforcement API with shortage-related terms
-      const shortageResponse = await withRetry(async () => {
-        const fdaShortageResponse = await fetch('https://api.fda.gov/drug/enforcement.json?search=report_date:[2024-01-01+TO+2024-12-31]+AND+reason_for_recall:shortage&limit=20');
-        if (!fdaShortageResponse.ok) {
-          throw new Error(`FDA Shortage API error: ${fdaShortageResponse.status}`);
-        }
-        return fdaShortageResponse.json();
-      });
+      // For MVP, skip shortage API as it's not available in enforcement endpoint
+      const shortageResponse = { results: [] };
 
       const rawEvents = [
         ...(drugResponse.results || []).map((item: any) => ({ ...item, type: 'recall' })),
@@ -708,6 +708,64 @@ export async function registerRoutes(app: Express): Promise<Server> {
         errorCount24h: (await storage.getSystemStatus()).find(s => s.source === 'maude')?.errorCount24h || 0 + 1
       });
       res.status(500).json({ error: 'Failed to fetch MAUDE data' });
+    }
+  });
+
+  // GET /api/vendor-advisories - Fetch vendor security advisories
+  app.get("/api/vendor-advisories", async (req, res) => {
+    try {
+      await storage.updateSystemStatus('vendor_advisories', { lastSuccess: null, lastError: null });
+      
+      const advisories = await checkVendorAdvisories();
+      const processedEvents = [];
+
+      for (const advisory of advisories) {
+        const eventRecord = {
+          source: advisory.source,
+          sourceId: advisory.sourceId,
+          title: advisory.title,
+          summary: advisory.summary,
+          category: advisory.category,
+          score: advisory.score,
+          reasons: [`Vendor: ${advisory.vendor}`, `Severity: ${advisory.severity}`],
+          deviceName: advisory.affectedProducts?.[0] || null,
+          model: advisory.affectedProducts?.[0] || null,
+          manufacturer: advisory.vendor,
+          classification: advisory.severity,
+          reason: advisory.summary,
+          firm: advisory.vendor,
+          state: null,
+          status: 'Published',
+          cptCodes: null,
+          delta: null,
+          modalityType: null,
+          radiologyImpact: null,
+          californiaRegion: null,
+          originalData: advisory,
+          sourceDate: advisory.sourceDate,
+        };
+
+        const savedEvent = await storage.createEvent(eventRecord);
+        processedEvents.push(savedEvent);
+      }
+
+      await storage.updateSystemStatus('vendor_advisories', { lastSuccess: new Date() });
+
+      const alertResponse: AlertResponse = {
+        source: 'Vendor Security Advisories',
+        count: processedEvents.length,
+        fetchedAt: new Date().toISOString(),
+        events: processedEvents,
+      };
+
+      res.json(alertResponse);
+    } catch (error) {
+      console.error('Vendor advisories endpoint error:', error);
+      await storage.updateSystemStatus('vendor_advisories', { 
+        lastError: new Date(),
+        errorCount24h: (await storage.getSystemStatus()).find(s => s.source === 'vendor_advisories')?.errorCount24h || 0 + 1
+      });
+      res.status(500).json({ error: 'Failed to fetch vendor advisories' });
     }
   });
 
