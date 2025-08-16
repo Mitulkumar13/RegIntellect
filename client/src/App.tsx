@@ -11,6 +11,9 @@ import Tools from "@/pages/tools";
 import Status from "@/pages/status";
 import NotFound from "@/pages/not-found";
 import { AuthPage } from "@/pages/auth";
+import Landing from "@/pages/landing";
+import Pricing from "@/pages/pricing";
+import LegalDisclaimer from "@/pages/legal-disclaimer";
 import { useState, useEffect } from "react";
 
 function Router() {
@@ -19,21 +22,30 @@ function Router() {
   const [location, setLocation] = useLocation();
 
   useEffect(() => {
-    // Check authentication status
+    // Public pages that don't require authentication
+    const publicPages = ['/', '/pricing', '/legal/disclaimer', '/about', '/contact', '/privacy', '/terms', '/auth'];
+    const isPublicPage = publicPages.some(page => location === page || location.startsWith('/legal/'));
+    
+    if (isPublicPage) {
+      setLoading(false);
+      return;
+    }
+
+    // Check authentication status for protected pages
     fetch('/auth/me')
       .then(res => {
         if (res.ok) {
           setIsAuthenticated(true);
         } else {
           setIsAuthenticated(false);
-          if (location !== '/auth') {
+          if (!isPublicPage) {
             setLocation('/auth');
           }
         }
       })
       .catch(() => {
         setIsAuthenticated(false);
-        if (location !== '/auth') {
+        if (!isPublicPage) {
           setLocation('/auth');
         }
       })
@@ -44,6 +56,13 @@ function Router() {
     return <div className="flex items-center justify-center h-screen">Loading...</div>;
   }
 
+  // Public routes
+  if (location === '/') return <Landing />;
+  if (location === '/pricing') return <Pricing />;
+  if (location === '/legal/disclaimer') return <LegalDisclaimer />;
+  if (location === '/auth') return <AuthPage />;
+
+  // Protected routes require authentication
   if (!isAuthenticated) {
     return <AuthPage />;
   }
@@ -51,7 +70,6 @@ function Router() {
   return (
     <Layout>
       <Switch>
-        <Route path="/" component={Dashboard} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/alerts" component={Alerts} />
         <Route path="/archive" component={Archive} />

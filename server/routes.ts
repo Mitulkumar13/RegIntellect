@@ -2,27 +2,38 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertEventSchema, insertFeedbackSchema, type AlertResponse } from "@shared/schema";
+import authRouter from "./routes/auth";
+import { requireAuth } from "./lib/auth";
+import robotRoutes from "./routes/robots";
 import { scoreEvent, categorizeByScore, shouldSummarize } from "./lib/score";
 import { normalizeData, detectPatterns } from "./lib/ai-gemini";
 import { summarizeEvent } from "./lib/ai-perplexity";
-import { sendAlertEmail } from "./lib/email";
-import { sendUrgentSMS } from "./lib/sms";
-import { 
-  fetchCDPHAlerts, 
-  fetchMBCAlerts, 
-  fetchRHBAlerts, 
-  classifyRadiologyModality,
-  calculateRadiologyImpact,
-  getCaliforniaRegion 
-} from "./lib/california-sources";
-import { fetchFDADrugRecalls, fetchFDADrugShortages } from "./lib/fda-drug-recalls";
-import { checkVendorAdvisories } from "./lib/vendor-advisories";
-import authRouter from "./routes/auth";
-import { requireAuth } from "./lib/auth";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Public auth routes
   app.use('/auth', authRouter);
+  
+  // Robot endpoints for automated data collection
+  app.use('/api', robotRoutes);
+  
+  // POST /api/feedback - Submit user feedback
+  app.post("/api/feedback", requireAuth, async (req, res) => {
+    try {
+      const feedbackData = insertFeedbackSchema.parse(req.body);
+      const savedFeedback = await storage.createFeedback({
+        ...feedbackData,
+        userId: (req as any).user?.id || null
+      });
+      
+      res.json({ 
+        success: true, 
+        feedback: savedFeedback 
+      });
+    } catch (error) {
+      console.error('Feedback submission error:', error);
+      res.status(500).json({ error: 'Failed to submit feedback' });
+    }
+  });
   
   // Helper function for retry logic
   async function withRetry<T>(fn: () => Promise<T>, maxRetries = 3): Promise<T> {
@@ -529,7 +540,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           ...event,
           flags: patterns.flags,
           match: patterns.match,
-          sources: [`fda:drug_${event.type}`]
+          sources: [`fda:drug_${(event as any).type || 'unknown'}`]
         };
 
         const scoring = scoreEvent(enhancedEvent);
@@ -540,7 +551,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           scoring.score += 20;
         }
         
-        const originalData = event.originalData || event;
+        const originalData = (event as any).originalData || event;
         
         const category = categorizeByScore(scoring.score);
         
