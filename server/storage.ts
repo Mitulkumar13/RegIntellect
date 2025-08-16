@@ -1,4 +1,6 @@
-import { type Event, type InsertEvent, type Feedback, type InsertFeedback, type SystemStatus, type InsertSystemStatus } from "@shared/schema";
+import { type Event, type InsertEvent, type Feedback, type InsertFeedback, type SystemStatus, type InsertSystemStatus, events, feedback, systemStatus } from "@shared/schema";
+import { db } from "./db";
+import { eq, desc, sql } from "drizzle-orm";
 import { randomUUID } from "crypto";
 import fs from "fs";
 import path from "path";
@@ -161,4 +163,110 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+export class DatabaseStorage implements IStorage {
+  async getEvents(limit = 50, category?: string): Promise<Event[]> {
+    if (category && category !== 'all') {
+      const result = await db
+        .select()
+        .from(events)
+        .where(eq(events.category, category))
+        .orderBy(desc(events.archivedAt))
+        .limit(limit);
+      return result;
+    }
+    
+    const result = await db
+      .select()
+      .from(events)
+      .orderBy(desc(events.archivedAt))
+      .limit(limit);
+    
+    return result;
+  }
+
+  async getEventById(id: string): Promise<Event | undefined> {
+    const [event] = await db.select().from(events).where(eq(events.id, id));
+    return event || undefined;
+  }
+
+  async createEvent(insertEvent: InsertEvent): Promise<Event> {
+    const [event] = await db
+      .insert(events)
+      .values(insertEvent)
+      .returning();
+    return event;
+  }
+
+  async getEventsBySource(source: string, limit = 50): Promise<Event[]> {
+    const result = await db
+      .select()
+      .from(events)
+      .where(eq(events.source, source))
+      .orderBy(desc(events.archivedAt))
+      .limit(limit);
+    
+    return result;
+  }
+
+  async createFeedback(insertFeedback: InsertFeedback): Promise<Feedback> {
+    const [feedbackRecord] = await db
+      .insert(feedback)
+      .values(insertFeedback)
+      .returning();
+    return feedbackRecord;
+  }
+
+  async getFeedbackByEventId(eventId: string): Promise<Feedback[]> {
+    const result = await db
+      .select()
+      .from(feedback)
+      .where(eq(feedback.eventId, eventId));
+    
+    return result;
+  }
+
+  async getSystemStatus(): Promise<SystemStatus[]> {
+    const result = await db.select().from(systemStatus);
+    return result;
+  }
+
+  async updateSystemStatus(source: string, status: Partial<InsertSystemStatus>): Promise<SystemStatus> {
+    const [existing] = await db
+      .select()
+      .from(systemStatus)
+      .where(eq(systemStatus.source, source));
+    
+    if (existing) {
+      const [updated] = await db
+        .update(systemStatus)
+        .set(status)
+        .where(eq(systemStatus.id, existing.id))
+        .returning();
+      return updated;
+    } else {
+      const [newStatus] = await db
+        .insert(systemStatus)
+        .values({ source, ...status })
+        .returning();
+      return newStatus;
+    }
+  }
+
+  async saveToFile(filename: string, data: any): Promise<void> {
+    const dataDir = path.resolve(process.cwd(), 'server/data');
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
+    }
+    const filePath = path.join(dataDir, filename);
+    await fs.promises.writeFile(filePath, JSON.stringify(data, null, 2));
+  }
+
+  async loadFromFile(filename: string): Promise<any> {
+    const dataDir = path.resolve(process.cwd(), 'server/data');
+    const filePath = path.join(dataDir, filename);
+    const data = await fs.promises.readFile(filePath, 'utf-8');
+    return JSON.parse(data);
+  }
+}
+
+export const storage = new DatabaseStorage();

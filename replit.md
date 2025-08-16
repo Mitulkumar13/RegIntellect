@@ -18,7 +18,7 @@ Preferred communication style: Simple, everyday language.
 
 ## Backend Architecture
 - **Express.js API Server**: RESTful API with middleware for logging, error handling, and request processing
-- **File-Based Storage**: JSON file storage in `/server/data` for events, feedback, and system status (designed for easy migration to database)
+- **PostgreSQL Database Storage**: Neon PostgreSQL database with Drizzle ORM for type-safe database operations and schema management
 - **Modular Route Handlers**: Separate endpoints for data collection (`/api/recalls`, `/api/cms-pfs`, `/api/fedreg`), utilities (`/api/send-email`, `/api/feedback`), and system status
 - **Retry Logic**: Exponential backoff retry mechanism for handling upstream API failures gracefully
 - **Deterministic Scoring**: Local JavaScript module for confidence scoring based on source, flags, device matches, and financial impact
@@ -54,7 +54,8 @@ Preferred communication style: Simple, everyday language.
 - **Twilio SMS**: Optional SMS service for urgent alert notifications
 
 ## Database & Hosting
-- **PostgreSQL**: Configured for Drizzle ORM with planned migration from file-based storage
+- **PostgreSQL**: Active Neon PostgreSQL database integrated with Drizzle ORM for type-safe operations
+- **DatabaseStorage Implementation**: Fully migrated from file-based storage to PostgreSQL with schema deployed (August 16, 2025)
 - **Neon Database**: Serverless PostgreSQL provider for production deployment
 
 ## Development Tools
