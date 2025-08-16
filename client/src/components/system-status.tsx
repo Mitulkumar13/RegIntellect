@@ -66,7 +66,7 @@ export default function SystemStatus() {
                       <span className="text-sm text-gray-700">{source.label}</span>
                     </div>
                     <span className="text-xs text-gray-500">
-                      {formatTime(lastSuccess)}
+                      {formatTime(lastSuccess || null)}
                     </span>
                   </div>
                 );

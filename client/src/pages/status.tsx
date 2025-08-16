@@ -326,9 +326,9 @@ export default function Status() {
                   </div>
                   <div className="flex items-center space-x-4">
                     <div className="text-right text-sm">
-                      <div className="text-gray-600">Last Success: {formatTime(lastSuccess)}</div>
+                      <div className="text-gray-600">Last Success: {formatTime(lastSuccess || null)}</div>
                       {lastError && (
-                        <div className="text-red-600">Last Error: {formatTime(lastError)}</div>
+                        <div className="text-red-600">Last Error: {formatTime(lastError || null)}</div>
                       )}
                       {errorCount > 0 && (
                         <div className="text-red-600">Errors: {errorCount}</div>

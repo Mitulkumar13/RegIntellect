@@ -1,15 +1,7 @@
-import type { CPTVolume } from "@/types";
+import type { CPTVolume, UserPreferences } from "@/types";
 
 const CPT_VOLUMES_KEY = 'radintel_cpt_volumes';
 const USER_PREFERENCES_KEY = 'radintel_preferences';
-
-export interface UserPreferences {
-  emailAlerts: boolean;
-  smsAlerts: boolean;
-  email?: string;
-  phone?: string;
-  digestFrequency: 'daily' | 'weekly';
-}
 
 export const localStorage = {
   // CPT Volumes
@@ -53,15 +45,19 @@ export const localStorage = {
     try {
       const data = window.localStorage.getItem(USER_PREFERENCES_KEY);
       return data ? JSON.parse(data) : {
-        emailAlerts: true,
-        smsAlerts: false,
-        digestFrequency: 'daily'
+        notifications: { email: true, sms: false, push: false },
+        digest: { frequency: 'daily', time: '09:00' },
+        contacts: { email: [], phone: [] },
+        thresholds: { urgent: 85, informational: 75 },
+        sources: { fda: true, cms: true, fedreg: true }
       };
     } catch {
       return {
-        emailAlerts: true,
-        smsAlerts: false,
-        digestFrequency: 'daily'
+        notifications: { email: true, sms: false, push: false },
+        digest: { frequency: 'daily', time: '09:00' },
+        contacts: { email: [], phone: [] },
+        thresholds: { urgent: 85, informational: 75 },
+        sources: { fda: true, cms: true, fedreg: true }
       };
     }
   },

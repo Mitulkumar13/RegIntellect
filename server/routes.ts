@@ -445,8 +445,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // GET / - Service health check
-  app.get("/", (req, res) => {
+  // Health check endpoint moved to /api/health to avoid conflicts with frontend routing
+  app.get("/api/health", (req, res) => {
     res.json({ 
       message: "RadIntel service running",
       version: "1.0.0",

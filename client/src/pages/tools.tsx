@@ -149,9 +149,11 @@ export default function Tools() {
       localStorage.clearAll();
       setCPTVolumes([]);
       setPreferences({
-        emailAlerts: true,
-        smsAlerts: false,
-        digestFrequency: 'daily'
+        notifications: { email: true, sms: false, push: false },
+        digest: { frequency: 'daily', time: '09:00' },
+        contacts: { email: [], phone: [] },
+        thresholds: { urgent: 85, informational: 75 },
+        sources: { fda: true, cms: true, fedreg: true }
       });
       
       toast({
@@ -481,19 +483,23 @@ export default function Tools() {
                   </div>
                 </div>
                 <Switch
-                  checked={preferences.emailAlerts}
-                  onCheckedChange={(checked) => updatePreferences({ emailAlerts: checked })}
+                  checked={preferences.notifications.email}
+                  onCheckedChange={(checked) => updatePreferences({ 
+                    notifications: { ...preferences.notifications, email: checked }
+                  })}
                 />
               </div>
 
-              {preferences.emailAlerts && (
+              {preferences.notifications.email && (
                 <div className="ml-8 space-y-2">
                   <Label className="text-sm">Email Address</Label>
                   <Input
                     type="email"
                     placeholder="your.email@clinic.com"
-                    value={preferences.email || ''}
-                    onChange={(e) => updatePreferences({ email: e.target.value })}
+                    value={preferences.contacts.email[0] || ''}
+                    onChange={(e) => updatePreferences({ 
+                      contacts: { ...preferences.contacts, email: [e.target.value] }
+                    })}
                   />
                 </div>
               )}
@@ -507,19 +513,23 @@ export default function Tools() {
                   </div>
                 </div>
                 <Switch
-                  checked={preferences.smsAlerts}
-                  onCheckedChange={(checked) => updatePreferences({ smsAlerts: checked })}
+                  checked={preferences.notifications.sms}
+                  onCheckedChange={(checked) => updatePreferences({ 
+                    notifications: { ...preferences.notifications, sms: checked }
+                  })}
                 />
               </div>
 
-              {preferences.smsAlerts && (
+              {preferences.notifications.sms && (
                 <div className="ml-8 space-y-2">
                   <Label className="text-sm">Phone Number</Label>
                   <Input
                     type="tel"
                     placeholder="+1 (555) 123-4567"
-                    value={preferences.phone || ''}
-                    onChange={(e) => updatePreferences({ phone: e.target.value })}
+                    value={preferences.contacts.phone[0] || ''}
+                    onChange={(e) => updatePreferences({ 
+                      contacts: { ...preferences.contacts, phone: [e.target.value] }
+                    })}
                   />
                 </div>
               )}
@@ -530,8 +540,10 @@ export default function Tools() {
                   <Label className="text-sm font-medium">Digest Frequency</Label>
                 </div>
                 <Select
-                  value={preferences.digestFrequency}
-                  onValueChange={(value: 'daily' | 'weekly') => updatePreferences({ digestFrequency: value })}
+                  value={preferences.digest.frequency}
+                  onValueChange={(value: 'daily' | 'weekly') => updatePreferences({ 
+                    digest: { ...preferences.digest, frequency: value }
+                  })}
                 >
                   <SelectTrigger className="ml-8 w-40">
                     <SelectValue />
