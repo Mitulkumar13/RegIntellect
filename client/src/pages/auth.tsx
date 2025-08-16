@@ -22,12 +22,10 @@ export function AuthPage() {
 
     try {
       const endpoint = isLogin ? '/auth/login' : '/auth/signup';
-      const response = await apiRequest(endpoint, {
-        method: 'POST',
-        body: JSON.stringify({ email, password })
-      });
+      const response = await apiRequest('POST', endpoint, { email, password });
+      const data = await response.json();
 
-      if (response.success) {
+      if (data.success) {
         setLocation('/dashboard');
       }
     } catch (err: any) {

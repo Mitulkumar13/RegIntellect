@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { hashPassword, verifyPassword } from '../lib/auth';
-import { getUserByEmail, createUser, updateUser } from '../lib/json-storage';
+import { getUserByEmail, createUser, updateUser, readJSON } from '../lib/json-storage';
 import { v4 as uuidv4 } from 'uuid';
 
 const router = Router();
@@ -98,7 +98,7 @@ router.get('/me', async (req, res) => {
       return res.status(401).json({ error: 'Not authenticated' });
     }
 
-    const users = await getUserByEmail(''); // Get all users
+    const users = await readJSON('users.json');
     const user = users.find((u: any) => u.id === req.session.userId);
     
     if (!user) {
