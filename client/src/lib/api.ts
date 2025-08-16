@@ -29,6 +29,26 @@ export const api = {
     return response.json();
   },
 
+  fetchDrugRecalls: async () => {
+    const response = await apiRequest('GET', '/api/drug-recalls');
+    return response.json();
+  },
+
+  fetchMAUDE: async () => {
+    const response = await apiRequest('GET', '/api/maude');
+    return response.json();
+  },
+
+  fetchAuditDeadlines: async () => {
+    const response = await apiRequest('GET', '/api/audit-deadlines');
+    return response.json();
+  },
+
+  fetchStateDOH: async () => {
+    const response = await apiRequest('GET', '/api/state-doh');
+    return response.json();
+  },
+
   // Feedback
   submitFeedback: async (eventId: string, helpful: boolean) => {
     const response = await apiRequest('POST', '/api/feedback', { eventId, helpful });

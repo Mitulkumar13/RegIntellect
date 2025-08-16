@@ -46,6 +46,10 @@ export default function Layout({ children }: LayoutProps) {
         api.fetchRecalls(),
         api.fetchCMSPFS(),
         api.fetchFedReg(),
+        api.fetchDrugRecalls(),
+        api.fetchMAUDE(),
+        api.fetchAuditDeadlines(),
+        api.fetchStateDOH(),
       ]);
     } catch (error) {
       console.error('Refresh failed:', error);
