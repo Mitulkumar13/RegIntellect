@@ -1,0 +1,405 @@
+Project title
+Radiology Intelligence MVP: FDA/CMS/FedReg robots + AI summarization + deterministic scoring + delivery + dashboard
+
+One-paragraph product summary
+Build a small, privacy-first web service for radiology clinics that:
+
+Collects public regulatory data (FDA device recalls, CMS PFS/CPT updates, Federal Register notices).
+
+Normalizes records, applies deterministic confidence scoring, and categorizes alerts (Urgent/Informational/Digest/Suppressed).
+
+Summarizes alerts into 1–2 sentence clinic-ready messages using an AI text model.
+
+Delivers via email (and optionally SMS for Urgent), archives all events, and shows a simple dashboard.
+
+Captures clinic feedback (Helpful/Not helpful) to improve thresholds and copy over time.
+No PHI; all clinic-specific inputs (volumes, checklists) remain client-side in localStorage.
+
+High-level architecture
+
+Single Node.js + Express server (one Replit project).
+
+Routes for robots (/api/recalls, /api/cms-pfs, /api/fedreg), utilities (/api/send-email, /api/feedback), and UI (/dashboard, /tools).
+
+Deterministic confidence scoring module (local JS).
+
+AI helpers for normalization and summarization (call external AI APIs).
+
+Storage: start with JSON files in /data; can later swap for Firestore/Supabase.
+
+Scheduling: free external cron/ping to call robot endpoints on a schedule.
+
+Non-functional requirements
+
+Privacy: zero PHI; do not persist clinic volumes or documents on the server.
+
+Reliability: handle upstream API failures gracefully; auto-retry with exponential backoff (max 3).
+
+Transparency: every event in archive must include source(s), score, reasons, category, and timestamp(s).
+
+Cost control: call the summarizer only for Urgent/Informational; batch Digest summaries daily.
+
+Auditability: clear log messages for errors; status endpoint with last-run timestamps.
+
+Environment variables (Replit Secrets)
+
+GEMINI_API_KEY: key for data normalization/detection helper (used to strictly normalize JSON and flag patterns).
+
+PERPLEXITY_API_KEY: key for summarization (clinic-ready 1–2 sentence alert text).
+
+EMAIL_API_KEY: transactional email provider API key (e.g., Brevo/Mailersend/SendGrid).
+
+EMAIL_FROM: default From email address.
+
+TWILIO_SID (optional, for SMS).
+
+TWILIO_TOKEN (optional, for SMS).
+
+TWILIO_FROM (optional, for SMS).
+
+Directory and file map
+
+package.json
+
+"type": "module"
+
+"scripts": { "start": "node index.js" }
+
+"dependencies": { "express": "^4.19.2", "ejs": "^3.1.9" }
+
+If needed later: add axios or node-fetch, twilio, and email SDK of choice.
+
+index.js
+
+Express app, middleware, mount routes, start server.
+
+/lib/score.js
+
+Deterministic confidence scoring based on rules.
+
+/lib/ai-gemini.js
+
+AI helper for strict normalization and pattern detection (JSON in/out).
+
+/lib/ai-perplexity.js
+
+AI helper for short clinic-ready summaries (text out).
+
+/lib/email.js
+
+Helper to send emails through selected provider.
+
+/lib/sms.js (optional)
+
+Helper to send SMS via Twilio (Urgent only).
+
+/routes/recalls.js
+
+GET /api/recalls: fetch openFDA, normalize, score, summarize (if needed), categorize, archive, respond.
+
+/routes/cms.js
+
+GET /api/cms-pfs: fetch CMS PFS/CPT, compute diffs, normalize, score (+70 for official change), summarize (if needed), categorize, archive, respond.
+
+/routes/fedreg.js
+
+GET /api/fedreg: fetch relevant Federal Register items, normalize, score (lower baseline), summarize (if needed), categorize, archive, respond.
+
+/routes/delivery.js
+
+POST /api/send-email (payload: alerts + recipients)
+
+POST /api/send-sms (optional) (payload: urgent alerts + phone)
+
+/routes/feedback.js
+
+POST /api/feedback (payload: event_id, helpful: boolean). Stores anonymized feedback counts only.
+
+/routes/status.js
+
+GET /status: returns last success/failure timestamps per robot, error counts, queue sizes (if any).
+
+/views/dashboard.ejs
+
+Lists last 50 events with filters (Urgent/Informational/Digest), basic pagination, feedback buttons.
+
+/views/tools.ejs
+
+Simple client-side tools (localStorage volumes, checklist).
+
+/public/
+
+styles.css, client.js (handles localStorage, feedback POSTs).
+
+/data/
+
+events.json (append-only log, capped at last 5,000 events)
+
+recalls.json, cms.json, fedreg.json (optional per-source mirrors).
+
+Deterministic confidence scoring rules (/lib/score.js)
+
+Inputs:
+
+sources: string[] (e.g., ["openfda:enforcement"], ["cms:pfs_change"])
+
+flags: object (e.g., { maude_signal: bool, manufacturer_notice: bool })
+
+match: object (e.g., { exact_model: bool, fuzzy_model: bool })
+
+Rules:
+
+openfda enforcement: +60
+
+cms pfs official change: +70
+
+manufacturer notice present: +20
+
+MAUDE signal present: +10 (supporting only; no auto-alert from MAUDE alone)
+
+exact device model match: +20
+
+fuzzy model match: +10
+
+Thresholds:
+
+=85: Urgent (email + SMS if opted-in)
+
+75–84: Informational (email only)
+
+50–74: Digest (weekly)
+
+<50: Suppressed (archive only)
+
+Output: { score, reasons: string[] }
+
+AI helper responsibilities
+
+/lib/ai-gemini.js:
+
+Given raw data from FDA/CMS/FedReg, return a strictly normalized JSON array with required fields:
+
+id, source, date, title, device_name (if applicable), model (if applicable),
+classification (if applicable), reason, firm (if applicable), state (if appl.),
+status (if appl.), codes (CPT if CMS), delta (old/new if CMS), match, flags, sources.
+
+Must return valid JSON only (no prose).
+
+Never invent values; leave null if unknown.
+
+Add pattern hints (e.g., "delta": { old: X, new: Y } for CPT codes).
+
+/lib/ai-perplexity.js:
+
+Input: a single normalized event.
+
+Output: 1–2 sentence clinic-ready alert (plain text).
+
+Tone: clear, neutral, action-oriented.
+
+No invented data; if unknown, omit.
+
+Robots and data ingestion routes (functional definitions)
+
+GET /api/recalls
+
+Purpose: Fetch recent device enforcement recalls from openFDA (limit 10–50).
+
+Steps:
+
+Fetch: https://api.fda.gov/device/enforcement.json?... (date range, sort desc, limit=X)
+
+Normalize via ai-gemini (strict JSON array).
+
+For each event:
+
+score = scoreEvent(event)
+
+category = based on thresholds
+
+summary = call ai-perplexity only if category is Urgent/Informational
+
+archive to /data/events.json (prepend), include archived_at timestamp.
+
+Respond: { source: "openFDA device enforcement", count, fetched_at, events }
+
+GET /api/cms-pfs
+
+Purpose: Detect price changes for radiology CPT codes.
+
+Steps:
+
+Pull PFS data (CSV/API). For MVP, use a small hardcoded CPT set and a hosted CSV/JSON if needed.
+
+Compare current vs last-saved snapshot (store previous in /data/cms.json).
+
+For each changed CPT:
+
+event.delta = { old, new }, codes: { cpt: "70553" }
+
+sources includes "cms:pfs_change"
+
+score = +70 baseline; apply more rules if desired
+
+category & summary & archive as above.
+
+Respond similarly.
+
+GET /api/fedreg
+
+Purpose: Surface relevant Federal Register items (radiology related).
+
+Steps:
+
+Fetch filtered feed (search keywords).
+
+Normalize, score (lower baseline), categorize, summarize (if needed), archive, respond.
+
+Delivery routes
+
+POST /api/send-email
+
+body: { to: ["a@clinic.com"], subject, html, text }
+
+Use EMAIL_API_KEY provider SDK or HTTPS call.
+
+Return delivery result (message id, success boolean).
+
+POST /api/send-sms (optional)
+
+body: { to: ["+1..."], text }
+
+Use Twilio credentials if provided.
+
+Feedback route
+
+POST /api/feedback
+
+body: { event_id, helpful: true|false }
+
+Append counters per event_id in /data/events.json or a supplemental /data/feedback.json keyed by event_id.
+
+No PII; anonymized counts only.
+
+Dashboard
+
+GET /dashboard (EJS or JSON)
+
+Show last 50 events with these columns: date, title, category, confidence, summary (first line), source, reasons.
+
+Filter buttons for category (Urgent/Informational/Digest/All).
+
+Button per row: Helpful / Not helpful → POST /api/feedback.
+
+GET /tools
+
+Simple static page:
+
+CPT volume inputs (localStorage; no server).
+
+Checklist with due dates (localStorage).
+
+Export/import local JSON (so clinics can back up locally).
+
+Scheduling (external)
+
+Use a free external cron/ping (e.g., cron-job.org) to hit these URLs:
+
+Daily 07:00: GET /api/recalls
+
+Daily 07:10: GET /api/cms-pfs
+
+Daily 07:20: GET /api/fedreg
+
+Daily 07:30: POST /api/send-email with digest payload (compiled server-side or triggered by an internal queue route you create).
+
+Note: Replit free instances sleep; pings will wake it up and perform jobs.
+
+Error handling & monitoring
+
+Implement auto-retry (up to 3 attempts) for upstream fetches with exponential backoff (200ms, 800ms, 2,000ms).
+
+Log warnings for schema changes detected during normalization; continue with partial data when possible.
+
+GET /status returns:
+
+last_success: { recalls, cms_pfs, fedreg }
+
+last_error: { recalls, cms_pfs, fedreg }
+
+error_counts_24h
+
+last_digest_sent_at
+
+On repeated failures (>3/day for same robot), send an internal notification email to the admin.
+
+Security and rate limits
+
+Do not expose API keys on client-side; keep keys in server env only.
+
+For public robot endpoints, consider adding a simple shared secret query param if you want to hide them from random callers.
+
+Honor upstream rate limits; if throttled, delay and retry, then abort gracefully.
+
+Acceptance tests (MVP completion checklist)
+
+/ returns “service running” message.
+
+/api/recalls returns normalized events with confidence, reasons, category; Urgent/Informational have summaries; events appended to archive.
+
+/api/cms-pfs detects at least one CPT diff when you modify the “previous snapshot” manually and behaves as above.
+
+/dashboard lists last events, allows filtering, and feedback buttons POST successfully.
+
+/status returns meaningful time stamps and counters.
+
+External cron successfully hits /api/recalls and /api/cms-pfs daily (verify via /status and archive delta).
+
+Email delivery works (send test to yourself).
+
+No PHI stored; /tools uses localStorage only.
+
+Performance and cost guidance
+
+Summarization calls: trigger only for Urgent/Informational (on-demand). For Digest items, batch once daily to reduce cost.
+
+Normalization calls: if AI cost is a concern, implement a fast deterministic normalizer and use the AI normalizer only as a fallback when shape drifts or fields are missing.
+
+Archive cap: store only last 5,000 events; rotate to avoid filesystem bloat.
+
+Roadmap for next iterations
+
+Add MAUDE ingestion as a supporting signal (never auto-alert on MAUDE alone).
+
+Add vendor/manufacturer notice scraping for +20 signals.
+
+Add revenue impact mini-calculator on the dashboard (client-side with clinic’s local volumes; paste CPT deltas to compute impact locally).
+
+Add user accounts later if you move off non-custodial model (not needed for MVP).
+
+Startup script and dependencies (example package.json)
+{
+"name": "radiology-intel-mvp",
+"type": "module",
+"scripts": {
+"start": "node index.js"
+},
+"dependencies": {
+"express": "^4.19.2",
+"ejs": "^3.1.9"
+}
+}
+
+Implementation priorities (do in this order)
+
+P0: /api/recalls → normalize → score → categorize → summarize (Urgent/Info) → archive → /dashboard list.
+
+P1: /api/cms-pfs (stub diff logic is okay initially).
+
+P2: /api/fedreg (basic keyword filter and normalization).
+
+P3: /api/send-email → daily digest.
+
+P4: Feedback POST + display counters on dashboard.
+
+P5: /status + retry/backoff + error email to admin
