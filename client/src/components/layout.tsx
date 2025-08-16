@@ -43,10 +43,15 @@ export default function Layout({ children }: LayoutProps) {
   const handleRefresh = async () => {
     setIsRefreshing(true);
     try {
+      // Fetch both federal and California sources
       await Promise.all([
+        // Federal sources
         api.fetchRecalls(),
         api.fetchCMSPFS(),
         api.fetchFedReg(),
+        api.fetchDrugRecalls(),
+        api.fetchMAUDE(),
+        // California sources
         api.fetchCaliforniaCDPH(),
         api.fetchCaliforniaRHB(),
         api.fetchCaliforniaMBC(),
@@ -60,7 +65,7 @@ export default function Layout({ children }: LayoutProps) {
 
   const navigationItems = [
     { href: "/dashboard", label: "Radiology Dashboard", icon: LayoutDashboard, active: location === "/" || location === "/dashboard" },
-    { href: "/alerts", label: "CA Alerts", icon: Bell, badge: totalAlerts },
+    { href: "/alerts", label: "Alerts", icon: Bell, badge: totalAlerts },
     { href: "/archive", label: "Archive", icon: Archive },
     { href: "/tools", label: "CPT Calculator", icon: Calculator },
     { href: "/status", label: "System Status", icon: Activity },
@@ -100,12 +105,12 @@ export default function Layout({ children }: LayoutProps) {
             </div>
             <div>
               <h1 className="text-lg font-semibold text-gray-900">RadIntel CA</h1>
-              <p className="text-xs text-gray-500">California Radiology Compliance</p>
+              <p className="text-xs text-gray-500">Federal & California Compliance</p>
             </div>
           </div>
           <div className="mt-3 flex items-center text-xs text-gray-500">
             <MapPin className="h-3 w-3 mr-1" />
-            <span>California Radiology Network</span>
+            <span>California + Federal Sources</span>
           </div>
         </div>
         

@@ -58,13 +58,13 @@ export default function MetricsGrid() {
 
   const metrics = [
     {
-      title: "CA Urgent Alerts",
+      title: "Urgent Alerts",
       value: urgentCount.toString(),
       icon: AlertTriangle,
       color: "text-red-600",
       bgColor: "bg-red-100",
       trend: recentUrgent > 0 ? "up" : "none",
-      trendText: recentUrgent > 0 ? `${recentUrgent} new today` : "No change",
+      trendText: recentUrgent > 0 ? `${recentUrgent} new today` : "Federal + CA",
       trendColor: recentUrgent > 0 ? "text-red-500" : "text-gray-400"
     },
     {

@@ -58,12 +58,32 @@ export async function registerRoutes(app: Express): Promise<Server> {
         e.state === 'CA' || e.distribution_pattern?.includes('Nationwide') || e.distribution_pattern?.includes('California')
       );
       
-      const normalized = await normalizeData(californiaEvents, 'openFDA');
+      // Simplified normalization without AI for now
+      const normalized = californiaEvents.map((e: any) => ({
+        id: e.recall_number || Math.random().toString(36),
+        title: e.product_description || 'Unknown Device',
+        device_name: e.product_description || '',
+        date: e.report_date || e.recall_initiation_date || new Date().toISOString(),
+        firm: e.recalling_firm || e.firm_name,
+        manufacturer: e.recalling_firm || e.firm_name,
+        classification: e.classification,
+        reason: e.reason_for_recall,
+        state: e.state,
+        city: e.city,
+        status: e.status,
+        distribution_pattern: e.distribution_pattern
+      }));
       const processedEvents = [];
 
       for (const event of normalized) {
-        // Enhance with pattern detection
-        const patterns = await detectPatterns(event);
+        // Simplified pattern detection without AI
+        const patterns = {
+          flags: {
+            has_classification: !!event.classification,
+            has_manufacturer: !!event.manufacturer
+          },
+          match: 1.0
+        };
         const modalityType = classifyRadiologyModality(event.device_name);
         const californiaRegion = event.state === 'CA' ? getCaliforniaRegion(event.city || '', '') : 'Statewide';
         
@@ -87,17 +107,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const scoring = scoreEvent(enhancedEvent);
         const category = categorizeByScore(scoring.score);
         
-        // Summarize if needed
-        let summary = null;
-        if (shouldSummarize(category)) {
-          summary = await summarizeEvent(enhancedEvent);
-        }
+        // Use simple summary without AI for now
+        let summary = `${event.reason || 'Device recall'} - ${event.manufacturer || 'Unknown manufacturer'}`;
 
         // Create event record
         const eventRecord = {
           source: 'openFDA',
-          sourceId: event.id,
-          title: event.title,
+          sourceId: event.id || Math.random().toString(36),
+          title: event.title || 'Unknown Device Recall',
           summary,
           category,
           score: scoring.score,
@@ -116,7 +133,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           radiologyImpact,
           californiaRegion,
           originalData: event,
-          sourceDate: event.date ? new Date(event.date) : null,
+          sourceDate: event.date ? new Date(event.date) : new Date(),
         };
 
         const savedEvent = await storage.createEvent(eventRecord);
