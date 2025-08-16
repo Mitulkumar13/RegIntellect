@@ -8,7 +8,9 @@ import {
   Activity,
   TrendingUp,
   TrendingDown,
-  Minus
+  Minus,
+  Scan,
+  MapPin
 } from "lucide-react";
 
 export default function MetricsGrid() {
@@ -24,6 +26,14 @@ export default function MetricsGrid() {
 
   const urgentCount = events.filter(e => e.category === 'Urgent').length;
   const infoCount = events.filter(e => e.category === 'Informational').length;
+  
+  // California-specific metrics
+  const californiaAlerts = events.filter(e => 
+    ['CDPH', 'RHB', 'MBC'].includes(e.source) || e.state === 'CA'
+  ).length;
+  
+  // Count by modality type
+  const radiologyDevices = events.filter(e => e.modalityType).length;
   
   // Calculate financial impact from recent CMS events
   const cmsEvents = events.filter(e => e.source === 'CMS' && e.delta);
@@ -48,7 +58,7 @@ export default function MetricsGrid() {
 
   const metrics = [
     {
-      title: "Urgent Alerts",
+      title: "CA Urgent Alerts",
       value: urgentCount.toString(),
       icon: AlertTriangle,
       color: "text-red-600",
@@ -58,17 +68,27 @@ export default function MetricsGrid() {
       trendColor: recentUrgent > 0 ? "text-red-500" : "text-gray-400"
     },
     {
-      title: "Informational", 
-      value: infoCount.toString(),
-      icon: Info,
-      color: "text-amber-600",
-      bgColor: "bg-amber-100",
+      title: "CA Compliance", 
+      value: californiaAlerts.toString(),
+      icon: MapPin,
+      color: "text-blue-600",
+      bgColor: "bg-blue-100",
       trend: "none",
-      trendText: "No change",
-      trendColor: "text-gray-400"
+      trendText: "California-specific",
+      trendColor: "text-blue-500"
     },
     {
-      title: "Financial Impact",
+      title: "Radiology Devices",
+      value: radiologyDevices.toString(),
+      icon: Scan,
+      color: "text-purple-600",
+      bgColor: "bg-purple-100",
+      trend: "none",
+      trendText: "Device alerts",
+      trendColor: "text-purple-500"
+    },
+    {
+      title: "CPT Impact",
       value: estimatedMonthlyImpact >= 0 
         ? `+$${Math.abs(estimatedMonthlyImpact).toFixed(0)}`
         : `-$${Math.abs(estimatedMonthlyImpact).toFixed(0)}`,
@@ -78,16 +98,6 @@ export default function MetricsGrid() {
       trend: estimatedMonthlyImpact >= 0 ? "down" : "up",
       trendText: "Monthly estimate",
       trendColor: estimatedMonthlyImpact >= 0 ? "text-green-500" : "text-red-500"
-    },
-    {
-      title: "System Health",
-      value: `${systemHealth}%`,
-      icon: Activity,
-      color: "text-green-600",
-      bgColor: "bg-green-100",
-      trend: "none",
-      trendText: systemHealth > 95 ? "All systems operational" : "Issues detected",
-      trendColor: systemHealth > 95 ? "text-green-500" : "text-yellow-500"
     }
   ];
 

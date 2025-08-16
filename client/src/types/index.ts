@@ -17,6 +17,9 @@ export interface Event {
   status: string | null;
   cptCodes: string[] | null;
   delta: { old: number; new: number } | null;
+  modalityType?: string | null;
+  radiologyImpact?: string | null;
+  californiaRegion?: string | null;
   originalData: any;
   archivedAt: Date;
   sourceDate: Date | null;
@@ -48,7 +51,7 @@ export interface ImpactCalculation {
 
 export interface FilterState {
   category: 'all' | 'urgent' | 'informational' | 'digest';
-  source: 'all' | 'openFDA' | 'CMS' | 'Federal Register';
+  source: 'all' | 'openFDA' | 'CMS' | 'Federal Register' | 'CDPH' | 'RHB' | 'MBC';
   dateRange: 'today' | 'week' | 'month' | 'all';
 }
 

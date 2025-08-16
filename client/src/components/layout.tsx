@@ -6,14 +6,15 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { 
-  Stethoscope, 
+  Scan, 
   LayoutDashboard, 
   Bell, 
   Archive, 
   Calculator, 
   Activity,
   RefreshCw,
-  BellRing
+  BellRing,
+  MapPin
 } from "lucide-react";
 
 interface LayoutProps {
@@ -46,10 +47,9 @@ export default function Layout({ children }: LayoutProps) {
         api.fetchRecalls(),
         api.fetchCMSPFS(),
         api.fetchFedReg(),
-        api.fetchDrugRecalls(),
-        api.fetchMAUDE(),
-        api.fetchAuditDeadlines(),
-        api.fetchStateDOH(),
+        api.fetchCaliforniaCDPH(),
+        api.fetchCaliforniaRHB(),
+        api.fetchCaliforniaMBC(),
       ]);
     } catch (error) {
       console.error('Refresh failed:', error);
@@ -59,10 +59,10 @@ export default function Layout({ children }: LayoutProps) {
   };
 
   const navigationItems = [
-    { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard, active: location === "/" || location === "/dashboard" },
-    { href: "/alerts", label: "Active Alerts", icon: Bell, badge: totalAlerts },
+    { href: "/dashboard", label: "Radiology Dashboard", icon: LayoutDashboard, active: location === "/" || location === "/dashboard" },
+    { href: "/alerts", label: "CA Alerts", icon: Bell, badge: totalAlerts },
     { href: "/archive", label: "Archive", icon: Archive },
-    { href: "/tools", label: "Impact Tools", icon: Calculator },
+    { href: "/tools", label: "CPT Calculator", icon: Calculator },
     { href: "/status", label: "System Status", icon: Activity },
   ];
 
@@ -95,13 +95,17 @@ export default function Layout({ children }: LayoutProps) {
       <aside className="w-64 bg-white shadow-sm border-r border-gray-200 fixed h-full z-10">
         <div className="p-6 border-b border-gray-200">
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <Stethoscope className="h-4 w-4 text-white" />
+            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+              <Scan className="h-4 w-4 text-white" />
             </div>
             <div>
-              <h1 className="text-lg font-semibold text-gray-900">RadIntel</h1>
-              <p className="text-xs text-gray-500">Regulatory Intelligence</p>
+              <h1 className="text-lg font-semibold text-gray-900">RadIntel CA</h1>
+              <p className="text-xs text-gray-500">California Radiology Compliance</p>
             </div>
+          </div>
+          <div className="mt-3 flex items-center text-xs text-gray-500">
+            <MapPin className="h-3 w-3 mr-1" />
+            <span>California Radiology Network</span>
           </div>
         </div>
         

@@ -7,6 +7,14 @@ import { normalizeData, detectPatterns } from "./lib/ai-gemini";
 import { summarizeEvent } from "./lib/ai-perplexity";
 import { sendAlertEmail } from "./lib/email";
 import { sendUrgentSMS } from "./lib/sms";
+import { 
+  fetchCDPHAlerts, 
+  fetchMBCAlerts, 
+  fetchRHBAlerts, 
+  classifyRadiologyModality,
+  calculateRadiologyImpact,
+  getCaliforniaRegion 
+} from "./lib/california-sources";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   
@@ -29,13 +37,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
     throw lastError!;
   }
 
-  // GET /api/recalls - Fetch FDA device enforcement recalls
+  // GET /api/recalls - Fetch FDA device enforcement recalls (filtered for radiology devices)
   app.get("/api/recalls", async (req, res) => {
     try {
       await storage.updateSystemStatus('recalls', { lastSuccess: null, lastError: null });
       
+      // Search specifically for radiology-related devices
       const response = await withRetry(async () => {
-        const fdaResponse = await fetch('https://api.fda.gov/device/enforcement.json?search=report_date:[2024-01-01+TO+2024-12-31]&sort=report_date:desc&limit=50');
+        const fdaResponse = await fetch('https://api.fda.gov/device/enforcement.json?search=(product_description:"x-ray"+OR+product_description:"CT"+OR+product_description:"MRI"+OR+product_description:"ultrasound"+OR+product_description:"mammograph"+OR+product_description:"radiograph"+OR+product_description:"fluoroscop")&sort=report_date:desc&limit=100');
         if (!fdaResponse.ok) {
           throw new Error(`FDA API error: ${fdaResponse.status}`);
         }
@@ -43,18 +52,36 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
 
       const rawEvents = response.results || [];
-      const normalized = await normalizeData(rawEvents, 'openFDA');
+      
+      // Filter for California or nationwide recalls
+      const californiaEvents = rawEvents.filter((e: any) => 
+        e.state === 'CA' || e.distribution_pattern?.includes('Nationwide') || e.distribution_pattern?.includes('California')
+      );
+      
+      const normalized = await normalizeData(californiaEvents, 'openFDA');
       const processedEvents = [];
 
       for (const event of normalized) {
         // Enhance with pattern detection
         const patterns = await detectPatterns(event);
+        const modalityType = classifyRadiologyModality(event.device_name);
+        const californiaRegion = event.state === 'CA' ? getCaliforniaRegion(event.city || '', '') : 'Statewide';
+        
         const enhancedEvent = {
           ...event,
-          flags: patterns.flags,
+          flags: {
+            ...patterns.flags,
+            radiation_safety: modalityType !== 'Ultrasound' && modalityType !== 'MRI'
+          },
           match: patterns.match,
-          sources: ['openfda:enforcement']
+          sources: ['openfda:enforcement'],
+          modalityType,
+          californiaRegion
         };
+
+        // Calculate radiology impact
+        const radiologyImpact = calculateRadiologyImpact(enhancedEvent);
+        enhancedEvent.radiologyImpact = radiologyImpact;
 
         // Score and categorize
         const scoring = scoreEvent(enhancedEvent);
@@ -81,10 +108,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
           classification: event.classification,
           reason: event.reason,
           firm: event.firm,
-          state: event.state,
+          state: event.state || 'CA',
           status: event.status,
           cptCodes: null,
           delta: null,
+          modalityType,
+          radiologyImpact,
+          californiaRegion,
           originalData: event,
           sourceDate: event.date ? new Date(event.date) : null,
         };
@@ -96,7 +126,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       await storage.updateSystemStatus('recalls', { lastSuccess: new Date() });
 
       const alertResponse: AlertResponse = {
-        source: 'openFDA device enforcement',
+        source: 'FDA Radiology Device Enforcement (California)',
         count: processedEvents.length,
         fetchedAt: new Date().toISOString(),
         events: processedEvents,
@@ -109,7 +139,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         lastError: new Date(),
         errorCount24h: (await storage.getSystemStatus()).find(s => s.source === 'recalls')?.errorCount24h || 0 + 1
       });
-      res.status(500).json({ error: 'Failed to fetch recalls' });
+      res.status(500).json({ error: 'Failed to fetch radiology recalls' });
     }
   });
 
@@ -938,5 +968,197 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
 
   const httpServer = createServer(app);
+  // GET /api/california/cdph - California Department of Public Health radiology alerts
+  app.get("/api/california/cdph", async (req, res) => {
+    try {
+      await storage.updateSystemStatus('cdph', { lastSuccess: null, lastError: null });
+      
+      const alerts = await fetchCDPHAlerts();
+      const processedEvents = [];
+
+      for (const alert of alerts) {
+        const modalityType = classifyRadiologyModality(alert.deviceType || '');
+        const californiaRegion = getCaliforniaRegion('', alert.region || 'Statewide');
+        
+        const enhancedEvent = {
+          sources: ['cdph'],
+          flags: {
+            california_mandate: true,
+            radiation_safety: alert.urgency === 'high'
+          },
+          modalityType,
+          californiaRegion,
+          radiologyImpact: alert.urgency === 'high' ? 'High' : 'Medium'
+        };
+
+        const scoring = scoreEvent(enhancedEvent);
+        const category = categorizeByScore(scoring.score);
+        
+        let summary = null;
+        if (shouldSummarize(category)) {
+          summary = alert.description;
+        }
+
+        const eventRecord = {
+          source: 'CDPH',
+          sourceId: alert.id,
+          title: alert.title,
+          summary,
+          category,
+          score: scoring.score,
+          reasons: scoring.reasons,
+          deviceName: alert.deviceType,
+          state: 'CA',
+          modalityType,
+          radiologyImpact: enhancedEvent.radiologyImpact,
+          californiaRegion,
+          originalData: alert,
+          sourceDate: new Date(alert.date),
+        };
+
+        const savedEvent = await storage.createEvent(eventRecord);
+        processedEvents.push(savedEvent);
+      }
+
+      await storage.updateSystemStatus('cdph', { lastSuccess: new Date() });
+
+      res.json({
+        source: 'California Department of Public Health',
+        count: processedEvents.length,
+        fetchedAt: new Date().toISOString(),
+        events: processedEvents,
+      });
+    } catch (error) {
+      console.error('CDPH endpoint error:', error);
+      await storage.updateSystemStatus('cdph', { 
+        lastError: new Date(),
+        errorCount24h: ((await storage.getSystemStatus()).find(s => s.source === 'cdph')?.errorCount24h || 0) + 1
+      });
+      res.status(500).json({ error: 'Failed to fetch CDPH alerts' });
+    }
+  });
+
+  // GET /api/california/rhb - California Radiologic Health Branch alerts
+  app.get("/api/california/rhb", async (req, res) => {
+    try {
+      await storage.updateSystemStatus('rhb', { lastSuccess: null, lastError: null });
+      
+      const alerts = await fetchRHBAlerts();
+      const processedEvents = [];
+
+      for (const alert of alerts) {
+        const modalityType = classifyRadiologyModality(alert.deviceType || '');
+        
+        const enhancedEvent = {
+          sources: ['rhb'],
+          flags: {
+            california_mandate: true,
+            radiation_safety: true
+          },
+          modalityType,
+          californiaRegion: 'Statewide',
+          radiologyImpact: 'High'
+        };
+
+        const scoring = scoreEvent(enhancedEvent);
+        const category = categorizeByScore(scoring.score);
+
+        const eventRecord = {
+          source: 'RHB',
+          sourceId: alert.id,
+          title: alert.title,
+          summary: alert.description,
+          category,
+          score: scoring.score,
+          reasons: scoring.reasons,
+          deviceName: alert.deviceType,
+          state: 'CA',
+          modalityType,
+          radiologyImpact: 'High',
+          californiaRegion: 'Statewide',
+          originalData: alert,
+          sourceDate: new Date(alert.date),
+        };
+
+        const savedEvent = await storage.createEvent(eventRecord);
+        processedEvents.push(savedEvent);
+      }
+
+      await storage.updateSystemStatus('rhb', { lastSuccess: new Date() });
+
+      res.json({
+        source: 'California Radiologic Health Branch',
+        count: processedEvents.length,
+        fetchedAt: new Date().toISOString(),
+        events: processedEvents,
+      });
+    } catch (error) {
+      console.error('RHB endpoint error:', error);
+      await storage.updateSystemStatus('rhb', { 
+        lastError: new Date(),
+        errorCount24h: ((await storage.getSystemStatus()).find(s => s.source === 'rhb')?.errorCount24h || 0) + 1
+      });
+      res.status(500).json({ error: 'Failed to fetch RHB alerts' });
+    }
+  });
+
+  // GET /api/california/mbc - Medical Board of California alerts
+  app.get("/api/california/mbc", async (req, res) => {
+    try {
+      await storage.updateSystemStatus('mbc', { lastSuccess: null, lastError: null });
+      
+      const alerts = await fetchMBCAlerts();
+      const processedEvents = [];
+
+      for (const alert of alerts) {
+        const enhancedEvent = {
+          sources: ['mbc'],
+          flags: {
+            california_mandate: true
+          },
+          californiaRegion: 'Statewide',
+          radiologyImpact: 'Medium'
+        };
+
+        const scoring = scoreEvent(enhancedEvent);
+        const category = categorizeByScore(scoring.score);
+
+        const eventRecord = {
+          source: 'MBC',
+          sourceId: alert.id,
+          title: alert.title,
+          summary: alert.description,
+          category,
+          score: scoring.score,
+          reasons: scoring.reasons,
+          state: 'CA',
+          radiologyImpact: 'Medium',
+          californiaRegion: 'Statewide',
+          originalData: alert,
+          sourceDate: new Date(alert.date),
+        };
+
+        const savedEvent = await storage.createEvent(eventRecord);
+        processedEvents.push(savedEvent);
+      }
+
+      await storage.updateSystemStatus('mbc', { lastSuccess: new Date() });
+
+      res.json({
+        source: 'Medical Board of California',
+        count: processedEvents.length,
+        fetchedAt: new Date().toISOString(),
+        events: processedEvents,
+      });
+    } catch (error) {
+      console.error('MBC endpoint error:', error);
+      await storage.updateSystemStatus('mbc', { 
+        lastError: new Date(),
+        errorCount24h: ((await storage.getSystemStatus()).find(s => s.source === 'mbc')?.errorCount24h || 0) + 1
+      });
+      res.status(500).json({ error: 'Failed to fetch MBC alerts' });
+    }
+  });
+
   return httpServer;
 }

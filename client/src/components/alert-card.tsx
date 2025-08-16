@@ -12,7 +12,10 @@ import {
   DollarSign, 
   ChevronRight, 
   ThumbsUp, 
-  ThumbsDown 
+  ThumbsDown,
+  Scan,
+  MapPin,
+  AlertTriangle
 } from "lucide-react";
 import type { Event } from "@/types";
 
@@ -65,6 +68,12 @@ export default function AlertCard({ event }: AlertCardProps) {
         return 'bg-green-100 text-green-800';
       case 'Federal Register':
         return 'bg-purple-100 text-purple-800';
+      case 'CDPH':
+        return 'bg-orange-100 text-orange-800';
+      case 'RHB':
+        return 'bg-red-100 text-red-800';
+      case 'MBC':
+        return 'bg-indigo-100 text-indigo-800';
       default:
         return 'bg-gray-100 text-gray-800';
     }
@@ -131,8 +140,19 @@ export default function AlertCard({ event }: AlertCardProps) {
                 {event.category.toUpperCase()}
               </Badge>
               <Badge className={getSourceColor(event.source)}>
-                {event.source === 'openFDA' ? 'FDA RECALL' : event.source === 'CMS' ? 'CMS PFS' : 'FEDERAL REGISTER'}
+                {event.source === 'openFDA' ? 'FDA RECALL' : 
+                 event.source === 'CMS' ? 'CMS PFS' : 
+                 event.source === 'CDPH' ? 'CA HEALTH' :
+                 event.source === 'RHB' ? 'CA RADIOLOGY' :
+                 event.source === 'MBC' ? 'CA MEDICAL BOARD' :
+                 'FEDERAL'}
               </Badge>
+              {event.modalityType && (
+                <Badge variant="outline" className="flex items-center gap-1">
+                  <Scan className="h-3 w-3" />
+                  {event.modalityType}
+                </Badge>
+              )}
               <span className="text-sm text-gray-500">{formatTimeAgo(event.archivedAt)}</span>
               <div className="flex items-center space-x-1">
                 <div className={`w-2 h-2 rounded-full ${
@@ -158,6 +178,28 @@ export default function AlertCard({ event }: AlertCardProps) {
                 <div className="flex items-center space-x-1">
                   <Building className="h-4 w-4" />
                   <span>{event.manufacturer}</span>
+                </div>
+              )}
+              {event.californiaRegion && (
+                <div className="flex items-center space-x-1">
+                  <MapPin className="h-4 w-4" />
+                  <span>{event.californiaRegion}</span>
+                </div>
+              )}
+              {event.radiologyImpact && (
+                <div className="flex items-center space-x-1">
+                  <AlertTriangle className={`h-4 w-4 ${
+                    event.radiologyImpact === 'High' ? 'text-red-600' :
+                    event.radiologyImpact === 'Medium' ? 'text-amber-600' :
+                    'text-green-600'
+                  }`} />
+                  <span className={
+                    event.radiologyImpact === 'High' ? 'text-red-600 font-medium' :
+                    event.radiologyImpact === 'Medium' ? 'text-amber-600' :
+                    ''
+                  }>
+                    {event.radiologyImpact} Impact
+                  </span>
                 </div>
               )}
               {event.sourceDate && (

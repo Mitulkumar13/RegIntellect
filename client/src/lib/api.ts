@@ -49,6 +49,22 @@ export const api = {
     return response.json();
   },
 
+  // California-specific endpoints
+  fetchCaliforniaCDPH: async () => {
+    const response = await apiRequest('GET', '/api/california/cdph');
+    return response.json();
+  },
+
+  fetchCaliforniaRHB: async () => {
+    const response = await apiRequest('GET', '/api/california/rhb');
+    return response.json();
+  },
+
+  fetchCaliforniaMBC: async () => {
+    const response = await apiRequest('GET', '/api/california/mbc');
+    return response.json();
+  },
+
   // Feedback
   submitFeedback: async (eventId: string, helpful: boolean) => {
     const response = await apiRequest('POST', '/api/feedback', { eventId, helpful });

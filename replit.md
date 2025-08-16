@@ -1,10 +1,13 @@
 # Overview
 
-Radiology Intelligence MVP is a privacy-first web service for radiology clinics that automatically collects and processes regulatory data from FDA, CMS, and Federal Register sources. The application normalizes regulatory events, applies deterministic confidence scoring, categorizes alerts by urgency, and delivers AI-summarized notifications via email and SMS. It features a dashboard for monitoring alerts, calculating financial impact, and providing feedback to improve the system over time. All clinic-specific data remains client-side in localStorage to ensure zero PHI exposure.
+RadIntel CA is a specialized compliance and regulatory intelligence platform designed exclusively for radiology clinics in California. The system monitors federal (FDA, CMS) and California state sources (CDPH, RHB, MBC) for radiology-specific regulatory updates, device recalls, and compliance requirements. It features advanced modality-specific tracking (CT, MRI, X-Ray, Ultrasound, etc.), California regional segmentation, and radiation safety compliance scoring. The platform provides real-time alerts, financial impact analysis for radiology CPT codes, and maintains zero PHI exposure through client-side data storage.
 
 # User Preferences
 
-Preferred communication style: Simple, everyday language.
+- Preferred communication style: Simple, everyday language
+- Target Market: Radiology clinics in California (initial focus)
+- Service Expansion: May expand beyond California in the future
+- Specialization: All features should be radiology-specific for now
 
 # System Architecture
 
