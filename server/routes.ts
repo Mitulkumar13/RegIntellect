@@ -454,29 +454,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     });
   });
 
-  // Debug endpoint to test HTML serving
-  app.get("/debug", (req, res) => {
-    res.set('Content-Type', 'text/html');
-    res.send(`
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <title>Debug Test</title>
-      </head>
-      <body style="font-family: Arial; padding: 20px;">
-        <h1>Debug Test Page</h1>
-        <p>This is a direct HTML response from the Express server.</p>
-        <p>If you can see this, the server is working correctly.</p>
-        <p>Time: ${new Date().toISOString()}</p>
-        <p>Port: ${process.env.PORT || 5000}</p>
-        <script>
-          console.log('Debug page JavaScript working');
-          document.body.style.backgroundColor = '#e8f5e8';
-        </script>
-      </body>
-      </html>
-    `);
-  });
+
 
   const httpServer = createServer(app);
   return httpServer;

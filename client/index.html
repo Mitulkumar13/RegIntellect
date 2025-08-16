@@ -3,32 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>RadIntel - Debug Mode</title>
+    <title>RadIntel - Regulatory Intelligence Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div id="root">
-      <div style="padding: 20px; font-family: Arial, sans-serif; background: #f0f0f0; margin: 20px;">
-        <h2>Loading RadIntel...</h2>
-        <p>If this message persists, there may be a JavaScript loading issue.</p>
-        <div id="debug-info" style="background: white; padding: 10px; margin-top: 10px; border: 1px solid #ccc;">
-          <strong>Debug Steps:</strong>
-          <div id="step1">1. HTML loaded ✓</div>
-          <div id="step2">2. Checking JavaScript...</div>
-        </div>
-      </div>
-    </div>
-    
-    <script>
-      // Basic debug script to test if JavaScript is working
-      document.getElementById('step2').innerHTML = '2. JavaScript enabled ✓';
-      const step3 = document.createElement('div');
-      step3.id = 'step3';
-      step3.innerHTML = '3. Loading React module...';
-      document.getElementById('debug-info').appendChild(step3);
-      
-      console.log('Basic JavaScript working');
-    </script>
-    
+    <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
