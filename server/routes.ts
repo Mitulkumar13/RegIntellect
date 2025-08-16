@@ -459,9 +459,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return fdaResponse.json();
       });
 
-      // Fetch drug shortage data
+      // Fetch drug shortage data - using enforcement API with shortage-related terms
       const shortageResponse = await withRetry(async () => {
-        const fdaShortageResponse = await fetch('https://api.fda.gov/drug/drugsfda.json?search=products.active_ingredients:contrast+OR+products.active_ingredients:gadolinium+OR+products.active_ingredients:iodine&limit=20');
+        const fdaShortageResponse = await fetch('https://api.fda.gov/drug/enforcement.json?search=report_date:[2024-01-01+TO+2024-12-31]+AND+reason_for_recall:shortage&limit=20');
         if (!fdaShortageResponse.ok) {
           throw new Error(`FDA Shortage API error: ${fdaShortageResponse.status}`);
         }

@@ -1,1 +1,3162 @@
-[]
+[
+  {
+    "source": "Federal Register",
+    "sourceId": "2022-13954",
+    "title": "General and Plastic Surgery Devices; Reclassification of Optical Diagnostic Devices for Melanoma Detection and Electrical Impedance Spectrometers, To Be Renamed Computer-Aided Devices Which Provide Adjunctive Diagnostic Information About Lesions Suspicious for Melanoma",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Proposed reclassification of optical diagnostic devices for melanoma detection and electrical impedance spectrometers from class III to class II (special controls) to reduce regulatory burden.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2022-13954",
+      "source": "Federal Register",
+      "date": "2022-06-30",
+      "title": "General and Plastic Surgery Devices; Reclassification of Optical Diagnostic Devices for Melanoma Detection and Electrical Impedance Spectrometers, To Be Renamed Computer-Aided Devices Which Provide Adjunctive Diagnostic Information About Lesions Suspicious for Melanoma",
+      "device_name": "Computer-Aided Devices Which Provide Adjunctive Diagnostic Information About Lesions Suspicious for Melanoma",
+      "model": null,
+      "classification": "Class II",
+      "reason": "Proposed reclassification of optical diagnostic devices for melanoma detection and electrical impedance spectrometers from class III to class II (special controls) to reduce regulatory burden.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fda:reclassification"
+      ]
+    },
+    "sourceDate": "2022-06-30T00:00:00.000Z",
+    "id": "5a16bf16-3c05-4b3e-abe3-c7f385dc385c",
+    "archivedAt": "2025-08-16T18:37:10.986Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2023-02141",
+    "title": "Medical Devices; Hematology and Pathology Devices; Classification of the Software Algorithm Device To Assist Users in Digital Pathology",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Classification of the device into class II (special controls) to provide a reasonable assurance of safety and effectiveness and enhance patient access.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2023-02141",
+      "source": "Federal Register",
+      "date": "2023-02-02",
+      "title": "Medical Devices; Hematology and Pathology Devices; Classification of the Software Algorithm Device To Assist Users in Digital Pathology",
+      "device_name": "Software Algorithm Device To Assist Users in Digital Pathology",
+      "model": null,
+      "classification": "Class II",
+      "reason": "Classification of the device into class II (special controls) to provide a reasonable assurance of safety and effectiveness and enhance patient access.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fda:classification"
+      ]
+    },
+    "sourceDate": "2023-02-02T00:00:00.000Z",
+    "id": "c291d5b3-b1f1-4af4-ab56-23457687cb4e",
+    "archivedAt": "2025-08-16T18:37:10.911Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2023-04550",
+    "title": "Mammography Quality Standards Act",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Final rule to update regulations under the Mammography Quality Standards Act (MQSA) to incorporate current science and mammography best practices, improving communication and modernizing standards.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2023-04550",
+      "source": "Federal Register",
+      "date": "2023-03-10",
+      "title": "Mammography Quality Standards Act",
+      "device_name": "Mammography Equipment",
+      "model": null,
+      "classification": null,
+      "reason": "Final rule to update regulations under the Mammography Quality Standards Act (MQSA) to incorporate current science and mammography best practices, improving communication and modernizing standards.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fda:rule"
+      ]
+    },
+    "sourceDate": "2023-03-10T00:00:00.000Z",
+    "id": "5f740bad-bcca-427b-92e0-6af5ed2d8dde",
+    "archivedAt": "2025-08-16T18:37:10.730Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2024-15087",
+    "title": "Medicare and Medicaid Programs: Hospital Outpatient Prospective Payment and Ambulatory Surgical Center Payment Systems; Quality Reporting Programs, Including the Hospital Inpatient Quality Reporting Program; Health and Safety Standards for Obstetrical Services in Hospitals and Critical Access Hospitals; Prior Authorization; Requests for Information; Medicaid and CHIP Continuous Eligibility; Medicaid Clinic Services Four Walls Exceptions; Individuals Currently or Formerly in Custody of Penal Authorities; Revision to Medicare Special Enrollment Period for Formerly Incarcerated Individuals; and All-Inclusive Rate Add-On Payment for High-Cost Drugs Provided by Indian Health Service and Tribal Facilities",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Proposed rule to revise the Medicare hospital Outpatient Prospective Payment System (OPPS) and Ambulatory Surgical Center (ASC) payment system for calendar year 2025.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2024-15087",
+      "source": "Federal Register",
+      "date": "2024-07-22",
+      "title": "Medicare and Medicaid Programs: Hospital Outpatient Prospective Payment and Ambulatory Surgical Center Payment Systems; Quality Reporting Programs, Including the Hospital Inpatient Quality Reporting Program; Health and Safety Standards for Obstetrical Services in Hospitals and Critical Access Hospitals; Prior Authorization; Requests for Information; Medicaid and CHIP Continuous Eligibility; Medicaid Clinic Services Four Walls Exceptions; Individuals Currently or Formerly in Custody of Penal Authorities; Revision to Medicare Special Enrollment Period for Formerly Incarcerated Individuals; and All-Inclusive Rate Add-On Payment for High-Cost Drugs Provided by Indian Health Service and Tribal Facilities",
+      "device_name": null,
+      "model": null,
+      "classification": null,
+      "reason": "Proposed rule to revise the Medicare hospital Outpatient Prospective Payment System (OPPS) and Ambulatory Surgical Center (ASC) payment system for calendar year 2025.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "cms:opps_proposed_rule"
+      ]
+    },
+    "sourceDate": "2024-07-22T00:00:00.000Z",
+    "id": "3d6d1893-7e1c-433d-b748-4d82d248c9bf",
+    "archivedAt": "2025-08-16T18:37:10.647Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2025-13360",
+    "title": "Medicare and Medicaid Programs: Hospital Outpatient Prospective Payment and Ambulatory Surgical Center Payment Systems; Quality Reporting Programs; Overall Hospital Quality Star Ratings; and Hospital Price Transparency",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Proposed rule to revise the Medicare Hospital Outpatient Prospective Payment System (OPPS) and Ambulatory Surgical Center (ASC) payment system for calendar year 2026.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2025-13360",
+      "source": "Federal Register",
+      "date": "2025-07-17",
+      "title": "Medicare and Medicaid Programs: Hospital Outpatient Prospective Payment and Ambulatory Surgical Center Payment Systems; Quality Reporting Programs; Overall Hospital Quality Star Ratings; and Hospital Price Transparency",
+      "device_name": null,
+      "model": null,
+      "classification": null,
+      "reason": "Proposed rule to revise the Medicare Hospital Outpatient Prospective Payment System (OPPS) and Ambulatory Surgical Center (ASC) payment system for calendar year 2026.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "cms:opps_proposed_rule"
+      ]
+    },
+    "sourceDate": "2025-07-17T00:00:00.000Z",
+    "id": "62478730-3eea-4009-a02f-659baee5b68c",
+    "archivedAt": "2025-08-16T18:37:10.465Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2025-13271",
+    "title": "Medicare and Medicaid Programs; CY 2026 Payment Policies Under the Physician Fee Schedule and Other Changes to Part B Payment and Coverage Policies; Medicare Shared Savings Program Requirements; and Medicare Prescription Drug Inflation Rebate Program",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Proposed rule addressing changes to the physician fee schedule (PFS) and other Medicare Part B payment policies for Calendar Year 2026.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2025-13271",
+      "source": "Federal Register",
+      "date": "2025-07-16",
+      "title": "Medicare and Medicaid Programs; CY 2026 Payment Policies Under the Physician Fee Schedule and Other Changes to Part B Payment and Coverage Policies; Medicare Shared Savings Program Requirements; and Medicare Prescription Drug Inflation Rebate Program",
+      "device_name": null,
+      "model": null,
+      "classification": null,
+      "reason": "Proposed rule addressing changes to the physician fee schedule (PFS) and other Medicare Part B payment policies for Calendar Year 2026.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": [
+        "0986T",
+        "0987T"
+      ],
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "cms:pfs_proposed_rule"
+      ]
+    },
+    "sourceDate": "2025-07-16T00:00:00.000Z",
+    "id": "7b38f331-8f81-4129-919d-845946e85303",
+    "archivedAt": "2025-08-16T18:37:10.376Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2022-28356",
+    "title": "Reporting Nuclear Medicine Injection Extravasations as Medical Events",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Consideration of a petition for rulemaking to amend regulations to require reporting of certain nuclear medicine injection extravasations as medical events.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2022-28356",
+      "source": "Federal Register",
+      "date": "2022-12-30",
+      "title": "Reporting Nuclear Medicine Injection Extravasations as Medical Events",
+      "device_name": "Nuclear Medicine Radiopharmaceuticals",
+      "model": null,
+      "classification": null,
+      "reason": "Consideration of a petition for rulemaking to amend regulations to require reporting of certain nuclear medicine injection extravasations as medical events.",
+      "firm": null,
+      "manufacturer": "Lucerno Dynamics, LLC",
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "nrc:proposed_rule"
+      ]
+    },
+    "sourceDate": "2022-12-30T00:00:00.000Z",
+    "id": "524714dd-0c75-4769-856e-0beb63714eaf",
+    "archivedAt": "2025-08-16T18:37:10.205Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2024-25521",
+    "title": "Medicare and Medicaid Programs: Hospital Outpatient Prospective Payment and Ambulatory Surgical Center Payment Systems; Quality Reporting Programs, Including the Hospital Inpatient Quality Reporting Program; Health and Safety Standards for Obstetrical Services in Hospitals and Critical Access Hospitals; Prior Authorization; Requests for Information; Medicaid and CHIP Continuous Eligibility; Medicaid Clinic Services Four Walls Exceptions; Individuals Currently or Formerly in Custody of Penal Authorities; Revision to Medicare Special Enrollment Period for Formerly Incarcerated Individuals; and All-Inclusive Rate Add-On Payment for High-Cost Drugs Provided by Indian Health Service and Tribal Facilities",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Final rule revising the Medicare Hospital Outpatient Prospective Payment System (OPPS) and Ambulatory Surgical Center (ASC) payment systems for calendar year 2025.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2024-25521",
+      "source": "Federal Register",
+      "date": "2024-11-27",
+      "title": "Medicare and Medicaid Programs: Hospital Outpatient Prospective Payment and Ambulatory Surgical Center Payment Systems; Quality Reporting Programs, Including the Hospital Inpatient Quality Reporting Program; Health and Safety Standards for Obstetrical Services in Hospitals and Critical Access Hospitals; Prior Authorization; Requests for Information; Medicaid and CHIP Continuous Eligibility; Medicaid Clinic Services Four Walls Exceptions; Individuals Currently or Formerly in Custody of Penal Authorities; Revision to Medicare Special Enrollment Period for Formerly Incarcerated Individuals; and All-Inclusive Rate Add-On Payment for High-Cost Drugs Provided by Indian Health Service and Tribal Facilities",
+      "device_name": null,
+      "model": null,
+      "classification": null,
+      "reason": "Final rule revising the Medicare Hospital Outpatient Prospective Payment System (OPPS) and Ambulatory Surgical Center (ASC) payment systems for calendar year 2025.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "cms:opps_rule"
+      ]
+    },
+    "sourceDate": "2024-11-27T00:00:00.000Z",
+    "id": "9180e65e-582c-4876-877f-15faec5f55d1",
+    "archivedAt": "2025-08-16T18:37:10.107Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2023-21662",
+    "title": "Medical Devices; Laboratory Developed Tests",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Proposed rule to make explicit that in vitro diagnostic products (IVDs), including LDTs, are devices under the FD&C Act and to phase out general enforcement discretion for LDTs.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2023-21662",
+      "source": "Federal Register",
+      "date": "2023-10-03",
+      "title": "Medical Devices; Laboratory Developed Tests",
+      "device_name": "In Vitro Diagnostic Products (IVDs) / Laboratory Developed Tests (LDTs)",
+      "model": null,
+      "classification": null,
+      "reason": "Proposed rule to make explicit that in vitro diagnostic products (IVDs), including LDTs, are devices under the FD&C Act and to phase out general enforcement discretion for LDTs.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fda:proposed_rule"
+      ]
+    },
+    "sourceDate": "2023-10-03T00:00:00.000Z",
+    "id": "286540d6-35e0-48fa-a0fa-d842e7dbd207",
+    "archivedAt": "2025-08-16T18:37:09.953Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2024-05138",
+    "title": "Schedule for Rating Disabilities: The Digestive System",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Amends the Department of Veterans Affairs (VA) Schedule for Rating Disabilities (VASRD) for the Digestive System to update medical terminology and evaluation criteria.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2024-05138",
+      "source": "Federal Register",
+      "date": "2024-03-20",
+      "title": "Schedule for Rating Disabilities: The Digestive System",
+      "device_name": null,
+      "model": null,
+      "classification": null,
+      "reason": "Amends the Department of Veterans Affairs (VA) Schedule for Rating Disabilities (VASRD) for the Digestive System to update medical terminology and evaluation criteria.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "va:rule"
+      ]
+    },
+    "sourceDate": "2024-03-20T00:00:00.000Z",
+    "id": "b18bfec1-a188-4116-8f21-08024a95fdcd",
+    "archivedAt": "2025-08-16T18:37:09.856Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2023-14018",
+    "title": "Rubidium-82 Generators, Emerging Technologies, and Other Medical Use of Byproduct Material",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Proposed rule to add requirements for calibration and dosage measurement for certain generator systems and establish performance-based requirements for emerging medical technologies.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2023-14018",
+      "source": "Federal Register",
+      "date": "2023-07-03",
+      "title": "Rubidium-82 Generators, Emerging Technologies, and Other Medical Use of Byproduct Material",
+      "device_name": "Rubidium-82 Generators",
+      "model": null,
+      "classification": null,
+      "reason": "Proposed rule to add requirements for calibration and dosage measurement for certain generator systems and establish performance-based requirements for emerging medical technologies.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "nrc:proposed_rule"
+      ]
+    },
+    "sourceDate": "2023-07-03T00:00:00.000Z",
+    "id": "11cf4958-4858-449f-b148-2abe42134da9",
+    "archivedAt": "2025-08-16T18:37:09.681Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2024-30824",
+    "title": "Prohibition on Creditors and Consumer Reporting Agencies Concerning Medical Information (Regulation V)",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Final rule amending Regulation V to prohibit creditors from using medical information in credit eligibility determinations and to limit consumer reporting agencies from furnishing reports containing medical debt information.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2024-30824",
+      "source": "Federal Register",
+      "date": "2025-01-14",
+      "title": "Prohibition on Creditors and Consumer Reporting Agencies Concerning Medical Information (Regulation V)",
+      "device_name": null,
+      "model": null,
+      "classification": null,
+      "reason": "Final rule amending Regulation V to prohibit creditors from using medical information in credit eligibility determinations and to limit consumer reporting agencies from furnishing reports containing medical debt information.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "cfpb:rule"
+      ]
+    },
+    "sourceDate": "2025-01-14T00:00:00.000Z",
+    "id": "c2bbf488-158a-42ad-a361-38fce50d0560",
+    "archivedAt": "2025-08-16T18:37:09.598Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2022-13954",
+    "title": "General and Plastic Surgery Devices; Reclassification of Optical Diagnostic Devices for Melanoma Detection and Electrical Impedance Spectrometers, To Be Renamed Computer-Aided Devices Which Provide Adjunctive Diagnostic Information About Lesions Suspicious for Melanoma",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To reclassify optical diagnostic devices for melanoma detection and electrical impedance spectrometers from class III to class II (special controls) to provide a reasonable assurance of safety and effectiveness.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2022-13954",
+      "source": "Federal Register",
+      "date": "2022-06-30",
+      "title": "General and Plastic Surgery Devices; Reclassification of Optical Diagnostic Devices for Melanoma Detection and Electrical Impedance Spectrometers, To Be Renamed Computer-Aided Devices Which Provide Adjunctive Diagnostic Information About Lesions Suspicious for Melanoma",
+      "device_name": "Computer-Aided Devices Which Provide Adjunctive Diagnostic Information About Lesions Suspicious for Melanoma",
+      "model": null,
+      "classification": "Class II",
+      "reason": "To reclassify optical diagnostic devices for melanoma detection and electrical impedance spectrometers from class III to class II (special controls) to provide a reasonable assurance of safety and effectiveness.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:fda_reclassification"
+      ]
+    },
+    "sourceDate": "2022-06-30T00:00:00.000Z",
+    "id": "2fb2f195-fc1d-409e-bd39-fc67bf82c387",
+    "archivedAt": "2025-08-16T18:37:09.545Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2023-02141",
+    "title": "Medical Devices; Hematology and Pathology Devices; Classification of the Software Algorithm Device To Assist Users in Digital Pathology",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To classify the device into class II (special controls) to provide a reasonable assurance of safety and effectiveness and enhance patient access to innovative devices.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2023-02141",
+      "source": "Federal Register",
+      "date": "2023-02-02",
+      "title": "Medical Devices; Hematology and Pathology Devices; Classification of the Software Algorithm Device To Assist Users in Digital Pathology",
+      "device_name": "Software Algorithm Device To Assist Users in Digital Pathology",
+      "model": null,
+      "classification": "Class II",
+      "reason": "To classify the device into class II (special controls) to provide a reasonable assurance of safety and effectiveness and enhance patient access to innovative devices.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:fda_classification"
+      ]
+    },
+    "sourceDate": "2023-02-02T00:00:00.000Z",
+    "id": "84c77a0c-d5f1-491a-989e-6f25520786dc",
+    "archivedAt": "2025-08-16T18:37:09.405Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2023-04550",
+    "title": "Mammography Quality Standards Act",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To update regulations under the Mammography Quality Standards Act (MQSA) to incorporate current science and mammography best practices, thereby improving the delivery of mammography services.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2023-04550",
+      "source": "Federal Register",
+      "date": "2023-03-10",
+      "title": "Mammography Quality Standards Act",
+      "device_name": "Mammography equipment",
+      "model": null,
+      "classification": null,
+      "reason": "To update regulations under the Mammography Quality Standards Act (MQSA) to incorporate current science and mammography best practices, thereby improving the delivery of mammography services.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:fda_rule"
+      ]
+    },
+    "sourceDate": "2023-03-10T00:00:00.000Z",
+    "id": "a8a4650d-02b8-4055-99e1-30aec84bf0e8",
+    "archivedAt": "2025-08-16T18:37:09.269Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2024-15087",
+    "title": "Medicare and Medicaid Programs: Hospital Outpatient Prospective Payment and Ambulatory Surgical Center Payment Systems; Quality Reporting Programs, Including the Hospital Inpatient Quality Reporting Program; Health and Safety Standards for Obstetrical Services in Hospitals and Critical Access Hospitals; Prior Authorization; Requests for Information; Medicaid and CHIP Continuous Eligibility; Medicaid Clinic Services Four Walls Exceptions; Individuals Currently or Formerly in Custody of Penal Authorities; Revision to Medicare Special Enrollment Period for Formerly Incarcerated Individuals; and All-Inclusive Rate Add-On Payment for High-Cost Drugs Provided by Indian Health Service and Tribal Facilities",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To propose revisions to the Medicare Hospital Outpatient Prospective Payment System (OPPS) and Ambulatory Surgical Center (ASC) payment system for calendar year 2025.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2024-15087",
+      "source": "Federal Register",
+      "date": "2024-07-22",
+      "title": "Medicare and Medicaid Programs: Hospital Outpatient Prospective Payment and Ambulatory Surgical Center Payment Systems; Quality Reporting Programs, Including the Hospital Inpatient Quality Reporting Program; Health and Safety Standards for Obstetrical Services in Hospitals and Critical Access Hospitals; Prior Authorization; Requests for Information; Medicaid and CHIP Continuous Eligibility; Medicaid Clinic Services Four Walls Exceptions; Individuals Currently or Formerly in Custody of Penal Authorities; Revision to Medicare Special Enrollment Period for Formerly Incarcerated Individuals; and All-Inclusive Rate Add-On Payment for High-Cost Drugs Provided by Indian Health Service and Tribal Facilities",
+      "device_name": null,
+      "model": null,
+      "classification": null,
+      "reason": "To propose revisions to the Medicare Hospital Outpatient Prospective Payment System (OPPS) and Ambulatory Surgical Center (ASC) payment system for calendar year 2025.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:cms_opps"
+      ]
+    },
+    "sourceDate": "2024-07-22T00:00:00.000Z",
+    "id": "597818f8-0e48-44b3-98ff-11f9b0af93d4",
+    "archivedAt": "2025-08-16T18:37:09.137Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2025-13360",
+    "title": "Medicare and Medicaid Programs: Hospital Outpatient Prospective Payment and Ambulatory Surgical Center Payment Systems; Quality Reporting Programs; Overall Hospital Quality Star Ratings; and Hospital Price Transparency",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To propose revisions to the Medicare Hospital Outpatient Prospective Payment System (OPPS) and Ambulatory Surgical Center (ASC) payment system for calendar year 2026.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2025-13360",
+      "source": "Federal Register",
+      "date": "2025-07-17",
+      "title": "Medicare and Medicaid Programs: Hospital Outpatient Prospective Payment and Ambulatory Surgical Center Payment Systems; Quality Reporting Programs; Overall Hospital Quality Star Ratings; and Hospital Price Transparency",
+      "device_name": null,
+      "model": null,
+      "classification": null,
+      "reason": "To propose revisions to the Medicare Hospital Outpatient Prospective Payment System (OPPS) and Ambulatory Surgical Center (ASC) payment system for calendar year 2026.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:cms_opps"
+      ]
+    },
+    "sourceDate": "2025-07-17T00:00:00.000Z",
+    "id": "e9f2f53a-e019-4112-9dcd-814e0427a8b5",
+    "archivedAt": "2025-08-16T18:37:09.007Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2025-13271",
+    "title": "Medicare and Medicaid Programs; CY 2026 Payment Policies Under the Physician Fee Schedule and Other Changes to Part B Payment and Coverage Policies; Medicare Shared Savings Program Requirements; and Medicare Prescription Drug Inflation Rebate Program",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To propose changes to the physician fee schedule (PFS) and other Medicare Part B payment policies for CY 2026.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2025-13271",
+      "source": "Federal Register",
+      "date": "2025-07-16",
+      "title": "Medicare and Medicaid Programs; CY 2026 Payment Policies Under the Physician Fee Schedule and Other Changes to Part B Payment and Coverage Policies; Medicare Shared Savings Program Requirements; and Medicare Prescription Drug Inflation Rebate Program",
+      "device_name": "Intravascular imaging of intracranial cerebral vessels using optical coherence tomography (OCT)",
+      "model": null,
+      "classification": null,
+      "reason": "To propose changes to the physician fee schedule (PFS) and other Medicare Part B payment policies for CY 2026.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": [
+        "0986T",
+        "0987T"
+      ],
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:cms_pfs"
+      ]
+    },
+    "sourceDate": "2025-07-16T00:00:00.000Z",
+    "id": "d941227e-c0a4-4af0-9ff8-eb392c3d515c",
+    "archivedAt": "2025-08-16T18:37:08.855Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2022-28356",
+    "title": "Reporting Nuclear Medicine Injection Extravasations as Medical Events",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To consider a petition to amend regulations to require reporting of certain nuclear medicine injection extravasations as medical events.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2022-28356",
+      "source": "Federal Register",
+      "date": "2022-12-30",
+      "title": "Reporting Nuclear Medicine Injection Extravasations as Medical Events",
+      "device_name": "Diagnostic and Therapeutic Radiopharmaceuticals",
+      "model": null,
+      "classification": null,
+      "reason": "To consider a petition to amend regulations to require reporting of certain nuclear medicine injection extravasations as medical events.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:nrc_rule"
+      ]
+    },
+    "sourceDate": "2022-12-30T00:00:00.000Z",
+    "id": "8c7e23df-c332-4a34-a53c-120b54b0b23c",
+    "archivedAt": "2025-08-16T18:37:08.730Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2024-25521",
+    "title": "Medicare and Medicaid Programs: Hospital Outpatient Prospective Payment and Ambulatory Surgical Center Payment Systems; Quality Reporting Programs, Including the Hospital Inpatient Quality Reporting Program; Health and Safety Standards for Obstetrical Services in Hospitals and Critical Access Hospitals; Prior Authorization; Requests for Information; Medicaid and CHIP Continuous Eligibility; Medicaid Clinic Services Four Walls Exceptions; Individuals Currently or Formerly in Custody of Penal Authorities; Revision to Medicare Special Enrollment Period for Formerly Incarcerated Individuals; and All-Inclusive Rate Add-On Payment for High-Cost Drugs Provided by Indian Health Service and Tribal Facilities",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To revise the Medicare Hospital Outpatient Prospective Payment System (OPPS) and Ambulatory Surgical Center (ASC) payment system for calendar year 2025.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2024-25521",
+      "source": "Federal Register",
+      "date": "2024-11-27",
+      "title": "Medicare and Medicaid Programs: Hospital Outpatient Prospective Payment and Ambulatory Surgical Center Payment Systems; Quality Reporting Programs, Including the Hospital Inpatient Quality Reporting Program; Health and Safety Standards for Obstetrical Services in Hospitals and Critical Access Hospitals; Prior Authorization; Requests for Information; Medicaid and CHIP Continuous Eligibility; Medicaid Clinic Services Four Walls Exceptions; Individuals Currently or Formerly in Custody of Penal Authorities; Revision to Medicare Special Enrollment Period for Formerly Incarcerated Individuals; and All-Inclusive Rate Add-On Payment for High-Cost Drugs Provided by Indian Health Service and Tribal Facilities",
+      "device_name": null,
+      "model": null,
+      "classification": null,
+      "reason": "To revise the Medicare Hospital Outpatient Prospective Payment System (OPPS) and Ambulatory Surgical Center (ASC) payment system for calendar year 2025.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:cms_opps"
+      ]
+    },
+    "sourceDate": "2024-11-27T00:00:00.000Z",
+    "id": "66f0a815-6ef0-45e8-9aba-50bd97aee6c8",
+    "archivedAt": "2025-08-16T18:37:08.587Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2023-21662",
+    "title": "Medical Devices; Laboratory Developed Tests",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To propose making explicit that in vitro diagnostic products (IVDs) are devices under the FD&C Act and to phase out the general enforcement discretion for laboratory developed tests (LDTs).",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2023-21662",
+      "source": "Federal Register",
+      "date": "2023-10-03",
+      "title": "Medical Devices; Laboratory Developed Tests",
+      "device_name": "In Vitro Diagnostic Products (IVDs) / Laboratory Developed Tests (LDTs)",
+      "model": null,
+      "classification": null,
+      "reason": "To propose making explicit that in vitro diagnostic products (IVDs) are devices under the FD&C Act and to phase out the general enforcement discretion for laboratory developed tests (LDTs).",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:fda_rule"
+      ]
+    },
+    "sourceDate": "2023-10-03T00:00:00.000Z",
+    "id": "1401dd74-504b-44f7-9898-b74052ddb015",
+    "archivedAt": "2025-08-16T18:37:08.467Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2024-05138",
+    "title": "Schedule for Rating Disabilities: The Digestive System",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To amend the VA Schedule for Rating Disabilities (VASRD) for the Digestive System to use current medical terminology and provide updated criteria for evaluation.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2024-05138",
+      "source": "Federal Register",
+      "date": "2024-03-20",
+      "title": "Schedule for Rating Disabilities: The Digestive System",
+      "device_name": null,
+      "model": null,
+      "classification": null,
+      "reason": "To amend the VA Schedule for Rating Disabilities (VASRD) for the Digestive System to use current medical terminology and provide updated criteria for evaluation.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:va_rule"
+      ]
+    },
+    "sourceDate": "2024-03-20T00:00:00.000Z",
+    "id": "d11517ec-42f5-4fdb-87cc-c1ab57adbfd6",
+    "archivedAt": "2025-08-16T18:37:08.299Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2023-14018",
+    "title": "Rubidium-82 Generators, Emerging Technologies, and Other Medical Use of Byproduct Material",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To consider adding requirements for calibration and dosage measurement for certain generator systems and establishing performance-based requirements for existing and future emerging medical technologies.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2023-14018",
+      "source": "Federal Register",
+      "date": "2023-07-03",
+      "title": "Rubidium-82 Generators, Emerging Technologies, and Other Medical Use of Byproduct Material",
+      "device_name": "Rubidium-82 Generators",
+      "model": null,
+      "classification": null,
+      "reason": "To consider adding requirements for calibration and dosage measurement for certain generator systems and establishing performance-based requirements for existing and future emerging medical technologies.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:nrc_rule"
+      ]
+    },
+    "sourceDate": "2023-07-03T00:00:00.000Z",
+    "id": "99f8b124-d538-47b0-90bd-196bb912c408",
+    "archivedAt": "2025-08-16T18:37:08.203Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2024-30824",
+    "title": "Prohibition on Creditors and Consumer Reporting Agencies Concerning Medical Information (Regulation V)",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To amend Regulation V (FCRA) by removing a regulatory exception, thereby prohibiting creditors from obtaining and using medical debt information in credit eligibility determinations.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2024-30824",
+      "source": "Federal Register",
+      "date": "2025-01-14",
+      "title": "Prohibition on Creditors and Consumer Reporting Agencies Concerning Medical Information (Regulation V)",
+      "device_name": null,
+      "model": null,
+      "classification": null,
+      "reason": "To amend Regulation V (FCRA) by removing a regulatory exception, thereby prohibiting creditors from obtaining and using medical debt information in credit eligibility determinations.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:cfpb_rule"
+      ]
+    },
+    "sourceDate": "2025-01-14T00:00:00.000Z",
+    "id": "53ce9fcf-fd61-48fe-85c9-9b835d0791bd",
+    "archivedAt": "2025-08-16T18:37:08.018Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2023-14624",
+    "title": "Medicare and Medicaid Programs; CY 2024 Payment Policies Under the Physician Fee Schedule and Other Changes to Part B Payment and Coverage Policies; Medicare Shared Savings Program Requirements; Medicare Advantage; Medicare and Medicaid Provider and Supplier Enrollment Policies; and Basic Health Program",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To propose changes to the physician fee schedule (PFS) and other Medicare Part B payment policies for CY 2024 to reflect changes in medical practice, relative value of services, and changes in the statute.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2023-14624",
+      "source": "Federal Register",
+      "date": "2023-08-07",
+      "title": "Medicare and Medicaid Programs; CY 2024 Payment Policies Under the Physician Fee Schedule and Other Changes to Part B Payment and Coverage Policies; Medicare Shared Savings Program Requirements; Medicare Advantage; Medicare and Medicaid Provider and Supplier Enrollment Policies; and Basic Health Program",
+      "device_name": null,
+      "model": null,
+      "classification": null,
+      "reason": "To propose changes to the physician fee schedule (PFS) and other Medicare Part B payment policies for CY 2024 to reflect changes in medical practice, relative value of services, and changes in the statute.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": [
+        "7X000",
+        "7X001",
+        "7X002",
+        "7X003"
+      ],
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:cms_pfs"
+      ]
+    },
+    "sourceDate": "2023-08-07T00:00:00.000Z",
+    "id": "45fb544c-f307-48a5-8a59-181cd08b1461",
+    "archivedAt": "2025-08-16T18:37:07.941Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2024-08935",
+    "title": "Medical Devices; Laboratory Developed Tests",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To make explicit that in vitro diagnostic products (IVDs) are devices under the FD&C Act, including when manufactured by a laboratory, and to phase out the general enforcement discretion for laboratory developed tests (LDTs).",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2024-08935",
+      "source": "Federal Register",
+      "date": "2024-05-06",
+      "title": "Medical Devices; Laboratory Developed Tests",
+      "device_name": "In Vitro Diagnostic Products (IVDs) / Laboratory Developed Tests (LDTs)",
+      "model": null,
+      "classification": null,
+      "reason": "To make explicit that in vitro diagnostic products (IVDs) are devices under the FD&C Act, including when manufactured by a laboratory, and to phase out the general enforcement discretion for laboratory developed tests (LDTs).",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:fda_rule"
+      ]
+    },
+    "sourceDate": "2024-05-06T00:00:00.000Z",
+    "id": "bcb4ccc2-e5c1-496c-bc66-c3f9848ce5fd",
+    "archivedAt": "2025-08-16T18:37:07.766Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2023-24184",
+    "title": "Medicare and Medicaid Programs; CY 2024 Payment Policies Under the Physician Fee Schedule and Other Changes to Part B Payment and Coverage Policies; Medicare Shared Savings Program Requirements; Medicare Advantage; Medicare and Medicaid Provider and Supplier Enrollment Policies; and Basic Health Program",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To finalize changes to the physician fee schedule (PFS) and other Medicare Part B payment policies for CY 2024 to reflect changes in medical practice and relative value of services.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2023-24184",
+      "source": "Federal Register",
+      "date": "2023-11-16",
+      "title": "Medicare and Medicaid Programs; CY 2024 Payment Policies Under the Physician Fee Schedule and Other Changes to Part B Payment and Coverage Policies; Medicare Shared Savings Program Requirements; Medicare Advantage; Medicare and Medicaid Provider and Supplier Enrollment Policies; and Basic Health Program",
+      "device_name": null,
+      "model": null,
+      "classification": null,
+      "reason": "To finalize changes to the physician fee schedule (PFS) and other Medicare Part B payment policies for CY 2024 to reflect changes in medical practice and relative value of services.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Rule",
+      "codes": [
+        "76984",
+        "76987",
+        "76988",
+        "76989"
+      ],
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:cms_pfs"
+      ]
+    },
+    "sourceDate": "2023-11-16T00:00:00.000Z",
+    "id": "b1fd7882-1ea7-46ce-b8a7-a12903c31ba4",
+    "archivedAt": "2025-08-16T18:37:07.663Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2023-00922",
+    "title": "Radiological Health Regulations; Amendments to Records and Reports for Radiation Emitting Electronic Products; Amendments to Performance Standards for Diagnostic X-ray, Laser, and Ultrasonic Products",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To clarify and update radiological health regulations, reducing outdated and duplicative requirements for radiation emitting electronic products and medical devices.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2023-00922",
+      "source": "Federal Register",
+      "date": "2023-01-20",
+      "title": "Radiological Health Regulations; Amendments to Records and Reports for Radiation Emitting Electronic Products; Amendments to Performance Standards for Diagnostic X-ray, Laser, and Ultrasonic Products",
+      "device_name": "Diagnostic X-ray, Laser, and Ultrasonic Products",
+      "model": null,
+      "classification": null,
+      "reason": "To clarify and update radiological health regulations, reducing outdated and duplicative requirements for radiation emitting electronic products and medical devices.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:fda_rule"
+      ]
+    },
+    "sourceDate": "2023-01-20T00:00:00.000Z",
+    "id": "ebaa438f-a7dd-42ac-b532-f9c5a15a2cc2",
+    "archivedAt": "2025-08-16T18:37:07.468Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2025-11791",
+    "title": "Medical Devices; Radiology Devices; Classification of the Cream for X-Ray Attenuation",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To classify the device into class II (special controls) to provide a reasonable assurance of safety and effectiveness, enhance patient access, and reduce regulatory burdens.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2025-11791",
+      "source": "Federal Register",
+      "date": "2025-06-26",
+      "title": "Medical Devices; Radiology Devices; Classification of the Cream for X-Ray Attenuation",
+      "device_name": "Cream for X-Ray Attenuation",
+      "model": null,
+      "classification": "Class II",
+      "reason": "To classify the device into class II (special controls) to provide a reasonable assurance of safety and effectiveness, enhance patient access, and reduce regulatory burdens.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:fda_classification"
+      ]
+    },
+    "sourceDate": "2025-06-26T00:00:00.000Z",
+    "id": "006bc524-9ca7-46d7-9702-40ee4734e19a",
+    "archivedAt": "2025-08-16T18:37:07.387Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2024-16889",
+    "title": "Nondiscrimination on the Basis of Disability; Accessibility of Medical Diagnostic Equipment of State and Local Government Entities",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To establish requirements, including the adoption of specific technical standards, for making Medical Diagnostic Equipment (MDE) accessible to individuals with disabilities.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2024-16889",
+      "source": "Federal Register",
+      "date": "2024-08-09",
+      "title": "Nondiscrimination on the Basis of Disability; Accessibility of Medical Diagnostic Equipment of State and Local Government Entities",
+      "device_name": "Medical Diagnostic Equipment",
+      "model": null,
+      "classification": null,
+      "reason": "To establish requirements, including the adoption of specific technical standards, for making Medical Diagnostic Equipment (MDE) accessible to individuals with disabilities.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:doj_rule"
+      ]
+    },
+    "sourceDate": "2024-08-09T00:00:00.000Z",
+    "id": "76892170-979c-4ff7-bdca-b38085f16fec",
+    "archivedAt": "2025-08-16T18:37:07.193Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2025-09837",
+    "title": "Medical Devices; Radiology Devices; Classification of the Radiological Acquisition and/or Optimization Guidance System",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To classify the device into class II (special controls) to provide a reasonable assurance of safety and effectiveness, enhance patient access, and reduce regulatory burdens.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2025-09837",
+      "source": "Federal Register",
+      "date": "2025-06-02",
+      "title": "Medical Devices; Radiology Devices; Classification of the Radiological Acquisition and/or Optimization Guidance System",
+      "device_name": "Radiological Acquisition and/or Optimization Guidance System",
+      "model": null,
+      "classification": "Class II",
+      "reason": "To classify the device into class II (special controls) to provide a reasonable assurance of safety and effectiveness, enhance patient access, and reduce regulatory burdens.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:fda_classification"
+      ]
+    },
+    "sourceDate": "2025-06-02T00:00:00.000Z",
+    "id": "f872876c-96d4-44c1-be6d-3d15ef4fd792",
+    "archivedAt": "2025-08-16T18:37:07.116Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2023-14624",
+    "title": "Medicare and Medicaid Programs; CY 2024 Payment Policies Under the Physician Fee Schedule and Other Changes to Part B Payment and Coverage Policies; Medicare Shared Savings Program Requirements; Medicare Advantage; Medicare and Medicaid Provider and Supplier Enrollment Policies; and Basic Health Program",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Proposed rule addressing changes to the physician fee schedule (PFS) and other Medicare Part B payment policies for Calendar Year 2024.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2023-14624",
+      "source": "Federal Register",
+      "date": "2023-08-07",
+      "title": "Medicare and Medicaid Programs; CY 2024 Payment Policies Under the Physician Fee Schedule and Other Changes to Part B Payment and Coverage Policies; Medicare Shared Savings Program Requirements; Medicare Advantage; Medicare and Medicaid Provider and Supplier Enrollment Policies; and Basic Health Program",
+      "device_name": null,
+      "model": null,
+      "classification": null,
+      "reason": "Proposed rule addressing changes to the physician fee schedule (PFS) and other Medicare Part B payment policies for Calendar Year 2024.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": [
+        "7X000",
+        "7X001",
+        "7X002",
+        "7X003"
+      ],
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "cms:pfs_proposed_rule"
+      ]
+    },
+    "sourceDate": "2023-08-07T00:00:00.000Z",
+    "id": "eed9d5d3-bcba-4bdf-b1d9-452984bccb53",
+    "archivedAt": "2025-08-16T18:37:06.499Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2025-10789",
+    "title": "Medical Devices; Radiology Devices; Classification of the Radiological Computer-Assisted Detection and Diagnosis Software",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To classify the device into class II (special controls) to provide a reasonable assurance of safety and effectiveness, enhance patient access, and reduce regulatory burdens.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2025-10789",
+      "source": "Federal Register",
+      "date": "2025-06-13",
+      "title": "Medical Devices; Radiology Devices; Classification of the Radiological Computer-Assisted Detection and Diagnosis Software",
+      "device_name": "Radiological Computer-Assisted Detection and Diagnosis Software",
+      "model": null,
+      "classification": "Class II",
+      "reason": "To classify the device into class II (special controls) to provide a reasonable assurance of safety and effectiveness, enhance patient access, and reduce regulatory burdens.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:fda_classification"
+      ]
+    },
+    "sourceDate": "2025-06-13T00:00:00.000Z",
+    "id": "19cb70af-cfe6-4a09-9e39-a2e60a26a6a9",
+    "archivedAt": "2025-08-16T18:37:04.428Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2024-08935",
+    "title": "Medical Devices; Laboratory Developed Tests",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Final rule to make explicit that in vitro diagnostic products (IVDs), including laboratory developed tests (LDTs), are devices under the FD&C Act and to phase out the general enforcement discretion approach for LDTs.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2024-08935",
+      "source": "Federal Register",
+      "date": "2024-05-06",
+      "title": "Medical Devices; Laboratory Developed Tests",
+      "device_name": "In Vitro Diagnostic Products (IVDs) / Laboratory Developed Tests (LDTs)",
+      "model": null,
+      "classification": null,
+      "reason": "Final rule to make explicit that in vitro diagnostic products (IVDs), including laboratory developed tests (LDTs), are devices under the FD&C Act and to phase out the general enforcement discretion approach for LDTs.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fda:rule"
+      ]
+    },
+    "sourceDate": "2024-05-06T00:00:00.000Z",
+    "id": "de7bbc87-610f-40fd-930b-ca72c95312d5",
+    "archivedAt": "2025-08-16T18:36:59.303Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2023-24184",
+    "title": "Medicare and Medicaid Programs; CY 2024 Payment Policies Under the Physician Fee Schedule and Other Changes to Part B Payment and Coverage Policies; Medicare Shared Savings Program Requirements; Medicare Advantage; Medicare and Medicaid Provider and Supplier Enrollment Policies; and Basic Health Program",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Final rule addressing changes to the physician fee schedule (PFS) and other Medicare Part B payment policies for Calendar Year 2024.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2023-24184",
+      "source": "Federal Register",
+      "date": "2023-11-16",
+      "title": "Medicare and Medicaid Programs; CY 2024 Payment Policies Under the Physician Fee Schedule and Other Changes to Part B Payment and Coverage Policies; Medicare Shared Savings Program Requirements; Medicare Advantage; Medicare and Medicaid Provider and Supplier Enrollment Policies; and Basic Health Program",
+      "device_name": null,
+      "model": null,
+      "classification": null,
+      "reason": "Final rule addressing changes to the physician fee schedule (PFS) and other Medicare Part B payment policies for Calendar Year 2024.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": [
+        "76984",
+        "76987",
+        "76988",
+        "76989"
+      ],
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "cms:pfs_rule"
+      ]
+    },
+    "sourceDate": "2023-11-16T00:00:00.000Z",
+    "id": "0a948ba6-1d92-4dd6-97ae-cad731266f2d",
+    "archivedAt": "2025-08-16T18:36:53.096Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2023-00922",
+    "title": "Radiological Health Regulations; Amendments to Records and Reports for Radiation Emitting Electronic Products; Amendments to Performance Standards for Diagnostic X-ray, Laser, and Ultrasonic Products",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Amending and repealing parts of radiological health regulations to clarify, update, and reduce outdated requirements for radiation-emitting electronic products and medical devices.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2023-00922",
+      "source": "Federal Register",
+      "date": "2023-01-20",
+      "title": "Radiological Health Regulations; Amendments to Records and Reports for Radiation Emitting Electronic Products; Amendments to Performance Standards for Diagnostic X-ray, Laser, and Ultrasonic Products",
+      "device_name": "Diagnostic X-ray, Laser, and Ultrasonic Products",
+      "model": null,
+      "classification": null,
+      "reason": "Amending and repealing parts of radiological health regulations to clarify, update, and reduce outdated requirements for radiation-emitting electronic products and medical devices.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fda:rule"
+      ]
+    },
+    "sourceDate": "2023-01-20T00:00:00.000Z",
+    "id": "422fcd85-0b95-4d5c-b708-59ef0c794482",
+    "archivedAt": "2025-08-16T18:36:47.706Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2025-11791",
+    "title": "Medical Devices; Radiology Devices; Classification of the Cream for X-Ray Attenuation",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Classification of the device into class II (special controls) to provide a reasonable assurance of safety and effectiveness and enhance patient access by reducing regulatory burdens.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2025-11791",
+      "source": "Federal Register",
+      "date": "2025-06-26",
+      "title": "Medical Devices; Radiology Devices; Classification of the Cream for X-Ray Attenuation",
+      "device_name": "Cream for X-Ray Attenuation",
+      "model": null,
+      "classification": "Class II",
+      "reason": "Classification of the device into class II (special controls) to provide a reasonable assurance of safety and effectiveness and enhance patient access by reducing regulatory burdens.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fda:classification"
+      ]
+    },
+    "sourceDate": "2025-06-26T00:00:00.000Z",
+    "id": "173be925-894e-44de-a281-ea66291fbec7",
+    "archivedAt": "2025-08-16T18:36:44.777Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2024-16889",
+    "title": "Nondiscrimination on the Basis of Disability; Accessibility of Medical Diagnostic Equipment of State and Local Government Entities",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Establishes requirements, including technical standards, for making Medical Diagnostic Equipment (MDE) used by State and local governments accessible to people with disabilities.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2024-16889",
+      "source": "Federal Register",
+      "date": "2024-08-09",
+      "title": "Nondiscrimination on the Basis of Disability; Accessibility of Medical Diagnostic Equipment of State and Local Government Entities",
+      "device_name": "Medical Diagnostic Equipment",
+      "model": null,
+      "classification": null,
+      "reason": "Establishes requirements, including technical standards, for making Medical Diagnostic Equipment (MDE) used by State and local governments accessible to people with disabilities.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "doj:rule"
+      ]
+    },
+    "sourceDate": "2024-08-09T00:00:00.000Z",
+    "id": "79ea0eec-d35c-4320-b9cd-cbf49bb59142",
+    "archivedAt": "2025-08-16T18:36:39.125Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2025-09837",
+    "title": "Medical Devices; Radiology Devices; Classification of the Radiological Acquisition and/or Optimization Guidance System",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Classification of the device into class II (special controls) to provide a reasonable assurance of safety and effectiveness and enhance patient access by reducing regulatory burdens.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2025-09837",
+      "source": "Federal Register",
+      "date": "2025-06-02",
+      "title": "Medical Devices; Radiology Devices; Classification of the Radiological Acquisition and/or Optimization Guidance System",
+      "device_name": "Radiological Acquisition and/or Optimization Guidance System",
+      "model": null,
+      "classification": "Class II",
+      "reason": "Classification of the device into class II (special controls) to provide a reasonable assurance of safety and effectiveness and enhance patient access by reducing regulatory burdens.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fda:classification"
+      ]
+    },
+    "sourceDate": "2025-06-02T00:00:00.000Z",
+    "id": "91134243-7f3d-48f1-b43d-3d75d1deef94",
+    "archivedAt": "2025-08-16T18:36:36.365Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2025-10789",
+    "title": "Medical Devices; Radiology Devices; Classification of the Radiological Computer-Assisted Detection and Diagnosis Software",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Classification of the device into class II (special controls) to provide a reasonable assurance of safety and effectiveness and enhance patient access by reducing regulatory burdens.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2025-10789",
+      "source": "Federal Register",
+      "date": "2025-06-13",
+      "title": "Medical Devices; Radiology Devices; Classification of the Radiological Computer-Assisted Detection and Diagnosis Software",
+      "device_name": "Radiological Computer-Assisted Detection and Diagnosis Software",
+      "model": null,
+      "classification": "Class II",
+      "reason": "Classification of the device into class II (special controls) to provide a reasonable assurance of safety and effectiveness and enhance patient access by reducing regulatory burdens.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fda:classification"
+      ]
+    },
+    "sourceDate": "2025-06-13T00:00:00.000Z",
+    "id": "61a17750-8089-43d7-bc0d-c9353a9d957e",
+    "archivedAt": "2025-08-16T18:36:33.353Z"
+  },
+  {
+    "source": "MAUDE",
+    "sourceId": "maude-pattern-UnknownUnknown-1755369306067",
+    "title": "MAUDE Signal: 100 reports for Unknown Unknown",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": "Unknown",
+    "model": "Unknown",
+    "manufacturer": "Unknown",
+    "classification": "Signal",
+    "reason": "100 adverse event reports detected",
+    "firm": "Unknown",
+    "state": null,
+    "status": "Pattern Detected",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "signalCount": 100,
+      "deviceKey": "Unknown-Unknown"
+    },
+    "sourceDate": "2025-08-16T18:35:06.321Z",
+    "id": "71ee3b27-b78b-4def-9d0b-723c2d814666",
+    "archivedAt": "2025-08-16T18:35:06.321Z"
+  },
+  {
+    "source": "NY DOH",
+    "sourceId": "state-doh-NY-1755369306104",
+    "title": "New York State Medical Imaging License Renewal Period",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 45,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": "license_renewal",
+    "reason": "Renewal period for medical imaging professional licenses",
+    "firm": "New York State Department of Health",
+    "state": "NY",
+    "status": "Active",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "state": "NY",
+      "title": "New York State Medical Imaging License Renewal Period",
+      "type": "license_renewal",
+      "agency": "New York State Department of Health",
+      "effective_date": "2025-11-14T18:35:05.777Z",
+      "description": "Renewal period for medical imaging professional licenses",
+      "days_until_effective": 90
+    },
+    "sourceDate": "2025-11-14T18:35:05.777Z",
+    "id": "73ad8093-1a81-4829-9510-141aa91069c6",
+    "archivedAt": "2025-08-16T18:35:06.190Z"
+  },
+  {
+    "source": "CA DOH",
+    "sourceId": "state-doh-CA-1755369305777",
+    "title": "California CDPH Updates Mammography Facility Requirements",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 45,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": "regulation_update",
+    "reason": "New requirements for mammography facility inspections",
+    "firm": "California Department of Public Health",
+    "state": "CA",
+    "status": "Active",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "state": "CA",
+      "title": "California CDPH Updates Mammography Facility Requirements",
+      "type": "regulation_update",
+      "agency": "California Department of Public Health",
+      "effective_date": "2025-09-30T18:35:05.777Z",
+      "description": "New requirements for mammography facility inspections",
+      "days_until_effective": 45
+    },
+    "sourceDate": "2025-09-30T18:35:05.777Z",
+    "id": "4bbc61f3-8ccc-4ac7-b618-d201eaf2e0bd",
+    "archivedAt": "2025-08-16T18:35:06.104Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2022-13954",
+    "title": "General and Plastic Surgery Devices; Reclassification of Optical Diagnostic Devices for Melanoma Detection and Electrical Impedance Spectrometers, To Be Renamed Computer-Aided Devices Which Provide Adjunctive Diagnostic Information About Lesions Suspicious for Melanoma",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Reclassification based on determination that special controls can provide a reasonable assurance of safety and effectiveness.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2022-13954",
+      "source": "Federal Register",
+      "date": "2022-06-30",
+      "title": "General and Plastic Surgery Devices; Reclassification of Optical Diagnostic Devices for Melanoma Detection and Electrical Impedance Spectrometers, To Be Renamed Computer-Aided Devices Which Provide Adjunctive Diagnostic Information About Lesions Suspicious for Melanoma",
+      "device_name": "Computer-Aided Devices Which Provide Adjunctive Diagnostic Information About Lesions Suspicious for Melanoma",
+      "model": null,
+      "classification": "Proposed reclassification from Class III to Class II",
+      "reason": "Reclassification based on determination that special controls can provide a reasonable assurance of safety and effectiveness.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": true,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:fda_reclassification"
+      ]
+    },
+    "sourceDate": "2022-06-30T00:00:00.000Z",
+    "id": "f15a4054-807d-4d21-86e6-a817c7226aa8",
+    "archivedAt": "2025-08-16T18:35:00.937Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2023-02141",
+    "title": "Medical Devices; Hematology and Pathology Devices; Classification of the Software Algorithm Device To Assist Users in Digital Pathology",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Classification to provide a reasonable assurance of safety and effectiveness of the device and enhance patient access.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2023-02141",
+      "source": "Federal Register",
+      "date": "2023-02-02",
+      "title": "Medical Devices; Hematology and Pathology Devices; Classification of the Software Algorithm Device To Assist Users in Digital Pathology",
+      "device_name": "Software Algorithm Device To Assist Users in Digital Pathology",
+      "model": null,
+      "classification": "Class II",
+      "reason": "Classification to provide a reasonable assurance of safety and effectiveness of the device and enhance patient access.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:fda_classification"
+      ]
+    },
+    "sourceDate": "2023-02-02T00:00:00.000Z",
+    "id": "5f0ab8b4-f203-4efd-a3c1-9535e6ed6042",
+    "archivedAt": "2025-08-16T18:35:00.838Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2023-04550",
+    "title": "Mammography Quality Standards Act",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To update the mammography regulations under the MQSA to incorporate current science and mammography best practices.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2023-04550",
+      "source": "Federal Register",
+      "date": "2023-03-10",
+      "title": "Mammography Quality Standards Act",
+      "device_name": "Mammography Systems",
+      "model": null,
+      "classification": null,
+      "reason": "To update the mammography regulations under the MQSA to incorporate current science and mammography best practices.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:fda_rule"
+      ]
+    },
+    "sourceDate": "2023-03-10T00:00:00.000Z",
+    "id": "0ba50532-bbe3-44dc-995d-737cbdc2e72d",
+    "archivedAt": "2025-08-16T18:35:00.664Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2024-15087",
+    "title": "Medicare and Medicaid Programs: Hospital Outpatient Prospective Payment and Ambulatory Surgical Center Payment Systems; Quality Reporting Programs, Including the Hospital Inpatient Quality Reporting Program; Health and Safety Standards for Obstetrical Services in Hospitals and Critical Access Hospitals; Prior Authorization; Requests for Information; Medicaid and CHIP Continuous Eligibility; Medicaid Clinic Services Four Walls Exceptions; Individuals Currently or Formerly in Custody of Penal Authorities; Revision to Medicare Special Enrollment Period for Formerly Incarcerated Individuals; and All-Inclusive Rate Add-On Payment for High-Cost Drugs Provided by Indian Health Service and Tribal Facilities",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To propose revisions to the Medicare Hospital Outpatient Prospective Payment System (OPPS) and Ambulatory Surgical Center (ASC) payment system for calendar year 2025.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2024-15087",
+      "source": "Federal Register",
+      "date": "2024-07-22",
+      "title": "Medicare and Medicaid Programs: Hospital Outpatient Prospective Payment and Ambulatory Surgical Center Payment Systems; Quality Reporting Programs, Including the Hospital Inpatient Quality Reporting Program; Health and Safety Standards for Obstetrical Services in Hospitals and Critical Access Hospitals; Prior Authorization; Requests for Information; Medicaid and CHIP Continuous Eligibility; Medicaid Clinic Services Four Walls Exceptions; Individuals Currently or Formerly in Custody of Penal Authorities; Revision to Medicare Special Enrollment Period for Formerly Incarcerated Individuals; and All-Inclusive Rate Add-On Payment for High-Cost Drugs Provided by Indian Health Service and Tribal Facilities",
+      "device_name": null,
+      "model": null,
+      "classification": null,
+      "reason": "To propose revisions to the Medicare Hospital Outpatient Prospective Payment System (OPPS) and Ambulatory Surgical Center (ASC) payment system for calendar year 2025.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:cms_opps"
+      ]
+    },
+    "sourceDate": "2024-07-22T00:00:00.000Z",
+    "id": "d0f49830-55bf-4f81-8f78-35d46cc221c2",
+    "archivedAt": "2025-08-16T18:35:00.566Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2025-13360",
+    "title": "Medicare and Medicaid Programs: Hospital Outpatient Prospective Payment and Ambulatory Surgical Center Payment Systems; Quality Reporting Programs; Overall Hospital Quality Star Ratings; and Hospital Price Transparency",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To propose revisions to the Medicare Hospital Outpatient Prospective Payment System (OPPS) and Ambulatory Surgical Center (ASC) payment system for calendar year 2026.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2025-13360",
+      "source": "Federal Register",
+      "date": "2025-07-17",
+      "title": "Medicare and Medicaid Programs: Hospital Outpatient Prospective Payment and Ambulatory Surgical Center Payment Systems; Quality Reporting Programs; Overall Hospital Quality Star Ratings; and Hospital Price Transparency",
+      "device_name": null,
+      "model": null,
+      "classification": null,
+      "reason": "To propose revisions to the Medicare Hospital Outpatient Prospective Payment System (OPPS) and Ambulatory Surgical Center (ASC) payment system for calendar year 2026.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:cms_opps"
+      ]
+    },
+    "sourceDate": "2025-07-17T00:00:00.000Z",
+    "id": "8c1d5e43-01e8-4ff0-8a9b-315a8c4b06ed",
+    "archivedAt": "2025-08-16T18:34:57.453Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2025-13271",
+    "title": "Medicare and Medicaid Programs; CY 2026 Payment Policies Under the Physician Fee Schedule and Other Changes to Part B Payment and Coverage Policies; Medicare Shared Savings Program Requirements; and Medicare Prescription Drug Inflation Rebate Program",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To propose changes to the physician fee schedule (PFS) and other Medicare Part B payment policies for CY 2026.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2025-13271",
+      "source": "Federal Register",
+      "date": "2025-07-16",
+      "title": "Medicare and Medicaid Programs; CY 2026 Payment Policies Under the Physician Fee Schedule and Other Changes to Part B Payment and Coverage Policies; Medicare Shared Savings Program Requirements; and Medicare Prescription Drug Inflation Rebate Program",
+      "device_name": "Intravascular Optical Coherence Tomography (OCT) Imaging Systems",
+      "model": null,
+      "classification": null,
+      "reason": "To propose changes to the physician fee schedule (PFS) and other Medicare Part B payment policies for CY 2026.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": [
+        "0986T",
+        "0987T"
+      ],
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:cms_pfs"
+      ]
+    },
+    "sourceDate": "2025-07-16T00:00:00.000Z",
+    "id": "b2844cfe-5b4e-491d-a37a-9bac84cb6088",
+    "archivedAt": "2025-08-16T18:34:53.406Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2022-28356",
+    "title": "Reporting Nuclear Medicine Injection Extravasations as Medical Events",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [
+      "MAUDE signal detected"
+    ],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To consider a petition to amend NRC regulations to require reporting of certain nuclear medicine injection extravasations as medical events.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2022-28356",
+      "source": "Federal Register",
+      "date": "2022-12-30",
+      "title": "Reporting Nuclear Medicine Injection Extravasations as Medical Events",
+      "device_name": "Nuclear Medicine Injection Systems",
+      "model": null,
+      "classification": null,
+      "reason": "To consider a petition to amend NRC regulations to require reporting of certain nuclear medicine injection extravasations as medical events.",
+      "firm": "Lucerno Dynamics, LLC",
+      "manufacturer": null,
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": true,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:nrc_rule"
+      ]
+    },
+    "sourceDate": "2022-12-30T00:00:00.000Z",
+    "id": "8ea95721-54cb-4451-8a73-1ff8a8eb5791",
+    "archivedAt": "2025-08-16T18:34:50.939Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2024-25521",
+    "title": "Medicare and Medicaid Programs: Hospital Outpatient Prospective Payment and Ambulatory Surgical Center Payment Systems; Quality Reporting Programs, Including the Hospital Inpatient Quality Reporting Program; Health and Safety Standards for Obstetrical Services in Hospitals and Critical Access Hospitals; Prior Authorization; Requests for Information; Medicaid and CHIP Continuous Eligibility; Medicaid Clinic Services Four Walls Exceptions; Individuals Currently or Formerly in Custody of Penal Authorities; Revision to Medicare Special Enrollment Period for Formerly Incarcerated Individuals; and All-Inclusive Rate Add-On Payment for High-Cost Drugs Provided by Indian Health Service and Tribal Facilities",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To finalize revisions to the Medicare Hospital Outpatient Prospective Payment System (OPPS) and Ambulatory Surgical Center (ASC) payment system for calendar year 2025.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2024-25521",
+      "source": "Federal Register",
+      "date": "2024-11-27",
+      "title": "Medicare and Medicaid Programs: Hospital Outpatient Prospective Payment and Ambulatory Surgical Center Payment Systems; Quality Reporting Programs, Including the Hospital Inpatient Quality Reporting Program; Health and Safety Standards for Obstetrical Services in Hospitals and Critical Access Hospitals; Prior Authorization; Requests for Information; Medicaid and CHIP Continuous Eligibility; Medicaid Clinic Services Four Walls Exceptions; Individuals Currently or Formerly in Custody of Penal Authorities; Revision to Medicare Special Enrollment Period for Formerly Incarcerated Individuals; and All-Inclusive Rate Add-On Payment for High-Cost Drugs Provided by Indian Health Service and Tribal Facilities",
+      "device_name": null,
+      "model": null,
+      "classification": null,
+      "reason": "To finalize revisions to the Medicare Hospital Outpatient Prospective Payment System (OPPS) and Ambulatory Surgical Center (ASC) payment system for calendar year 2025.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:cms_opps"
+      ]
+    },
+    "sourceDate": "2024-11-27T00:00:00.000Z",
+    "id": "4c9b7818-59f3-481f-bbee-c880e3be9929",
+    "archivedAt": "2025-08-16T18:34:46.882Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2023-21662",
+    "title": "Medical Devices; Laboratory Developed Tests",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To propose making explicit that IVDs are devices, including LDTs, and to phase out general enforcement discretion for LDTs to better protect public health.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2023-21662",
+      "source": "Federal Register",
+      "date": "2023-10-03",
+      "title": "Medical Devices; Laboratory Developed Tests",
+      "device_name": "In Vitro Diagnostic Products (IVDs) / Laboratory Developed Tests (LDTs)",
+      "model": null,
+      "classification": null,
+      "reason": "To propose making explicit that IVDs are devices, including LDTs, and to phase out general enforcement discretion for LDTs to better protect public health.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:fda_rule"
+      ]
+    },
+    "sourceDate": "2023-10-03T00:00:00.000Z",
+    "id": "ffedb2fd-3465-4fad-aed5-959019e2cea4",
+    "archivedAt": "2025-08-16T18:34:43.600Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2024-05138",
+    "title": "Schedule for Rating Disabilities: The Digestive System",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To amend the VA Schedule for Rating Disabilities (VASRD) for the Digestive System to use current medical terminology and update evaluation criteria.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2024-05138",
+      "source": "Federal Register",
+      "date": "2024-03-20",
+      "title": "Schedule for Rating Disabilities: The Digestive System",
+      "device_name": null,
+      "model": null,
+      "classification": null,
+      "reason": "To amend the VA Schedule for Rating Disabilities (VASRD) for the Digestive System to use current medical terminology and update evaluation criteria.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:va_rule"
+      ]
+    },
+    "sourceDate": "2024-03-20T00:00:00.000Z",
+    "id": "a64efc26-efe6-4f95-89b9-eaa52bffadd5",
+    "archivedAt": "2025-08-16T18:34:40.330Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2023-14018",
+    "title": "Rubidium-82 Generators, Emerging Technologies, and Other Medical Use of Byproduct Material",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To propose requirements for calibration and dosage measurement for certain generator systems and establish performance-based requirements for emerging medical technologies.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2023-14018",
+      "source": "Federal Register",
+      "date": "2023-07-03",
+      "title": "Rubidium-82 Generators, Emerging Technologies, and Other Medical Use of Byproduct Material",
+      "device_name": "Rubidium-82 Generators",
+      "model": null,
+      "classification": null,
+      "reason": "To propose requirements for calibration and dosage measurement for certain generator systems and establish performance-based requirements for emerging medical technologies.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:nrc_rule"
+      ]
+    },
+    "sourceDate": "2023-07-03T00:00:00.000Z",
+    "id": "48407adc-7b57-4929-a8be-70ab0727d90a",
+    "archivedAt": "2025-08-16T18:34:37.199Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2024-30824",
+    "title": "Prohibition on Creditors and Consumer Reporting Agencies Concerning Medical Information (Regulation V)",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To amend Regulation V (FCRA) to remove a regulatory exception that permitted creditors to use medical debt information in credit eligibility determinations.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2024-30824",
+      "source": "Federal Register",
+      "date": "2025-01-14",
+      "title": "Prohibition on Creditors and Consumer Reporting Agencies Concerning Medical Information (Regulation V)",
+      "device_name": null,
+      "model": null,
+      "classification": null,
+      "reason": "To amend Regulation V (FCRA) to remove a regulatory exception that permitted creditors to use medical debt information in credit eligibility determinations.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:cfpb_rule"
+      ]
+    },
+    "sourceDate": "2025-01-14T00:00:00.000Z",
+    "id": "1f5b214a-1bac-43d1-a981-58e187ee0df2",
+    "archivedAt": "2025-08-16T18:34:34.480Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2023-14624",
+    "title": "Medicare and Medicaid Programs; CY 2024 Payment Policies Under the Physician Fee Schedule and Other Changes to Part B Payment and Coverage Policies; Medicare Shared Savings Program Requirements; Medicare Advantage; Medicare and Medicaid Provider and Supplier Enrollment Policies; and Basic Health Program",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To propose changes to the physician fee schedule (PFS) and other Medicare Part B payment policies for CY 2024.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2023-14624",
+      "source": "Federal Register",
+      "date": "2023-08-07",
+      "title": "Medicare and Medicaid Programs; CY 2024 Payment Policies Under the Physician Fee Schedule and Other Changes to Part B Payment and Coverage Policies; Medicare Shared Savings Program Requirements; Medicare Advantage; Medicare and Medicaid Provider and Supplier Enrollment Policies; and Basic Health Program",
+      "device_name": null,
+      "model": null,
+      "classification": null,
+      "reason": "To propose changes to the physician fee schedule (PFS) and other Medicare Part B payment policies for CY 2024.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Proposed Rule",
+      "codes": [
+        "7X000",
+        "7X001",
+        "7X002",
+        "7X003"
+      ],
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:cms_pfs"
+      ]
+    },
+    "sourceDate": "2023-08-07T00:00:00.000Z",
+    "id": "1b9c247c-124e-4d52-863b-fbf6c2d7dc1a",
+    "archivedAt": "2025-08-16T18:34:30.837Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2024-08935",
+    "title": "Medical Devices; Laboratory Developed Tests",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To make explicit that IVDs are devices under the FD&C Act, including when manufactured by a laboratory, and to phase out general enforcement discretion for LDTs.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2024-08935",
+      "source": "Federal Register",
+      "date": "2024-05-06",
+      "title": "Medical Devices; Laboratory Developed Tests",
+      "device_name": "In Vitro Diagnostic Products (IVDs) / Laboratory Developed Tests (LDTs)",
+      "model": null,
+      "classification": null,
+      "reason": "To make explicit that IVDs are devices under the FD&C Act, including when manufactured by a laboratory, and to phase out general enforcement discretion for LDTs.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:fda_rule"
+      ]
+    },
+    "sourceDate": "2024-05-06T00:00:00.000Z",
+    "id": "b0206d40-4251-412d-80e0-a2a60d7f2fc0",
+    "archivedAt": "2025-08-16T18:34:27.192Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2023-24184",
+    "title": "Medicare and Medicaid Programs; CY 2024 Payment Policies Under the Physician Fee Schedule and Other Changes to Part B Payment and Coverage Policies; Medicare Shared Savings Program Requirements; Medicare Advantage; Medicare and Medicaid Provider and Supplier Enrollment Policies; and Basic Health Program",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To finalize changes to the physician fee schedule (PFS) and other Medicare Part B payment policies for CY 2024.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2023-24184",
+      "source": "Federal Register",
+      "date": "2023-11-16",
+      "title": "Medicare and Medicaid Programs; CY 2024 Payment Policies Under the Physician Fee Schedule and Other Changes to Part B Payment and Coverage Policies; Medicare Shared Savings Program Requirements; Medicare Advantage; Medicare and Medicaid Provider and Supplier Enrollment Policies; and Basic Health Program",
+      "device_name": null,
+      "model": null,
+      "classification": null,
+      "reason": "To finalize changes to the physician fee schedule (PFS) and other Medicare Part B payment policies for CY 2024.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": [
+        "76984",
+        "76987",
+        "76988",
+        "76989"
+      ],
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:cms_pfs"
+      ]
+    },
+    "sourceDate": "2023-11-16T00:00:00.000Z",
+    "id": "6b0bbb81-a2eb-49ca-8726-f6b8c05dee6b",
+    "archivedAt": "2025-08-16T18:34:23.192Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2023-00922",
+    "title": "Radiological Health Regulations; Amendments to Records and Reports for Radiation Emitting Electronic Products; Amendments to Performance Standards for Diagnostic X-ray, Laser, and Ultrasonic Products",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To clarify and update radiological health regulations to reduce outdated and duplicate requirements to better protect public health against harmful exposure to radiation.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2023-00922",
+      "source": "Federal Register",
+      "date": "2023-01-20",
+      "title": "Radiological Health Regulations; Amendments to Records and Reports for Radiation Emitting Electronic Products; Amendments to Performance Standards for Diagnostic X-ray, Laser, and Ultrasonic Products",
+      "device_name": "Radiation Emitting Electronic Products (Diagnostic X-ray, Laser, Ultrasonic)",
+      "model": null,
+      "classification": null,
+      "reason": "To clarify and update radiological health regulations to reduce outdated and duplicate requirements to better protect public health against harmful exposure to radiation.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:fda_rule"
+      ]
+    },
+    "sourceDate": "2023-01-20T00:00:00.000Z",
+    "id": "3bc35e62-7252-4460-ba6e-b5c8c7ce4dd8",
+    "archivedAt": "2025-08-16T18:34:17.848Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2025-11791",
+    "title": "Medical Devices; Radiology Devices; Classification of the Cream for X-Ray Attenuation",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Classification to provide a reasonable assurance of safety and effectiveness of the device and enhance patient access.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2025-11791",
+      "source": "Federal Register",
+      "date": "2025-06-26",
+      "title": "Medical Devices; Radiology Devices; Classification of the Cream for X-Ray Attenuation",
+      "device_name": "Cream for X-Ray Attenuation",
+      "model": null,
+      "classification": "Class II",
+      "reason": "Classification to provide a reasonable assurance of safety and effectiveness of the device and enhance patient access.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:fda_classification"
+      ]
+    },
+    "sourceDate": "2025-06-26T00:00:00.000Z",
+    "id": "0b24c88b-bea9-406a-89fb-7c1f480e8476",
+    "archivedAt": "2025-08-16T18:34:14.925Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2024-16889",
+    "title": "Nondiscrimination on the Basis of Disability; Accessibility of Medical Diagnostic Equipment of State and Local Government Entities",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "To establish requirements for making Medical Diagnostic Equipment (MDE) accessible to the public in services offered by State and local governments.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2024-16889",
+      "source": "Federal Register",
+      "date": "2024-08-09",
+      "title": "Nondiscrimination on the Basis of Disability; Accessibility of Medical Diagnostic Equipment of State and Local Government Entities",
+      "device_name": "Medical Diagnostic Equipment",
+      "model": null,
+      "classification": null,
+      "reason": "To establish requirements for making Medical Diagnostic Equipment (MDE) accessible to the public in services offered by State and local governments.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:doj_rule"
+      ]
+    },
+    "sourceDate": "2024-08-09T00:00:00.000Z",
+    "id": "5bab1f5d-1899-4d94-bf68-479b670f73b1",
+    "archivedAt": "2025-08-16T18:34:11.419Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2025-09837",
+    "title": "Medical Devices; Radiology Devices; Classification of the Radiological Acquisition and/or Optimization Guidance System",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Classification to provide a reasonable assurance of safety and effectiveness of the device and enhance patient access.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2025-09837",
+      "source": "Federal Register",
+      "date": "2025-06-02",
+      "title": "Medical Devices; Radiology Devices; Classification of the Radiological Acquisition and/or Optimization Guidance System",
+      "device_name": "Radiological Acquisition and/or Optimization Guidance System",
+      "model": null,
+      "classification": "Class II",
+      "reason": "Classification to provide a reasonable assurance of safety and effectiveness of the device and enhance patient access.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:fda_classification"
+      ]
+    },
+    "sourceDate": "2025-06-02T00:00:00.000Z",
+    "id": "d1d3eb33-481f-4e05-af73-ce7e1a562f1a",
+    "archivedAt": "2025-08-16T18:34:07.674Z"
+  },
+  {
+    "source": "Federal Register",
+    "sourceId": "2025-10789",
+    "title": "Medical Devices; Radiology Devices; Classification of the Radiological Computer-Assisted Detection and Diagnosis Software",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 0,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": null,
+    "reason": "Classification to provide a reasonable assurance of safety and effectiveness of the device and enhance patient access.",
+    "firm": null,
+    "state": null,
+    "status": "Published",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "id": "2025-10789",
+      "source": "Federal Register",
+      "date": "2025-06-13",
+      "title": "Medical Devices; Radiology Devices; Classification of the Radiological Computer-Assisted Detection and Diagnosis Software",
+      "device_name": "Radiological Computer-Assisted Detection and Diagnosis Software",
+      "model": null,
+      "classification": "Class II",
+      "reason": "Classification to provide a reasonable assurance of safety and effectiveness of the device and enhance patient access.",
+      "firm": null,
+      "manufacturer": null,
+      "state": null,
+      "status": "Final Rule",
+      "codes": null,
+      "delta": null,
+      "match": {
+        "exact_model": false,
+        "fuzzy_model": false
+      },
+      "flags": {
+        "maude_signal": false,
+        "manufacturer_notice": false
+      },
+      "sources": [
+        "fr:fda_classification"
+      ]
+    },
+    "sourceDate": "2025-06-13T00:00:00.000Z",
+    "id": "d16478c2-a3b3-4f5a-83f7-20ae5e50a0e4",
+    "archivedAt": "2025-08-16T18:34:03.737Z"
+  },
+  {
+    "source": "NY DOH",
+    "sourceId": "state-doh-NY-1755369142916",
+    "title": "New York State Medical Imaging License Renewal Period",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 45,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": "license_renewal",
+    "reason": "Renewal period for medical imaging professional licenses",
+    "firm": "New York State Department of Health",
+    "state": "NY",
+    "status": "Active",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "state": "NY",
+      "title": "New York State Medical Imaging License Renewal Period",
+      "type": "license_renewal",
+      "agency": "New York State Department of Health",
+      "effective_date": "2025-11-14T18:32:19.838Z",
+      "description": "Renewal period for medical imaging professional licenses",
+      "days_until_effective": 90
+    },
+    "sourceDate": "2025-11-14T18:32:19.838Z",
+    "id": "51b9e89c-6457-4f4c-a7cc-7f9291b59b89",
+    "archivedAt": "2025-08-16T18:32:25.400Z"
+  },
+  {
+    "source": "CA DOH",
+    "sourceId": "state-doh-CA-1755369139838",
+    "title": "California CDPH Updates Mammography Facility Requirements",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 45,
+    "reasons": [],
+    "deviceName": null,
+    "model": null,
+    "manufacturer": null,
+    "classification": "regulation_update",
+    "reason": "New requirements for mammography facility inspections",
+    "firm": "California Department of Public Health",
+    "state": "CA",
+    "status": "Active",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "state": "CA",
+      "title": "California CDPH Updates Mammography Facility Requirements",
+      "type": "regulation_update",
+      "agency": "California Department of Public Health",
+      "effective_date": "2025-09-30T18:32:19.838Z",
+      "description": "New requirements for mammography facility inspections",
+      "days_until_effective": 45
+    },
+    "sourceDate": "2025-09-30T18:32:19.838Z",
+    "id": "bdf56423-e6f5-4980-8fd2-32f43041c992",
+    "archivedAt": "2025-08-16T18:32:22.916Z"
+  },
+  {
+    "source": "MAUDE",
+    "sourceId": "maude-pattern-UnknownUnknown-1755369140135",
+    "title": "MAUDE Signal: 100 reports for Unknown Unknown",
+    "summary": null,
+    "category": "Suppressed",
+    "score": 30,
+    "reasons": [
+      "MAUDE signal detected",
+      "Exact device model match"
+    ],
+    "deviceName": "Unknown",
+    "model": "Unknown",
+    "manufacturer": "Unknown",
+    "classification": "Signal",
+    "reason": "100 adverse event reports detected",
+    "firm": "Unknown",
+    "state": null,
+    "status": "Pattern Detected",
+    "cptCodes": null,
+    "delta": null,
+    "originalData": {
+      "signalCount": 100,
+      "deviceKey": "Unknown-Unknown"
+    },
+    "sourceDate": "2025-08-16T18:32:22.678Z",
+    "id": "9d214fc3-36e7-4efe-81d4-cfe4e11b8103",
+    "archivedAt": "2025-08-16T18:32:22.678Z"
+  }
+]
