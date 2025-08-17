@@ -10,7 +10,6 @@
     "category": "Urgent",
     "score": 85,
     "confidence": "High",
-    "archivedAt": "2025-01-15T08:00:00Z",
     "link": "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfres/res.cfm",
     "summary": "Check your Philips MRI systems for software version 5.7.1 and contact Philips for immediate update to prevent image quality issues."
   },
@@ -27,7 +26,6 @@
     "category": "Informational",
     "score": 72,
     "confidence": "High",
-    "archivedAt": "2025-01-10T06:00:00Z",
     "link": "https://www.cms.gov/medicare/physician-fee-schedule"
   },
   {
@@ -39,7 +37,6 @@
     "category": "Informational",
     "score": 78,
     "confidence": "High",
-    "archivedAt": "2025-01-12T10:00:00Z",
     "drugType": "contrast_agent",
     "alternatives": ["Alternative contrast protocols", "Lower dose protocols"]
   },
@@ -55,7 +52,6 @@
     "category": "Digest",
     "score": 65,
     "confidence": "High",
-    "archivedAt": "2025-01-15T07:00:00Z",
     "link": "https://www.federalregister.gov"
   },
   {
@@ -68,7 +64,6 @@
     "category": "Important",
     "score": 80,
     "confidence": "High",
-    "archivedAt": "2025-01-14T09:00:00Z",
     "link": "https://www.siemens-healthineers.com/support/cybersecurity"
   }
 ]

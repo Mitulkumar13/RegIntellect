@@ -12,6 +12,7 @@ import { classifyRadiologyModality, getCaliforniaRegion, calculateRadiologyImpac
 import { sendUrgentAlert as sendAlertEmail } from "./lib/email-service";
 import { sendUrgentSMS } from "./lib/sms";
 import { checkVendorAdvisories } from "./lib/vendor-advisories";
+import { readJSON } from "./lib/json-storage";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Public auth routes
@@ -19,6 +20,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
   
   // Robot endpoints for automated data collection
   app.use('/api', robotRoutes);
+
+  // GET /api/events - Fetch events for dashboard
+  app.get("/api/events", async (req, res) => {
+    try {
+      const events = await readJSON('events.json');
+      const sortedEvents = events.sort((a, b) => {
+        // Sort by category priority then by date
+        const categoryRank = { 'Urgent': 1, 'Informational': 2, 'Digest': 3, 'Important': 4 };
+        const aRank = categoryRank[a.category] || 5;
+        const bRank = categoryRank[b.category] || 5;
+        
+        if (aRank !== bRank) return aRank - bRank;
+        return new Date(b.archivedAt || b.date).getTime() - new Date(a.archivedAt || a.date).getTime();
+      });
+      
+      res.json(sortedEvents);
+    } catch (error) {
+      console.error('Events fetch error:', error);
+      res.status(500).json({ error: 'Failed to fetch events' });
+    }
+  });
   
   // POST /api/feedback - Submit user feedback
   app.post("/api/feedback", requireAuth, async (req, res) => {

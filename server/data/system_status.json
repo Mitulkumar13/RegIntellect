@@ -1,0 +1,26 @@
+{
+  "recalls": {
+    "lastSuccess": null,
+    "lastError": null,
+    "errorCount24h": 0,
+    "lastDigestSent": null
+  },
+  "cms_pfs": {
+    "lastSuccess": null,
+    "lastError": null,
+    "errorCount24h": 0,
+    "lastDigestSent": null
+  },
+  "maude": {
+    "lastSuccess": null,
+    "lastError": null,
+    "errorCount24h": 0,
+    "lastDigestSent": null
+  },
+  "deadlines": {
+    "lastSuccess": null,
+    "lastError": null,
+    "errorCount24h": 0,
+    "lastDigestSent": null
+  }
+}

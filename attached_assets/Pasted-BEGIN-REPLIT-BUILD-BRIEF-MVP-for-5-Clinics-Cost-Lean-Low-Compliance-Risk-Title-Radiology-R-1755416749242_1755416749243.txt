@@ -1,0 +1,187 @@
+BEGIN — REPLIT BUILD BRIEF (MVP for 5 Clinics, Cost‑Lean, Low‑Compliance Risk)
+
+Title
+Radiology Regulatory & Operational Intelligence — California + Federal (MVP)
+
+Positioning
+Regulatory & operational intelligence for radiology. For informational purposes only — not medical, legal, or financial advice.
+
+Goals
+
+Deterministic, source‑cited alerts across:
+
+CMS PFS/CPT deltas (local $ impact calculator)
+
+FDA device recalls (primary) + MAUDE (support only)
+
+FDA drug recalls & shortages (contrast agents, anesthetics)
+
+Federal Register + CMS rules (deadlines & effective dates)
+
+California RHB + CDPH (state notices)
+
+Vendor security advisories (software/firmware/cyber updates) as “Important”
+
+Payer bulletins (public policy updates only; no customer/member data)
+
+Private app with login; no PHI; JSON storage now, DB later.
+
+Minimize API/AI usage (daily caps, batching, caching).
+
+Chosen options
+
+Auth: Email + password + secure cookie sessions.
+
+Storage: JSON files in /data for MVP; design to swap to DB later.
+
+Email: Use Brevo free tier (fast to set up, reliable, free daily quota).
+
+SMS: OFF (MVP). UI will allow per‑category opt‑in later.
+
+CA registries: Include both RHB and CDPH on Day 1.
+
+Payer bulletins: ON (public pages only, no customer/member data).
+
+Vendor security advisories: ON (public only), show as “Important” in dashboard; no default email/SMS.
+
+Polling:
+
+FDA device & drug: every 120min.
+
+Federal Register + CMS rules: daily 07:00 local.
+
+MAUDE: daily 07:30 local.
+
+Perplexity AI summaries:
+
+Max real‑time summaries/day: 6.
+
+Batch Digest and Newsletter: YES (single daily call each).
+
+CPT routing thresholds (percentage):
+
+Urgent if |Δ%| ≥10%.
+
+Informational if 5–9.9%.
+
+Else Digest.
+
+Drug shortage reputable lists:
+
+FDA Drug Shortages (official) and ASHP.
+
+Confidence: FDA=High; ASHP‑only=Medium; both=Highest.
+
+Device preemptive spike (z‑score):
+
+Spike if 30‑day z ≥2.0 vs trailing 6‑month baseline.
+
+If spike + recall present, escalate one category.
+
+Clinic volumes: Client‑only (localStorage). No server storage by default.
+
+Device library: Seeded minimal list of common MRI/CT/Mammo models across GE/Siemens/Philips/Canon/Fujifilm/Hologic + “Other” free‑text.
+
+“Not medical advice” placements:
+
+Login footer, dashboard header subtext, email footer
+
+One‑time onboarding modal (subtle)
+
+Contextual inline disclaimers on sensitive items
+
+Full disclaimer page at /legal/disclaimer
+
+Environment variables (Secrets)
+
+SESSION_SECRET
+
+GEMINI_API_KEY (fallback normalization only)
+
+PERPLEXITY_API_KEY (summaries; enforce caps)
+
+BREVO_API_KEY (email)
+
+Optional later: STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET
+
+Optional later: TWILIO_SID, TWILIO_TOKEN, TWILIO_FROM (SMS when enabled)
+
+Tech stack
+
+Node.js + Express
+
+EJS views (dashboard)
+
+JSON storage under /data
+
+External cron/ping to run robots
+
+Routes to implement
+
+Public marketing
+
+GET / → landing page; include positioning; link to signup/login.
+
+GET /pricing → simple free/starter/pro placeholders (no payments for MVP).
+
+GET /about, /contact, /privacy, /terms, /legal/disclaimer.
+
+Login page footer includes: “Regulatory & operational intelligence for radiology. For informational purposes only — not medical, legal, or financial advice.”
+
+Auth (private)
+
+POST /auth/signup → create user (email, bcrypt‑hashed password), set session cookie.
+
+POST /auth/login → set httpOnly, Secure, SameSite=Lax cookie session.
+
+POST /auth/logout → clear session cookie.
+
+GET /me → user profile & org membership.
+
+requireAuth middleware for all app routes below.
+
+App (private)
+
+GET /dashboard
+
+Unified list with rank: Urgent > Informational > Digest > Important (Vendor Advisories)
+
+Filters: CA‑only, Federal, Modality (MRI/CT/Mammo/US/X‑ray/IR/NM/PET), Clinic‑relevant only.
+
+Dashboard header subtext: “For information only. Not medical advice.” with info icon → shows full text.
+
+Display vendor advisories as “Important” (no default email/SMS).
+
+GET /tools
+
+CPT volume calculator (localStorage only).
+
+GET /settings
+
+Modalities/devices (seeded + Other).
+
+CPT selection per modality (curated list + Add CPT).
+
+Preferences: CA‑only toggle, categories for email, opt‑in per category (later).
+
+GET /status
+
+last success/failure timestamps per robot, error counts, AI cap status.
+
+One‑time onboarding modal shown on first dashboard view (cookie/account flag).
+
+Copy: “RadIntel delivers regulatory, reimbursement and device‑safety information for operational decision‑making. It is for informational purposes only and is not medical, legal, or financial advice.”
+
+Robots (private; ?dryRun=true supported)
+
+A) GET /api/recalls/device
+
+Frequency: every 120min via external cron.
+
+Source: openFDA device enforcement.
+
+Normalize deterministically; if schema breaks, fallback to Gemini normalization (return nulls when unknown).
+
+Confidence: base 60 (High).
+
+MA...

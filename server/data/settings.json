@@ -1,0 +1,15 @@
+{
+  "modalities": ["CT", "MRI", "X-Ray", "Ultrasound", "Mammography", "Nuclear Medicine", "Fluoroscopy", "DEXA"],
+  "devices": {
+    "CT": ["GE Revolution CT", "Siemens SOMATOM", "Philips iCT", "Canon Aquilion", "Other"],
+    "MRI": ["GE SIGNA", "Siemens MAGNETOM", "Philips Ingenia", "Canon Vantage", "Other"],
+    "Mammography": ["Hologic Selenia", "GE Senographe", "Siemens MAMMOMAT", "Fujifilm AMULET", "Other"],
+    "X-Ray": ["GE DRX", "Siemens YSIO", "Philips DigitalDiagnost", "Canon CXDI", "Other"]
+  },
+  "cptCodes": {
+    "CT": ["70450", "70460", "70470", "74150", "74160", "74170"],
+    "MRI": ["70551", "70552", "70553", "72141", "72148", "72158"],
+    "Mammography": ["77065", "77066", "77067"],
+    "X-Ray": ["71045", "71046", "73060", "73070"]
+  }
+}
