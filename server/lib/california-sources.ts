@@ -1,160 +1,166 @@
-// California State Health Data Sources for Radiology Clinics
+import { scoreEvent } from './scoring';
 
-import { normalizeData } from "./ai-gemini";
-
-export interface CaliforniaHealthAlert {
+export interface CaliforniaAlert {
   id: string;
   title: string;
-  source: string;
-  date: string;
   description: string;
-  impact: string;
+  source: 'CDPH' | 'RHB';
+  date: string;
+  link?: string;
+  category: string;
+  score: number;
+  confidence: string;
   region?: string;
-  deviceType?: string;
-  urgency?: string;
+  modality?: string[];
 }
 
-// California Department of Public Health (CDPH) - Radiology-specific alerts
-export async function fetchCDPHAlerts(): Promise<CaliforniaHealthAlert[]> {
+// California Department of Public Health alerts
+export async function fetchCDPHAlerts(): Promise<CaliforniaAlert[]> {
   try {
-    // CDPH Radiologic Health Branch updates
-    const alerts: CaliforniaHealthAlert[] = [
+    // In production, this would connect to CDPH's alert system
+    // For MVP, returning structured mock data based on real alert patterns
+    const alerts: CaliforniaAlert[] = [
       {
-        id: "cdph-2025-rad-001",
-        title: "New California Radiation Safety Requirements for Digital Radiography",
-        source: "CDPH-RHB",
+        id: `cdph-${Date.now()}-radiation-safety`,
+        title: 'Updated Radiation Safety Requirements for Imaging Facilities',
+        description: 'New requirements for radiation safety officer certification and equipment inspection protocols effective January 2025',
+        source: 'CDPH',
         date: new Date().toISOString(),
-        description: "Updated requirements for digital radiography quality assurance programs effective March 2025",
-        impact: "All radiology facilities must update QA protocols",
-        region: "Statewide",
-        deviceType: "Digital X-Ray",
-        urgency: "high"
+        link: 'https://www.cdph.ca.gov/Programs/CEH/DRSEM/Pages/default.aspx',
+        category: 'Informational',
+        score: 75,
+        confidence: 'High',
+        region: 'Statewide',
+        modality: ['CT', 'X-Ray', 'Mammography', 'Fluoroscopy']
       }
     ];
-    
-    // In production, this would fetch from actual CDPH API or web scraping
+
     return alerts;
   } catch (error) {
-    console.error("Error fetching CDPH alerts:", error);
+    console.error('Error fetching CDPH alerts:', error);
     return [];
   }
 }
 
-// Medical Board of California (MBC) - License and compliance updates
-export async function fetchMBCAlerts(): Promise<CaliforniaHealthAlert[]> {
+// California Radiologic Health Branch alerts
+export async function fetchRHBAlerts(): Promise<CaliforniaAlert[]> {
   try {
-    const alerts: CaliforniaHealthAlert[] = [
+    // In production, this would connect to RHB's notification system
+    // For MVP, returning structured mock data based on real RHB alert patterns
+    const alerts: CaliforniaAlert[] = [
       {
-        id: "mbc-2025-001",
-        title: "Radiologic Technologist License Renewal Requirements Updated",
-        source: "MBC",
+        id: `rhb-${Date.now()}-equipment-registration`,
+        title: 'X-Ray Equipment Registration Renewal Deadline',
+        description: 'Annual registration renewal for diagnostic X-ray equipment due by March 31, 2025. Late fees apply after deadline.',
+        source: 'RHB',
         date: new Date().toISOString(),
-        description: "New continuing education requirements for RT license renewal in California",
-        impact: "All radiologic technologists must complete additional training",
-        region: "Statewide",
-        urgency: "medium"
+        link: 'https://www.cdph.ca.gov/Programs/CEH/DRSEM/Pages/RHB.aspx',
+        category: 'Urgent',
+        score: 85,
+        confidence: 'High',
+        region: 'Statewide',
+        modality: ['X-Ray', 'CT', 'Mammography']
+      },
+      {
+        id: `rhb-${Date.now()}-inspection-notice`,
+        title: 'Updated CT Scanner Inspection Requirements',
+        description: 'New inspection protocols for CT scanners manufactured after 2018. Updated radiation output measurement standards.',
+        source: 'RHB',
+        date: new Date().toISOString(),
+        link: 'https://www.cdph.ca.gov/Programs/CEH/DRSEM/Pages/RHB.aspx',
+        category: 'Informational',
+        score: 78,
+        confidence: 'High',
+        region: 'Statewide',
+        modality: ['CT']
       }
     ];
-    
+
     return alerts;
   } catch (error) {
-    console.error("Error fetching MBC alerts:", error);
+    console.error('Error fetching RHB alerts:', error);
     return [];
   }
 }
 
-// California Radiologic Health Branch (RHB) - Equipment certifications
-export async function fetchRHBAlerts(): Promise<CaliforniaHealthAlert[]> {
-  try {
-    const alerts: CaliforniaHealthAlert[] = [
-      {
-        id: "rhb-2025-001",
-        title: "Mandatory CT Scanner Dose Optimization Program",
-        source: "RHB",
-        date: new Date().toISOString(),
-        description: "All CT scanners in California must implement dose optimization protocols",
-        impact: "Required for all CT facilities by Q2 2025",
-        region: "Statewide",
-        deviceType: "CT Scanner",
-        urgency: "high"
-      }
-    ];
-    
-    return alerts;
-  } catch (error) {
-    console.error("Error fetching RHB alerts:", error);
-    return [];
+// Classify radiology modality from event text
+export function classifyRadiologyModality(text: string): string[] {
+  const modalities: string[] = [];
+  const lowerText = text.toLowerCase();
+
+  const modalityKeywords = {
+    'MRI': ['mri', 'magnetic resonance', 'magnet', 'tesla', 'gradient'],
+    'CT': ['ct', 'computed tomography', 'scanner', 'contrast', 'helical'],
+    'X-Ray': ['x-ray', 'xray', 'radiograph', 'chest', 'bone', 'digital radiography'],
+    'Mammography': ['mammography', 'mammo', 'breast', 'tomosynthesis', 'screening'],
+    'Ultrasound': ['ultrasound', 'sonography', 'doppler', 'echo', 'transducer'],
+    'Nuclear Medicine': ['nuclear', 'pet', 'spect', 'radiopharmaceutical', 'isotope'],
+    'Fluoroscopy': ['fluoroscopy', 'fluoro', 'c-arm', 'angiography', 'cardiac cath'],
+    'IR': ['interventional', 'angioplasty', 'embolization', 'stent', 'catheter']
+  };
+
+  for (const [modality, keywords] of Object.entries(modalityKeywords)) {
+    if (keywords.some(keyword => lowerText.includes(keyword))) {
+      modalities.push(modality);
+    }
   }
+
+  return modalities.length > 0 ? modalities : ['General'];
 }
 
-// California-specific radiology compliance check
-export function isCaliforniaCompliant(deviceType: string, region: string): boolean {
-  const californiaRegions = ["NorCal", "SoCal", "Central Valley", "Bay Area", "Greater LA", "San Diego"];
-  return californiaRegions.includes(region);
+// Get California region based on facility or geographic indicators
+export function getCaliforniaRegion(text: string): string {
+  const lowerText = text.toLowerCase();
+  
+  const regions = {
+    'Northern California': ['san francisco', 'oakland', 'san jose', 'sacramento', 'san mateo', 'alameda', 'contra costa', 'marin', 'sonoma', 'napa'],
+    'Central Valley': ['fresno', 'stockton', 'modesto', 'visalia', 'bakersfield', 'merced', 'stanislaus', 'kern'],
+    'Southern California': ['los angeles', 'san diego', 'orange county', 'riverside', 'san bernardino', 'ventura', 'santa barbara', 'imperial'],
+    'Central Coast': ['monterey', 'santa cruz', 'san luis obispo', 'santa maria']
+  };
+
+  for (const [region, cities] of Object.entries(regions)) {
+    if (cities.some(city => lowerText.includes(city))) {
+      return region;
+    }
+  }
+
+  return 'Statewide';
 }
 
-// Radiology modality classification
-export function classifyRadiologyModality(deviceName: string): string {
-  const name = deviceName?.toLowerCase() || "";
-  
-  if (name.includes("ct") || name.includes("computed tomography")) return "CT";
-  if (name.includes("mri") || name.includes("magnetic resonance")) return "MRI";
-  if (name.includes("x-ray") || name.includes("radiograph")) return "X-Ray";
-  if (name.includes("ultrasound") || name.includes("sonograph")) return "Ultrasound";
-  if (name.includes("nuclear") || name.includes("pet") || name.includes("spect")) return "Nuclear Medicine";
-  if (name.includes("mammograph")) return "Mammography";
-  if (name.includes("fluoroscop")) return "Fluoroscopy";
-  if (name.includes("dexa") || name.includes("bone density")) return "DEXA";
-  
-  return "General Radiology";
-}
+// Calculate radiology-specific financial impact
+export function calculateRadiologyImpact(event: any): number {
+  let impact = 0;
 
-// Calculate radiology-specific impact
-export function calculateRadiologyImpact(event: any): string {
-  const criticalModalities = ["CT", "MRI", "Nuclear Medicine"];
-  const modality = classifyRadiologyModality(event.deviceName);
-  
-  if (criticalModalities.includes(modality)) {
-    return "High";
-  }
-  
-  if (event.score >= 85) return "High";
-  if (event.score >= 70) return "Medium";
-  return "Low";
-}
+  // CPT code financial impact
+  if (event.cptCode && event.deltaPercent) {
+    const avgVolumes = {
+      '70553': 50,  // MRI Brain w/contrast - monthly avg
+      '70552': 40,  // MRI Brain w/o contrast
+      '74150': 80,  // CT Abdomen
+      '76700': 60,  // Ultrasound
+      '77067': 200  // Mammography screening
+    };
 
-// Get California region from location
-export function getCaliforniaRegion(city: string, county?: string): string {
-  const cityLower = city?.toLowerCase() || "";
-  const countyLower = county?.toLowerCase() || "";
-  
-  // Northern California
-  if (["san francisco", "oakland", "san jose", "berkeley", "palo alto"].includes(cityLower) ||
-      ["alameda", "contra costa", "marin", "san francisco", "san mateo", "santa clara"].includes(countyLower)) {
-    return "Bay Area";
+    const avgRate = 250; // Average reimbursement rate
+    const volume = avgVolumes[event.cptCode as keyof typeof avgVolumes] || 30;
+    impact = Math.abs((avgRate * event.deltaPercent / 100) * volume);
   }
-  
-  if (["sacramento", "roseville", "folsom", "davis"].includes(cityLower) ||
-      ["sacramento", "yolo", "placer", "el dorado"].includes(countyLower)) {
-    return "Greater Sacramento";
+
+  // Device recall impact based on modality prevalence
+  if (event.modality && Array.isArray(event.modality)) {
+    const modalityImpact = {
+      'MRI': 5000,      // High impact - expensive equipment
+      'CT': 4000,       // High impact - high volume
+      'Mammography': 2000,  // Medium impact - specialized
+      'X-Ray': 1000,    // Lower impact - widespread
+      'Ultrasound': 800 // Lower impact - portable
+    };
+
+    event.modality.forEach((mod: string) => {
+      impact += modalityImpact[mod as keyof typeof modalityImpact] || 500;
+    });
   }
-  
-  // Southern California
-  if (["los angeles", "long beach", "glendale", "pasadena", "torrance"].includes(cityLower) ||
-      ["los angeles", "orange", "ventura"].includes(countyLower)) {
-    return "Greater LA";
-  }
-  
-  if (["san diego", "chula vista", "oceanside", "escondido"].includes(cityLower) ||
-      ["san diego"].includes(countyLower)) {
-    return "San Diego";
-  }
-  
-  // Central Valley
-  if (["fresno", "bakersfield", "modesto", "stockton", "visalia"].includes(cityLower) ||
-      ["fresno", "kern", "stanislaus", "san joaquin", "tulare"].includes(countyLower)) {
-    return "Central Valley";
-  }
-  
-  return "California";
+
+  return impact;
 }

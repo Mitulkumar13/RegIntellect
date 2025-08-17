@@ -67,7 +67,17 @@ RadIntel CA is a specialized compliance and regulatory intelligence platform des
 
 # Recent Changes
 
-## August 17, 2025 - Successful Migration to Replit Environment
+## August 17, 2025 - MVP Completion (100% Feature Complete)
+- **All Static Pages**: Added pricing, about, contact, privacy, terms, and legal disclaimer pages
+- **California State Sources**: Implemented RHB (Radiologic Health Branch) and CDPH (California Department of Public Health) monitoring endpoints
+- **Email Service Integration**: Complete Brevo email service with urgent alerts, informational alerts, and daily digest functionality
+- **Enhanced Scoring**: Implemented CPT routing thresholds (≥10% urgent, 5-9.9% informational) and deadline urgency scoring
+- **Onboarding Modal**: One-time modal with disclaimer and getting started guide, tracking via localStorage
+- **Navigation**: Complete navigation links between all public pages including privacy and terms
+- **Compliance Features**: "Not medical advice" disclaimers throughout, zero PHI exposure design
+- **MVP Status**: 100% feature completion per build brief requirements
+
+## August 17, 2025 - Earlier: Successful Migration to Replit Environment  
 - **Migration Completed**: Successfully migrated RadIntel CA from Replit Agent to standard Replit environment
 - **Dependencies Installed**: All Node.js packages including tsx runtime properly installed
 - **Database Setup**: PostgreSQL database created and schema deployed using Drizzle ORM

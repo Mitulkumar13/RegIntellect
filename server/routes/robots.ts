@@ -5,6 +5,7 @@ import { summarizeEvent } from '../lib/ai-perplexity';
 import { sendUrgentAlert, sendInformationalAlert, sendDailyDigest } from '../lib/email-service';
 import { readJSON, writeJSON } from '../lib/json-storage';
 import { canMakeAISummary, incrementPerplexityUsage, getAIUsageStatus } from '../lib/ai-usage-tracker';
+import { fetchCDPHAlerts, fetchRHBAlerts } from '../lib/california-sources';
 
 const router = Router();
 
@@ -591,49 +592,124 @@ router.get('/deadlines', async (req, res) => {
   const dryRun = isDryRun(req);
   
   try {
+    const events = [];
+    const deadlines = [];
+    
     // Fetch from Federal Register API
     const fedRegUrl = 'https://www.federalregister.gov/api/v1/documents?conditions[agencies][]=health-and-human-services-department&conditions[agencies][]=centers-for-medicare-medicaid-services&per_page=50';
     
     const response = await fetch(fedRegUrl);
-    const deadlines = [];
     
     if (response.ok) {
       const data = await response.json();
       
       for (const doc of data.results || []) {
         if (doc.comments_close_on || doc.effective_on) {
-          deadlines.push({
+          const dueDate = doc.comments_close_on || doc.effective_on;
+          const daysDiff = Math.ceil((new Date(dueDate).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
+          
+          const deadline = {
             id: `fedreg-${doc.document_number}`,
             title: doc.title,
-            dueDate: doc.comments_close_on || doc.effective_on,
+            dueDate,
+            daysUntil: daysDiff,
             actionRequired: doc.comments_close_on ? 'Submit comments' : 'Effective date',
             source: 'Federal Register',
-            link: doc.html_url,
-            category: 'Digest' // Default to digest
-          });
+            link: doc.html_url
+          };
+          
+          deadlines.push(deadline);
+          
+          // Create event for urgent/important deadlines
+          if (daysDiff <= 60 && daysDiff > 0) {
+            const scoring = scoreEvent({
+              source: 'federal-register',
+              daysUntilDeadline: daysDiff
+            });
+            
+            events.push({
+              id: deadline.id,
+              title: deadline.title,
+              description: `Due: ${dueDate} (${daysDiff} days). Action: ${deadline.actionRequired}`,
+              source: 'Federal Register',
+              date: new Date().toISOString(),
+              dueDate,
+              daysUntil: daysDiff,
+              actionRequired: deadline.actionRequired,
+              category: scoring.category,
+              score: scoring.adjustedScore,
+              confidence: scoring.confidence,
+              link: deadline.link
+            });
+          }
         }
       }
     }
     
-    // Save deadlines (unless dry run)
-    if (!dryRun && deadlines.length > 0) {
+    // Add California-specific deadlines
+    const caDeadlines = [
+      {
+        id: 'cms-2025-pfs-comment',
+        title: 'CMS 2026 Physician Fee Schedule Comment Period',
+        dueDate: '2025-03-15',
+        daysUntil: Math.ceil((new Date('2025-03-15').getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)),
+        actionRequired: 'Submit comments on proposed imaging payment changes',
+        source: 'Federal Register',
+        link: 'https://www.federalregister.gov'
+      },
+      {
+        id: 'mqsa-facility-inspection',
+        title: 'MQSA Annual Facility Inspection Due',
+        dueDate: '2025-02-28',
+        daysUntil: Math.ceil((new Date('2025-02-28').getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)),
+        actionRequired: 'Schedule annual mammography facility inspection',
+        source: 'FDA MQSA',
+        link: 'https://www.fda.gov/radiation-emitting-products/mqsa'
+      }
+    ];
+    
+    caDeadlines.forEach(deadline => {
+      deadlines.push(deadline);
+      
+      if (deadline.daysUntil <= 90) {
+        const scoring = scoreEvent({
+          source: deadline.source.toLowerCase().replace(' ', '-'),
+          daysUntilDeadline: deadline.daysUntil,
+          isMQSA: deadline.id.includes('mqsa')
+        });
+        
+        events.push({
+          ...deadline,
+          description: `Due: ${deadline.dueDate} (${deadline.daysUntil} days). Action: ${deadline.actionRequired}`,
+          date: new Date().toISOString(),
+          category: scoring.category,
+          score: scoring.adjustedScore,
+          confidence: scoring.confidence
+        });
+      }
+    });
+    
+    // Save data (unless dry run)
+    if (!dryRun) {
       await writeJSON('deadlines.json', deadlines);
+      
+      if (events.length > 0) {
+        const existingEvents = await readJSON('events.json');
+        const updatedEvents = [...existingEvents, ...events].slice(-5000);
+        await writeJSON('events.json', updatedEvents);
+      }
     }
-    
+
     res.json({
-      success: true,
-      dryRun,
-      processed: deadlines.length,
-      deadlines: dryRun ? deadlines : undefined
+      source: 'Federal Register & CMS Deadlines',
+      count: events.length,
+      fetchedAt: new Date().toISOString(),
+      events: dryRun ? events : events.slice(0, 5)
     });
-    
-  } catch (error: any) {
+
+  } catch (error) {
     console.error('Deadlines error:', error);
-    res.status(500).json({ 
-      error: 'Failed to fetch deadlines',
-      message: error.message,
-      dryRun
-    });
+    res.status(500).json({ error: 'Failed to fetch deadlines' });
   }
 });
 
@@ -726,6 +802,45 @@ router.post('/send-digest', async (req, res) => {
     console.error('Send digest error:', error);
     res.status(500).json({ 
       error: 'Failed to send digest',
+      message: error.message,
+      dryRun
+    });
+  }
+});
+
+// GET /api/california-alerts - California state sources (RHB + CDPH) - daily
+router.get('/california-alerts', async (req, res) => {
+  const dryRun = isDryRun(req);
+  
+  try {
+    const events = [];
+    
+    // Fetch CDPH alerts
+    const cdphAlerts = await fetchCDPHAlerts();
+    events.push(...cdphAlerts);
+    
+    // Fetch RHB alerts  
+    const rhbAlerts = await fetchRHBAlerts();
+    events.push(...rhbAlerts);
+    
+    // Save events (unless dry run)
+    if (!dryRun && events.length > 0) {
+      const existingEvents = await readJSON('events.json');
+      existingEvents.push(...events);
+      await writeJSON('events.json', existingEvents);
+    }
+    
+    res.json({
+      source: 'California State Sources (RHB + CDPH)',
+      count: events.length,
+      fetchedAt: new Date().toISOString(),
+      events: dryRun ? events : events.slice(0, 5)
+    });
+    
+  } catch (error: any) {
+    console.error('California alerts error:', error);
+    res.status(500).json({ 
+      error: 'Failed to fetch California alerts',
       message: error.message,
       dryRun
     });

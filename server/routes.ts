@@ -8,7 +8,7 @@ import robotRoutes from "./routes/robots";
 import { scoreEvent, categorizeByScore, shouldSummarize } from "./lib/score";
 import { normalizeData, detectPatterns } from "./lib/ai-gemini";
 import { summarizeEvent } from "./lib/ai-perplexity";
-import { classifyRadiologyModality, getCaliforniaRegion, calculateRadiologyImpact, fetchCDPHAlerts, fetchRHBAlerts, fetchMBCAlerts } from "./lib/california-sources";
+import { classifyRadiologyModality, getCaliforniaRegion, calculateRadiologyImpact, fetchCDPHAlerts, fetchRHBAlerts } from "./lib/california-sources";
 import { sendUrgentAlert as sendAlertEmail } from "./lib/email-service";
 import { sendUrgentSMS } from "./lib/sms";
 import { checkVendorAdvisories } from "./lib/vendor-advisories";
