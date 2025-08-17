@@ -262,7 +262,7 @@ export default function AlertCard({ event }: AlertCardProps) {
                         <strong>Classification:</strong> {event.classification}<br />
                       </>
                     )}
-                    {event.reasons.length > 0 && (
+                    {event.reasons && Array.isArray(event.reasons) && event.reasons.length > 0 && (
                       <>
                         <strong>Scoring Reasons:</strong><br />
                         <ul className="list-disc list-inside mt-1">
@@ -289,7 +289,7 @@ export default function AlertCard({ event }: AlertCardProps) {
                         <strong>Reason:</strong> {event.reason}<br />
                       </>
                     )}
-                    {event.cptCodes && event.cptCodes.length > 0 && (
+                    {event.cptCodes && Array.isArray(event.cptCodes) && event.cptCodes.length > 0 && (
                       <>
                         <strong>CPT Codes:</strong> {event.cptCodes.join(', ')}<br />
                       </>
