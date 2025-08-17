@@ -8,6 +8,10 @@ import robotRoutes from "./routes/robots";
 import { scoreEvent, categorizeByScore, shouldSummarize } from "./lib/score";
 import { normalizeData, detectPatterns } from "./lib/ai-gemini";
 import { summarizeEvent } from "./lib/ai-perplexity";
+import { classifyRadiologyModality, getCaliforniaRegion, calculateRadiologyImpact, fetchCDPHAlerts, fetchRHBAlerts, fetchMBCAlerts } from "./lib/california-sources";
+import { sendUrgentAlert as sendAlertEmail } from "./lib/email-service";
+import { sendUrgentSMS } from "./lib/sms";
+import { checkVendorAdvisories } from "./lib/vendor-advisories";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Public auth routes
@@ -20,10 +24,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/feedback", requireAuth, async (req, res) => {
     try {
       const feedbackData = insertFeedbackSchema.parse(req.body);
-      const savedFeedback = await storage.createFeedback({
-        ...feedbackData,
-        userId: (req as any).user?.id || null
-      });
+      const savedFeedback = await storage.createFeedback(feedbackData);
       
       res.json({ 
         success: true, 
