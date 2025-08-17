@@ -6,3 +6,6 @@ vite.config.ts.*
 *.tar.gz.local/
 .local/
 DEST/
+.local/
+node_modules/
+dist/
