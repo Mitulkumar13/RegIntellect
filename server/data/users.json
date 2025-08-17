@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "id": "f29afd97-1fcb-48b5-96e2-3dfa42a9a3d7",
+    "email": "mituluttamani@gmail.com",
+    "password": "$2b$10$pawuyOVUtLq8kg2rQXxisu8pJAx08D/nYbn6F6trFqx0xVfBWJOwe",
+    "createdAt": "2025-08-17T13:20:23.287Z",
+    "onboardingCompleted": false
+  }
+]
