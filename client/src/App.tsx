@@ -4,7 +4,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Layout from "@/components/layout";
-import Dashboard from "@/pages/dashboard";
+import Dashboard from "@/pages/Dashboard";
 import Alerts from "@/pages/alerts";
 import Archive from "@/pages/archive";
 import Tools from "@/pages/tools";
@@ -14,6 +14,7 @@ import { AuthPage } from "@/pages/auth";
 import Landing from "@/pages/landing";
 import Pricing from "@/pages/pricing";
 import LegalDisclaimer from "@/pages/legal-disclaimer";
+import Onboarding from "./pages/Onboarding";
 import { useState, useEffect } from "react";
 
 function Router() {
@@ -71,6 +72,7 @@ function Router() {
     <Layout>
       <Switch>
         <Route path="/dashboard" component={Dashboard} />
+        <Route path="/onboarding" component={Onboarding} />
         <Route path="/alerts" component={Alerts} />
         <Route path="/archive" component={Archive} />
         <Route path="/tools" component={Tools} />

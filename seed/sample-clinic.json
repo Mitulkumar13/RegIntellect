@@ -1,0 +1,171 @@
+{
+  "clinic": {
+    "name": "Bay Area Imaging Center",
+    "address": "1234 Medical Plaza Drive",
+    "city": "San Francisco",
+    "state": "CA",
+    "zipCode": "94102",
+    "contactEmails": ["admin@bayimaging.com", "compliance@bayimaging.com"],
+    "timezone": "America/Los_Angeles",
+    "payerList": ["Medicare", "Medicaid", "Blue Cross Blue Shield", "Aetna", "Kaiser Permanente"],
+    "onboardingStatus": "pending"
+  },
+  "devices": [
+    {
+      "manufacturer": "GE Healthcare",
+      "model": "Revolution CT",
+      "serial": "GE2024001",
+      "catalogCode": "REV-CT-001",
+      "modalityType": "CT",
+      "dateInstalled": "2023-06-15",
+      "warrantyExpiry": "2026-06-15",
+      "isActive": true
+    },
+    {
+      "manufacturer": "Siemens Healthineers",
+      "model": "MAGNETOM Vida",
+      "serial": "SIE2024002",
+      "catalogCode": "MAG-VIDA-001",
+      "modalityType": "MRI",
+      "dateInstalled": "2023-08-20",
+      "warrantyExpiry": "2026-08-20",
+      "isActive": true
+    },
+    {
+      "manufacturer": "Philips Healthcare",
+      "model": "DigitalDiagnost C90",
+      "serial": "PHI2024003",
+      "catalogCode": "DD-C90-001",
+      "modalityType": "X-Ray",
+      "dateInstalled": "2023-04-10",
+      "warrantyExpiry": "2026-04-10",
+      "isActive": true
+    },
+    {
+      "manufacturer": "Hologic",
+      "model": "Selenia Dimensions",
+      "serial": "HOL2024004",
+      "catalogCode": "SEL-DIM-001",
+      "modalityType": "Mammography",
+      "dateInstalled": "2023-09-05",
+      "warrantyExpiry": "2026-09-05",
+      "isActive": true
+    },
+    {
+      "manufacturer": "Canon Medical",
+      "model": "Aplio i800",
+      "serial": "CAN2024005",
+      "catalogCode": "APL-I800-001",
+      "modalityType": "Ultrasound",
+      "dateInstalled": "2023-07-12",
+      "warrantyExpiry": "2026-07-12",
+      "isActive": true
+    }
+  ],
+  "cptProfiles": [
+    {
+      "cptCode": "70450",
+      "description": "CT head/brain without contrast",
+      "yearlyVolume": 450,
+      "avgReimbursement": 296.65,
+      "payerMix": {
+        "Medicare": 0.45,
+        "Medicaid": 0.20,
+        "Commercial": 0.25,
+        "Cash Pay": 0.10
+      },
+      "isActive": true
+    },
+    {
+      "cptCode": "70460",
+      "description": "CT head/brain with contrast",
+      "yearlyVolume": 275,
+      "avgReimbursement": 398.75,
+      "payerMix": {
+        "Medicare": 0.40,
+        "Medicaid": 0.15,
+        "Commercial": 0.35,
+        "Cash Pay": 0.10
+      },
+      "isActive": true
+    },
+    {
+      "cptCode": "71250",
+      "description": "CT thorax without contrast",
+      "yearlyVolume": 680,
+      "avgReimbursement": 312.45,
+      "payerMix": {
+        "Medicare": 0.50,
+        "Medicaid": 0.25,
+        "Commercial": 0.20,
+        "Cash Pay": 0.05
+      },
+      "isActive": true
+    },
+    {
+      "cptCode": "70551",
+      "description": "MRI brain without contrast",
+      "yearlyVolume": 320,
+      "avgReimbursement": 1145.60,
+      "payerMix": {
+        "Medicare": 0.35,
+        "Medicaid": 0.10,
+        "Commercial": 0.45,
+        "Cash Pay": 0.10
+      },
+      "isActive": true
+    },
+    {
+      "cptCode": "70552",
+      "description": "MRI brain with contrast",
+      "yearlyVolume": 195,
+      "avgReimbursement": 1387.25,
+      "payerMix": {
+        "Medicare": 0.30,
+        "Medicaid": 0.08,
+        "Commercial": 0.50,
+        "Cash Pay": 0.12
+      },
+      "isActive": true
+    },
+    {
+      "cptCode": "71046",
+      "description": "Chest X-ray two views",
+      "yearlyVolume": 1250,
+      "avgReimbursement": 58.95,
+      "payerMix": {
+        "Medicare": 0.55,
+        "Medicaid": 0.30,
+        "Commercial": 0.12,
+        "Cash Pay": 0.03
+      },
+      "isActive": true
+    },
+    {
+      "cptCode": "77067",
+      "description": "Screening mammography bilateral",
+      "yearlyVolume": 890,
+      "avgReimbursement": 124.80,
+      "payerMix": {
+        "Medicare": 0.48,
+        "Medicaid": 0.22,
+        "Commercial": 0.25,
+        "Cash Pay": 0.05
+      },
+      "isActive": true
+    },
+    {
+      "cptCode": "76700",
+      "description": "Ultrasound abdomen complete",
+      "yearlyVolume": 420,
+      "avgReimbursement": 198.35,
+      "payerMix": {
+        "Medicare": 0.42,
+        "Medicaid": 0.28,
+        "Commercial": 0.25,
+        "Cash Pay": 0.05
+      },
+      "isActive": true
+    }
+  ]
+}

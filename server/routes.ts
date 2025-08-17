@@ -5,9 +5,15 @@ import { insertEventSchema, insertFeedbackSchema, type AlertResponse } from "@sh
 import authRouter from "./routes/auth";
 import { requireAuth } from "./lib/auth";
 import robotRoutes from "./routes/robots";
+import onboardingRoutes from "./routes/onboarding";
+import alertsRoutes from "./routes/alerts";
+import dataCollectionRoutes from "./routes/data-collection";
 import { scoreEvent, categorizeByScore, shouldSummarize } from "./lib/score";
 import { normalizeData, detectPatterns } from "./lib/ai-gemini";
 import { summarizeEvent } from "./lib/ai-perplexity";
+import { classifyRadiologyModality, getCaliforniaRegion, calculateRadiologyImpact } from "./lib/radiology-utils";
+import { sendAlertEmail, sendUrgentSMS } from "./lib/email-alerts";
+import { checkVendorAdvisories, fetchCDPHAlerts, fetchRHBAlerts, fetchMBCAlerts } from "./lib/vendor-services";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Public auth routes
@@ -16,13 +22,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Robot endpoints for automated data collection
   app.use('/api', robotRoutes);
   
+  // Comprehensive RadIntel CA routes
+  app.use('/api', onboardingRoutes);
+  app.use('/api', alertsRoutes);
+  app.use('/api/data', dataCollectionRoutes);
+  
   // POST /api/feedback - Submit user feedback
   app.post("/api/feedback", requireAuth, async (req, res) => {
     try {
       const feedbackData = insertFeedbackSchema.parse(req.body);
       const savedFeedback = await storage.createFeedback({
         ...feedbackData,
-        userId: (req as any).user?.id || null
+        // Remove userId from feedback for now
       });
       
       res.json({ 

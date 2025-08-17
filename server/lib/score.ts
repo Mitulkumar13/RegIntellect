@@ -1,114 +1,113 @@
-export interface ScoringResult {
-  score: number;
-  reasons: string[];
+// Deterministic scoring system for regulatory events
+
+export interface ScoringFactors {
+  sourceReliability: number; // 0-30 points
+  deviceRelevance: number; // 0-25 points
+  riskLevel: number; // 0-25 points
+  californiaRelevance: number; // 0-10 points
+  financialImpact: number; // 0-10 points
 }
 
-export interface EventForScoring {
-  sources: string[];
-  flags?: {
-    manufacturer_notice?: boolean;
-    maude_signal?: boolean;
-    california_mandate?: boolean;
-    radiation_safety?: boolean;
+export function scoreEvent(event: any): { score: number; factors: ScoringFactors } {
+  let sourceReliability = 0;
+  let deviceRelevance = 0;
+  let riskLevel = 0;
+  let californiaRelevance = 0;
+  let financialImpact = 0;
+
+  // Source reliability scoring (0-30 points)
+  switch (event.source?.toLowerCase()) {
+    case 'openfda':
+    case 'fda':
+      sourceReliability = 30; // Highest reliability
+      break;
+    case 'cms':
+      sourceReliability = 28;
+      break;
+    case 'fedreg':
+      sourceReliability = 25;
+      break;
+    case 'cdph':
+    case 'rhb':
+      sourceReliability = 22;
+      break;
+    case 'mbc':
+      sourceReliability = 20;
+      break;
+    default:
+      sourceReliability = 15;
+  }
+
+  // Device relevance scoring (0-25 points)
+  const deviceKeywords = [
+    'ct', 'mri', 'x-ray', 'ultrasound', 'mammograph', 'fluoroscop',
+    'radiograph', 'imaging', 'scanner', 'contrast', 'nuclear medicine',
+    'pet', 'spect', 'angiograph', 'interventional'
+  ];
+  
+  const description = (event.product_description || event.device_name || event.title || '').toLowerCase();
+  const matchedKeywords = deviceKeywords.filter(keyword => description.includes(keyword));
+  
+  if (matchedKeywords.length >= 3) deviceRelevance = 25;
+  else if (matchedKeywords.length >= 2) deviceRelevance = 20;
+  else if (matchedKeywords.length >= 1) deviceRelevance = 15;
+  else if (description.includes('medical') || description.includes('hospital')) deviceRelevance = 8;
+  else deviceRelevance = 0;
+
+  // Risk level scoring (0-25 points)
+  const riskIndicators = (event.classification || event.reason_for_recall || event.reason || '').toLowerCase();
+  
+  if (riskIndicators.includes('class i') || riskIndicators.includes('death') || riskIndicators.includes('serious injury')) {
+    riskLevel = 25;
+  } else if (riskIndicators.includes('class ii') || riskIndicators.includes('injury') || riskIndicators.includes('malfunction')) {
+    riskLevel = 18;
+  } else if (riskIndicators.includes('class iii') || riskIndicators.includes('labeling')) {
+    riskLevel = 10;
+  } else if (riskIndicators.includes('recall') || riskIndicators.includes('safety')) {
+    riskLevel = 12;
+  } else {
+    riskLevel = 5;
+  }
+
+  // California relevance (0-10 points)
+  const location = (event.state || event.distribution_pattern || '').toLowerCase();
+  if (location.includes('ca') || location.includes('california')) {
+    californiaRelevance = 10;
+  } else if (location.includes('nationwide') || location.includes('us')) {
+    californiaRelevance = 8;
+  } else if (location.includes('west') || location.includes('pacific')) {
+    californiaRelevance = 6;
+  } else {
+    californiaRelevance = 3;
+  }
+
+  // Financial impact (0-10 points)
+  const hasCptImpact = event.cpt_codes && event.cpt_codes.length > 0;
+  const hasPaymentChange = event.delta && (event.delta.old || event.delta.new);
+  
+  if (hasPaymentChange) {
+    const changePercent = Math.abs(((event.delta.new - event.delta.old) / event.delta.old) * 100);
+    if (changePercent >= 10) financialImpact = 10;
+    else if (changePercent >= 5) financialImpact = 7;
+    else financialImpact = 4;
+  } else if (hasCptImpact) {
+    financialImpact = 6;
+  } else {
+    financialImpact = 2;
+  }
+
+  const totalScore = sourceReliability + deviceRelevance + riskLevel + californiaRelevance + financialImpact;
+
+  return {
+    score: totalScore,
+    factors: {
+      sourceReliability,
+      deviceRelevance,
+      riskLevel,
+      californiaRelevance,
+      financialImpact
+    }
   };
-  match?: {
-    exact_model?: boolean;
-    fuzzy_model?: boolean;
-  };
-  delta?: {
-    old: number;
-    new: number;
-  } | null;
-  modalityType?: string;
-  californiaRegion?: string;
-  radiologyImpact?: string;
-}
-
-export function scoreEvent(event: EventForScoring): ScoringResult {
-  let score = 0;
-  const reasons: string[] = [];
-
-  // Source-based scoring
-  if (event.sources.includes('openfda:enforcement')) {
-    score += 60;
-    reasons.push('FDA enforcement action');
-  }
-
-  if (event.sources.includes('cms:pfs_change')) {
-    score += 70;
-    reasons.push('Official CMS payment change');
-  }
-
-  // California state source scoring
-  if (event.sources.includes('cdph')) {
-    score += 65;
-    reasons.push('California Department of Public Health alert');
-  }
-
-  if (event.sources.includes('rhb')) {
-    score += 70;
-    reasons.push('California Radiologic Health Branch requirement');
-  }
-
-  // Flag-based scoring
-  if (event.flags?.manufacturer_notice) {
-    score += 20;
-    reasons.push('Manufacturer notice present');
-  }
-
-  if (event.flags?.maude_signal) {
-    score += 10;
-    reasons.push('MAUDE signal detected');
-  }
-
-  if (event.flags?.california_mandate) {
-    score += 25;
-    reasons.push('California state mandate');
-  }
-
-  if (event.flags?.radiation_safety) {
-    score += 30;
-    reasons.push('Radiation safety requirement');
-  }
-
-  // Match-based scoring
-  if (event.match?.exact_model) {
-    score += 20;
-    reasons.push('Exact device model match');
-  }
-
-  if (event.match?.fuzzy_model) {
-    score += 10;
-    reasons.push('Fuzzy device model match');
-  }
-
-  // Radiology modality-specific scoring
-  const criticalModalities = ["CT", "MRI", "Nuclear Medicine", "Mammography"];
-  if (event.modalityType && criticalModalities.includes(event.modalityType)) {
-    score += 15;
-    reasons.push(`Critical radiology modality: ${event.modalityType}`);
-  }
-
-  // California region boost for major areas
-  const majorCaliforniaRegions = ["Bay Area", "Greater LA", "San Diego"];
-  if (event.californiaRegion && majorCaliforniaRegions.includes(event.californiaRegion)) {
-    score += 5;
-    reasons.push(`Major California market: ${event.californiaRegion}`);
-  }
-
-  // Financial impact boost
-  if (event.delta && Math.abs(event.delta.new - event.delta.old) > 50) {
-    score += 15;
-    reasons.push('Significant financial impact');
-  }
-
-  // Radiology impact scoring
-  if (event.radiologyImpact === "High") {
-    score += 10;
-    reasons.push('High radiology impact');
-  }
-
-  return { score, reasons };
 }
 
 export function categorizeByScore(score: number): string {
@@ -118,6 +117,13 @@ export function categorizeByScore(score: number): string {
   return 'Suppressed';
 }
 
-export function shouldSummarize(category: string): boolean {
-  return category === 'Urgent' || category === 'Informational';
+export function shouldSummarize(score: number): boolean {
+  return score >= 75; // Only summarize Urgent and Informational alerts
+}
+
+export function getPriorityLevel(score: number): 'CRITICAL' | 'HIGH' | 'MEDIUM' | 'LOW' {
+  if (score >= 90) return 'CRITICAL';
+  if (score >= 75) return 'HIGH';
+  if (score >= 60) return 'MEDIUM';
+  return 'LOW';
 }

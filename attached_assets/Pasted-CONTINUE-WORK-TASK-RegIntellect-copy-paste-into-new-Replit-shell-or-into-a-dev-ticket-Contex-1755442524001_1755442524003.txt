@@ -1,0 +1,151 @@
+CONTINUE WORK TASK - RegIntellect (copy/paste into new Replit shell, or into a dev ticket)
+
+Context summary (read first):
+- This project is the RadIntel CA MVP. The current prototype implements core UI and basic alert flows. The product scope to finish is the "8 features" (CPT/PFS impact, FDA drug/device alerts, MAUDE support, audit calendar, regulatory news, newsletter, one unified dashboard) PLUS the 5 missing items (payer updates, CA state licensing, OSHA/radiation safety, HIPAA/cyber alerts, financial benchmarking).
+- Repo: GITHUB_REPO_URL
+- Work branch: create and push work to WORK_BRANCH.
+- Use `.env.example` for all config placeholders (no secrets in repo).
+
+Priority (do in this order):
+1) Onboarding + data model (clinic, devices, CPT codes).
+2) CMS PFS / CPT $-impact pipeline.
+3) FDA drug recalls & shortages pipeline.
+4) openFDA device + MAUDE monitoring + "pre-alert" engine.
+5) Audit & compliance calendar (FederalRegister, CMS, MQSA, CA RHB).
+6) Regulatory news feed + urgency tagging.
+7) Dashboard UI: Alerts, Compliance Calendar, News, Financial Impact card.
+8) Newsletter generation (weekly digest).
+9) Extra priority (if time): payer/policy feeds, CA licensing checks, OSHA/HIPAA alerts, benchmarking.
+
+Detailed tasks (developer checklist):
+
+A. Repo & infra bootstrap
+- Create branch `WORK_BRANCH` and push.
+- Add Dockerfile(s) and docker-compose.yml if missing; add `start-local.sh`.
+- Ensure `README.md` has run instructions: `npm install`, `npm run dev`, DB seed command.
+- Add `.env.example` listing required env vars (API keys, DB URLs, etc.)
+- Add a `/seed/sample-clinic.json` with example clinic, devices, CPT list for local test.
+
+B. Data model (DB schema)
+- Tables/collections:
+  - `clinics` {id, name, address, state, contact_emails[], timezone, onboarding_status, payer_list[]}
+  - `devices` {id, clinic_id, manufacturer, model, serial (optional), catalog_code, date_installed}
+  - `cpt_profiles` {clinic_id, cpt_code, description, yearly_volume, avg_reimbursement}
+  - `alerts` {id, clinic_id (nullable), type, priority, source, matched_device_id (nullable), cpt_codes[], payload, created_at, acknowledged}
+  - `compliance_items` {clinic_id, type (MQSA, RHB, HIPAA, OSHA), due_date, last_action, reminder_windows}
+  - `news_items` {title, body, source, url, tags[], urgency}
+  - `maude_events`, `openfda_events`, `cms_pfs_changes`
+- Provide migrations and ORM models (Prisma/Sequelize/SQLAlchemy depending on stack). Seed DB with sample clinic and at least 3 devices + 20 CPT codes.
+
+C. Onboarding: device + CPT linking UI & API
+- Build a simple 2-step onboarding API + UI:
+  1. Step 1: Add clinic details + location + timezone.
+  2. Step 2: Upload devices CSV (columns: manufacturer, model, serial, year) OR manual add.
+  3. Step 3: Upload CPT CSV (cpt_code, description, annual_volume).
+- Backend should:
+  - Normalize device manufacturers/models on ingest (simple lowercase trim + common alias table).
+  - Attempt automatic model matching against a `/reference/devices.json` (initially small).
+  - Return list of unmatched models for human review (UI shows unmatched items).
+- Acceptance: Upload CSV with 3 devices -> API returns 3 matched (or unmatched list). CPT upload computes sum volume and stores.
+
+D. CMS PFS / CPT $-impact pipeline
+- Ingest CMS PFS files automatically:
+  - Fetch CMS PFS change files from CMS (Federal source). If full CMS fetch is hard in dev, implement a mock-fetch endpoint that uses a sample PFS CSV.
+- Build service: `compute_pfs_impact(clinic_id, new_pfs_file)`:
+  - For each CPT in clinic profile, compute new_reimbursement = new_pfs[cpt] * clinic_multiplier (if needed).
+  - Calculate `delta = (new_total - old_total)` and `delta_percent`.
+- Create alert rule: if `abs(delta) >= $X` OR `delta_percent >= Y%` => create `alerts` with priority = HIGH.
+- UI: Financial Impact card showing old_total, new_total, delta ($), delta (%), top-5 CPTs contributing to change.
+- Acceptance: Run `compute_pfs_impact` with sample data -> alert created and dashboard card updated.
+
+E. FDA drug recalls & shortages pipeline
+- Data sources:
+  - openFDA drug enforcement API (enforcement.json)
+  - FDA Drug Shortages RSS / API (or mock)
+  - Optionally ASHP or other bulletin.
+- Implement a scheduled job (cron) to poll these endpoints every 10–30 minutes.
+- Filter rules:
+  - Keep list of radiology keywords: `["contrast", "iohexol", "iodixanol", "gadobutrol", "gadolinium", "iodine", "propofol", "anestheti*"]`
+  - For every returned recall/shortage item, if keywords or product name matches, create an alert with urgency=HIGH and source link.
+- Push alerts to `alerts` table and email webhook to clinic contacts.
+- Acceptance: Simulate incoming enforcement JSON for "Iohexol recall" -> alert arrives in clinic inbox and dashboard.
+
+F. Device pre-emptive detection (openFDA + MAUDE)
+- Data sources:
+  - openFDA device APIs (`device/event`, `device/enforcement`).
+  - MAUDE events (via openFDA); schedule daily ingestion.
+- Implement trend detector:
+  - For each `device model` in reference, compute 7-day rolling count of MAUDE reports of relevant severity keywords (`malfunction`, `injury`, `death`, `overheat`, etc.)
+  - If `count >= model_threshold` OR `regional_count >= region_threshold`, create a `pre-alert` (priority=HIGH or MED depending on signal strength).
+  - Corroborate with openFDA enforcement (if recall exists -> escalate to CRITICAL).
+- Important: **Do not auto-issue clinical action advice.** Alerts are informational and must link to source documents.
+- Acceptance: Seed MAUDE mock data showing spike -> `pre-alert` created; alert contains supporting evidence records and link to openFDA.
+
+G. Audit deadline tracking & reminders (FederalRegister, CMS, MQSA, CA RHB)
+- Implement scheduled scrapers or use official RSS/APIs:
+  - FederalRegister API (for rule posting).
+  - CMS RSS / API for final rules.
+  - MQSA notices & CA Radiologic Health Branch pages (scrape & normalize).
+- Map rules to compliance item types and generate `compliance_items` for each clinic based on uploaded devices/licenses.
+- Reminders:
+  - Create scheduled emails/todo reminders at 90, 30, 7 days prior to due_date.
+- Acceptance: Add a clinic device with MQSA expiry date -> reminders scheduled and appear in dashboard calendar.
+
+H. Regulatory news feed + urgency tagging
+- Aggregate RSS/APIs from FDA, CMS, CA DOH, ACR, Radiology Business.
+- Simple NLP rules:
+  - If title or body contains "recall", "safety", "warning", "recall", "recall - immediate", set urgency=CRITICAL.
+  - If "final rule", "effective date", set urgency=HIGH.
+  - Else FYI.
+- Store `news_items` and display ranked (Critical > High > FYI) on dashboard.
+- Acceptance: Insert sample news article -> appears top of dashboard under Critical.
+
+I. Weekly summary / newsletter
+- Build a job that compiles weekly items per clinic:
+  - All critical alerts (device/drug), compliance deadlines upcoming, PFS impacts, and top news.
+- Generate both dashboard digest and an email-friendly HTML.
+- Acceptance: Run digest job -> email file created + record in `news_items` / `alerts`.
+
+J. MAUDE-support logic (no auto-alerts)
+- MAUDE ingestion should be used to corroborate other signals only (e.g., if MAUDE spike and an openFDA enforcement exists -> escalate).
+- UI must show MAUDE evidence panel inside an alert with counts and example event excerpts.
+
+K. Extra features (insurance/payer updates, CA licensing, OSHA, HIPAA, benchmarking)
+- Add placeholder services and adapters (implement at least one payer feed mock and CA RHB lookup).
+- Implement "policy" objects to store payer change notices and map them to CPT or procedure categories.
+- Benchmarks: allow loading CSV of national/state averages to compare clinic CPT revenue by code.
+
+L. Tests & CI
+- Add unit tests for pipelines (CMS impact calculator, drug filter, MAUDE detector).
+- Add one end-to-end demo test that seeds sample clinic, runs pipelines, and asserts alert generation.
+- Add GitHub Actions workflow: `test`, `build`, `deploy` (if deploy target exists).
+
+M. Documentation & deliverables
+- Update README with:
+  - How to run locally, run cron jobs, seed demo data, run tests.
+  - Where to add API keys and how to configure `.env` (list env vars).
+- Add a short "onboarding checklist" document for customer success (CSV templates for devices and CPTs).
+- Create a PR to `main` and request review.
+
+Acceptance criteria (must be met before PR merge)
+- Branch `WORK_BRANCH` exists with all code and migrations.
+- Local `npm run dev` (or equivalent) boots UI + backend + seeded sample clinic.
+- Onboarding form accepts device CSV + CPT CSV and populates DB.
+- Simulated CMS PFS change triggers the $-impact alert and updates Financial Impact card.
+- Simulated FDA enforcement and MAUDE spike produce device/drug alerts shown in dashboard and in weekly digest.
+- Compliance calendar displays any MQSA or CA RHB items and creates reminders.
+- Tests pass (`npm test`).
+- README and `.env.example` updated.
+- No secrets in commits.
+
+Notes & technical hints:
+- Use openFDA APIs for device & drug events: https://open.fda.gov/apis/ (drug/enforcement, device/event, device/enforcement).
+- Use CMS PFS CSVs from cms.gov and FederalRegister API for rule publication metadata.
+- Use standard email provider (SendGrid/Resend) for alert emails; use webhooks for SMS if needed later.
+- Keep alert text short + include exact source link. Always include "Informational only — not medical advice" on clinical-seeming alerts.
+
+If anything prevents you from completing a task (e.g., API quota), create a `mocks/*` JSON and document what real endpoint will replace it.
+
+Timeline: aim to complete items A–F (onboarding, CMS pipeline, drug recall pipeline, MAUDE detector) first in this sprint. Leave payer feeds and full benchmarking for sprint 2.
+
+-- End of task --
