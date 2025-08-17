@@ -92,6 +92,5 @@ app.use((req, res, next) => {
     reusePort: true,
   }, () => {
     log(`serving on port ${port}`);
-    log(`Access your app at: ${process.env.REPLIT_DEV_DOMAIN || 'https://your-repl.replit.dev'}`);
   });
 })();

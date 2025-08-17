@@ -1,10 +1,32 @@
 [
   {
-    "id": "f29afd97-1fcb-48b5-96e2-3dfa42a9a3d7",
-    "email": "mituluttamani@gmail.com",
-    "password": "$2b$10$pawuyOVUtLq8kg2rQXxisu8pJAx08D/nYbn6F6trFqx0xVfBWJOwe",
-    "createdAt": "2025-08-17T13:20:23.287Z",
+    "id": "c0e8d78c-af29-4186-a231-1ef96da790e7",
+    "email": "test@example.com",
+    "password": "$2b$10$SafNFH1HM9Sony8H0BTOPuqagXyvbdxbjoQyu3Xww1GviNceiDO6a",
+    "createdAt": "2025-08-16T22:14:15.921Z",
     "onboardingCompleted": false,
-    "lastLogin": "2025-08-17T13:22:51.279Z"
+    "lastLogin": "2025-08-16T22:19:56.269Z"
+  },
+  {
+    "id": "9a1ba7c4-5ad4-4bc7-8ee8-5ca29911e945",
+    "email": "test2@example.com",
+    "password": "$2b$10$dplR62WwmrLEIl/uzzeAYuvPk/M31pzU1SOpEh4qrbRhEC.mWdUyy",
+    "createdAt": "2025-08-16T22:19:14.643Z",
+    "onboardingCompleted": false
+  },
+  {
+    "id": "d30ecc3f-2bb6-4420-afa9-c6e982048722",
+    "email": "test3@example.com",
+    "password": "$2b$10$pOMaXfaTXuh59XhIXRDhjeQzSajmN3JQItziHnV8x/SW2imTG7duC",
+    "createdAt": "2025-08-16T22:19:22.445Z",
+    "onboardingCompleted": false
+  },
+  {
+    "id": "31b36ba5-04fb-40da-9372-de2bad09df19",
+    "email": "mituluttamani@gmail.com",
+    "password": "$2b$10$4uUHpPbDxzDA4IL47ICP9OQnCRLpNDa9ZyUbhbkJ6elj7QFwtS5uy",
+    "createdAt": "2025-08-16T22:21:07.955Z",
+    "onboardingCompleted": false,
+    "lastLogin": "2025-08-16T23:05:18.351Z"
   }
 ]

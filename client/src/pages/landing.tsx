@@ -17,8 +17,6 @@ export default function Landing() {
             <Link href="/pricing" className="text-sm hover:text-primary">Pricing</Link>
             <Link href="/about" className="text-sm hover:text-primary">About</Link>
             <Link href="/contact" className="text-sm hover:text-primary">Contact</Link>
-            <Link href="/privacy" className="text-sm hover:text-primary">Privacy</Link>
-            <Link href="/terms" className="text-sm hover:text-primary">Terms</Link>
             <Link href="/auth">
               <Button>Sign In</Button>
             </Link>

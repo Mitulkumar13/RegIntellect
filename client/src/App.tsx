@@ -13,12 +13,7 @@ import NotFound from "@/pages/not-found";
 import { AuthPage } from "@/pages/auth";
 import Landing from "@/pages/landing";
 import Pricing from "@/pages/pricing";
-import About from "@/pages/about";
-import Contact from "@/pages/contact";
-import Privacy from "@/pages/privacy";
-import Terms from "@/pages/terms";
 import LegalDisclaimer from "@/pages/legal-disclaimer";
-import Disclaimer from "@/pages/disclaimer";
 import { useState, useEffect } from "react";
 
 function Router() {
@@ -64,11 +59,7 @@ function Router() {
   // Public routes
   if (location === '/') return <Landing />;
   if (location === '/pricing') return <Pricing />;
-  if (location === '/about') return <About />;
-  if (location === '/contact') return <Contact />;
-  if (location === '/privacy') return <Privacy />;
-  if (location === '/terms') return <Terms />;
-  if (location === '/legal/disclaimer') return <Disclaimer />;
+  if (location === '/legal/disclaimer') return <LegalDisclaimer />;
   if (location === '/auth') return <AuthPage />;
 
   // Protected routes require authentication
